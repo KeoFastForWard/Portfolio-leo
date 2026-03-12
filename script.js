@@ -1009,23 +1009,23 @@ function setupBackgroundLineMotion() {
 
     gsap.set(line, {
       strokeDasharray: length,
-      strokeDashoffset: length,
-      autoAlpha: 0.18
+      strokeDashoffset: length * 0.98,
+      autoAlpha: index < 4 ? 0.34 : 0.24
     });
 
     timeline.to(
       line,
       {
         strokeDashoffset: 0,
-        autoAlpha: index % 2 === 0 ? 0.96 : 0.82,
+        autoAlpha: index < 4 ? 1 : 0.86,
         duration: 1
       },
-      index * 0.22
+      index * 0.18
     );
   });
 
   gsap.to(svg, {
-    yPercent: -3,
+    yPercent: -5,
     ease: "none",
     scrollTrigger: {
       id: "bg-lines-parallax",
@@ -1107,6 +1107,7 @@ function initFallbackReveal() {
 
   elements.forEach((element) => observer.observe(element));
 }
+
 
 
 

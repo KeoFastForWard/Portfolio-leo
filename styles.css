@@ -2557,6 +2557,7 @@ main,
   pointer-events: none;
   opacity: 1;
   mix-blend-mode: normal;
+  filter: saturate(1.08) contrast(1.04);
 }
 
 .bg-line-base,
@@ -2568,21 +2569,28 @@ main,
 }
 
 .bg-line-base {
-  opacity: 0.34;
+  opacity: 0.46;
 }
 
 .bg-line {
-  opacity: 0.18;
+  opacity: 0.26;
 }
 
 .bg-line-one,
-.bg-line-three {
-  filter: drop-shadow(0 0 16px rgba(196, 181, 255, 0.34));
+.bg-line-three,
+.bg-line-five {
+  filter: drop-shadow(0 0 18px rgba(201, 180, 255, 0.38));
 }
 
 .bg-line-two,
-.bg-line-four {
-  filter: drop-shadow(0 0 18px rgba(170, 209, 255, 0.26));
+.bg-line-four,
+.bg-line-six {
+  filter: drop-shadow(0 0 20px rgba(176, 214, 255, 0.34));
+}
+
+.bg-line-five,
+.bg-line-six {
+  opacity: 0.22;
 }
 
 main,
@@ -2594,14 +2602,15 @@ main,
 
 @media (max-width: 780px) {
   .background-lines {
-    opacity: 0.96;
+    opacity: 0.98;
+    filter: saturate(1.03) contrast(1.02);
   }
 
   .bg-line-base {
-    opacity: 0.28;
+    opacity: 0.34;
   }
 
   .bg-line {
-    opacity: 0.16;
+    opacity: 0.18;
   }
 }
