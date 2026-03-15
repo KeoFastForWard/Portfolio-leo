@@ -11,11 +11,8 @@
   filters: [
     "Todos",
     "UX/UI",
-    "Branding",
     "Motion",
-    "Ilustración",
-    "Packaging",
-    "Editorial",
+    "Branding",
     "Social Media"
   ],
   experiences: [
@@ -110,447 +107,844 @@
     }
   ],
   projects: [
-    {
-      id: "fintech-onboarding",
-      title: "Rediseño de onboarding fintech",
+        {
+      id: "nike-vision",
+      title: "Nike Vision",
       category: "UX/UI",
-      categories: ["UX/UI"],
-      context: "Caso UX/UI",
-      year: "2025",
-      summary:
-        "Replanteo del flujo de alta para una app financiera con foco en claridad, confianza y reducción de fricción.",
-      overview:
-        "Proyecto pensado para mostrar un caso completo de UX/UI con investigación visual, organización de información, wireframes y prototipado en Figma.",
-      objective:
-        "Simplificar el registro inicial, mejorar la jerarquía visual y construir una experiencia mobile más guiada y confiable.",
-      challenge:
-        "El recorrido original acumulaba demasiadas decisiones en pocas pantallas y generaba dudas en un momento crítico del producto.",
-      process: [
-        "Auditoría heurística del flujo existente y detección de puntos de abandono.",
-        "Reorganización del user flow con una secuencia más clara y estados mejor definidos.",
-        "Wireframes de baja fidelidad para validar jerarquías, inputs y progresión.",
-        "Diseño visual del prototipo final en Figma con componentes reutilizables."
+      categories:       [
+        "UX/UI"
       ],
-      tools: ["Figma", "Wireframes", "User flows", "Prototipado"],
-      deliverables: [
-        "Mapa del flujo completo",
-        "Set de wireframes",
-        "Pantallas clave del onboarding",
-        "Prototipo navegable"
-      ],
-      outcome:
-        "El resultado propone una experiencia más limpia, con mejor secuencia visual, menor carga cognitiva y una percepción de producto más sólida.",
-      learnings:
-        "La claridad de microcopy, la consistencia visual y el ritmo entre pasos tienen un impacto directo en la confianza percibida por el usuario.",
-      accent: {
-        start: "#dfeaf4",
-        end: "#c1d4eb",
-        label: "Flujo guiado"
-      },
-      external: {
-        label: "Abrir Figma",
-        href: "https://www.figma.com/"
-      },
-      media: [
-        {
-          type: "visual",
-          title: "Arquitectura del flujo",
-          description:
-            "Espacio ideal para user flows, wireframes o un resumen del recorrido principal."
-        },
-        {
-          type: "visual",
-          title: "Pantallas principales",
-          description:
-            "Bloque preparado para mockups del onboarding, home inicial y confirmaciones."
-        },
-        {
-          type: "embed",
-          title: "Prototipo interactivo",
-          description:
-            "Podés reemplazar este placeholder por un embed público de Figma o un link navegable."
-        }
-      ]
-    },
-    {
-      id: "metadev-brand-system",
-      title: "Sistema visual METADEV",
-      category: "Branding",
-      categories: ["Branding", "Social Media"],
-      context: "Freelance / Branding",
-      year: "2023",
-      summary:
-        "Desarrollo de identidad visual y piezas digitales para una marca orientada a proyectos tecnológicos emergentes.",
-      overview:
-        "Caso de branding adaptable a redes sociales, comunicación online y lineamientos visuales para distintos soportes.",
-      objective:
-        "Construir una identidad reconocible, flexible y alineada a un perfil digital contemporáneo.",
-      challenge:
-        "La marca necesitaba verse actual y técnica sin perder cercanía ni orden visual en piezas de comunicación rápida.",
-      process: [
-        "Definición del tono gráfico, personalidad visual y referencias estratégicas.",
-        "Exploración de logo, tipografía, color y sistema de composición.",
-        "Aplicación del sistema a piezas sociales, contenido multimedia y lineamientos digitales.",
-        "Ajuste de recursos visuales para mantener coherencia entre formatos."
-      ],
-      tools: ["Illustrator", "Photoshop", "Branding", "Dirección visual"],
-      deliverables: [
-        "Identidad base",
-        "Sistema de color y tipografía",
-        "Templates para redes sociales",
-        "Guía visual resumida"
-      ],
-      outcome:
-        "La propuesta deja una marca visual coherente y flexible, lista para comunicación digital y expansión futura.",
-      learnings:
-        "El valor de un branding fuerte no está solo en el logo, sino en la consistencia visual aplicada a cada punto de contacto.",
-      accent: {
-        start: "#eaded4",
-        end: "#d7c4b7",
-        label: "Sistema de marca"
-      },
-      external: {
-        label: "Ver Behance",
-        href: "https://www.behance.net/leonelkunst"
-      },
-      media: [
-        {
-          type: "visual",
-          title: "Exploración de marca",
-          description:
-            "Área lista para mostrar versiones del logo, paleta cromática y construcción tipográfica."
-        },
-        {
-          type: "visual",
-          title: "Aplicaciones digitales",
-          description:
-            "Espacio pensado para mockups de redes sociales, cabeceras y piezas de comunicación."
-        }
-      ]
-    },
-    {
-      id: "nativa-packaging",
-      title: "Packaging línea botánica",
-      category: "Packaging",
-      categories: ["Packaging", "Branding"],
-      context: "Proyecto visual",
+      context: "Sitio web UI",
       year: "2024",
       summary:
-        "Diseño de envases con lenguaje natural, enfoque premium y lectura clara para una línea de productos botánicos.",
+        "Landing conceptual para una línea Nike con foco en producto, narrativa visual y una experiencia de browsing limpia.",
       overview:
-        "Caso orientado a mostrar criterio de impresión, composición visual y coherencia de marca aplicada a packaging.",
+        "Proyecto UX/UI web pensado para presentar una línea de producto con una interfaz clara, minimalista y visualmente comercial.",
       objective:
-        "Crear un sistema de envases diferenciable en góndola y consistente con una identidad refinada.",
+        "Construir una página interactiva que destaque producto, identidad de marca y navegación con una lectura simple y actual.",
       challenge:
-        "Había que equilibrar impacto visual, lectura de información y viabilidad para producción impresa.",
-      process: [
-        "Definición de universo visual, referentes y familia de envases.",
-        "Diseño de jerarquías tipográficas, estructura de información y códigos por variante.",
-        "Mockups tridimensionales para validar presencia visual y ritmo de línea.",
-        "Ajustes finales para impresión y control cromático."
+        "La composición debía equilibrar protagonismo visual, presencia de producto y una interfaz sobria sin perder claridad.",
+      process:       [
+        "Definición del tono visual del sitio y de la relación entre producto, tipografía e imagen.",
+        "Diseño de hero principal, navegación superior y módulos de producto.",
+        "Exploración de pantallas de producto y variantes de presentación con foco comercial.",
+        "Refinamiento del prototipo y validación de jerarquías para una experiencia web fluida."
       ],
-      tools: ["Illustrator", "Photoshop", "Packaging", "CMYK"],
-      deliverables: [
-        "Sistema de etiquetas",
-        "Mockups de línea",
-        "Jerarquía informativa",
-        "Archivos listos para impresión"
+      tools:       [
+        "Figma",
+        "Diseño web",
+        "Diseño UI",
+        "Prototipado"
+      ],
+      deliverables:       [
+        "Portada principal",
+        "Pantallas de producto",
+        "Sistema UI web",
+        "Video de presentación"
       ],
       outcome:
-        "El resultado destaca por una estética limpia, natural y contemporánea, con orden visual y consistencia de familia.",
+        "El proyecto deja una propuesta visual limpia y aspiracional, con foco en producto y una interfaz fácil de recorrer.",
       learnings:
-        "En packaging, cada decisión visual debe convivir con la lógica de producción, la legibilidad y el contexto físico del producto.",
+        "En un sitio orientado a producto, la dirección de arte y la jerarquía visual tienen que trabajar al servicio de la claridad.",
       accent: {
-        start: "#e7e4d6",
-        end: "#d8c59b",
-        label: "Impresión + sistema"
+        start: "#e8e5e1",
+        end: "#cfcfcf",
+        label: "Producto + interfaz"
       },
-      media: [
+      cover: {
+        src: "assets/projects/uxui/nike-vision/cover/cover.png",
+        position: "center center",
+        tint: "rgba(8, 8, 8, 0.06)",
+        shadow: "rgba(8, 8, 8, 0.34)"
+      },
+      media:             [
         {
           type: "visual",
-          title: "Sistema de etiquetas",
-          description:
-            "Bloque pensado para aplicar fotografías de envases, variantes cromáticas y detalles impresos."
+          title: "HUD",
+          image: "assets/projects/uxui/nike-vision/images/nike-vision-hud.png"
         },
         {
           type: "visual",
-          title: "Mockups de producto",
-          description:
-            "Espacio preparado para renders o fotografías del packaging en contexto."
+          title: "Product Page",
+          image: "assets/projects/uxui/nike-vision/images/nike-vision-product-page.png"
+        },
+        {
+          type: "visual",
+          title: "Product Page Complete",
+          image: "assets/projects/uxui/nike-vision/images/nike-vision-product-page-complete.png"
+        },
+        {
+          type: "visual",
+          title: "Slide",
+          image: "assets/projects/uxui/nike-vision/images/slide.png"
+        },
+        {
+          type: "video",
+          title: "Demo en video",
+          src: "assets/projects/uxui/nike-vision/videos/2024-07-21-17-36-34.mp4"
         }
       ]
     },
     {
-      id: "horizonte-editorial",
-      title: "Proyecto editorial Horizonte",
-      category: "Editorial",
-      categories: ["Editorial"],
-      context: "Trabajo académico",
-      year: "2025",
-      summary:
-        "Diseño editorial de una publicación con retícula clara, ritmo visual y combinación de texto, imagen y jerarquías.",
-      overview:
-        "Caso ideal para mostrar criterio tipográfico, organización de información y sensibilidad editorial.",
-      objective:
-        "Desarrollar una publicación contemporánea con identidad propia, buena lectura y un sistema gráfico ordenado.",
-      challenge:
-        "La composición debía sostener personalidad visual sin sacrificar legibilidad ni coherencia entre secciones.",
-      process: [
-        "Definición de retícula base y sistema tipográfico.",
-        "Pruebas de jerarquía entre títulos, copetes, texto corrido e imágenes.",
-        "Diseño de aperturas, secciones internas y ritmo de página.",
-        "Preparación final para salida impresa o versión digital."
+      id: "protodealership",
+      title: "ProtoDealership",
+      category: "UX/UI",
+      categories:       [
+        "UX/UI"
       ],
-      tools: ["Tipografía", "Composición visual", "Diseño editorial"],
-      deliverables: [
-        "Retícula editorial",
-        "Sistema tipográfico",
-        "Aperturas y páginas interiores",
-        "Versión lista para impresión"
+      context: "Sitio web UI",
+      year: "2024",
+      summary:
+        "Landing interactiva para una concesionaria digital con foco en catálogo, producto y una experiencia web clara.",
+      overview:
+        "Proyecto UX/UI orientado a presentar un concesionario digital con una interfaz inmersiva, jerarquía sólida y narrativa visual comercial.",
+      objective:
+        "Diseñar una página interactiva que combine impacto visual, claridad de navegación y una presentación atractiva del producto.",
+      challenge:
+        "La experiencia debía sentirse premium y tecnológica sin comprometer lectura, ritmo ni foco en la conversión.",
+      process:       [
+        "Definición de estructura general del sitio, hero principal y navegación superior.",
+        "Diseño del layout visual para destacar el vehículo y ordenar la información clave.",
+        "Ajuste de contraste, tipografía y jerarquía para sostener claridad sobre una imagen potente.",
+        "Prototipado del recorrido principal y refinamiento de microinteracciones en Figma."
+      ],
+      tools:       [
+        "Figma",
+        "Diseño web",
+        "Diseño de interfaces",
+        "Prototipado"
+      ],
+      deliverables:       [
+        "Portada visual del home",
+        "Sistema UI desktop",
+        "Sección catálogo",
+        "Galería de pantallas"
       ],
       outcome:
-        "La propuesta comunica orden, sofisticación y control visual, con una narrativa gráfica consistente a lo largo de la pieza.",
+        "El caso comunica una presencia digital más aspiracional, con foco comercial y una interfaz web visualmente ordenada.",
       learnings:
-        "El diseño editorial exige precisión constante: cada margen, ritmo y contraste modifica la experiencia de lectura.",
+        "Cuando la imagen tiene mucho protagonismo, la jerarquía tipográfica y el control del contraste se vuelven decisivos.",
       accent: {
-        start: "#e3e0eb",
-        end: "#cbd6e5",
-        label: "Tipografía + ritmo"
+        start: "#152031",
+        end: "#4f79ab",
+        label: "Concesionaria digital"
       },
-      media: [
+      cover: {
+        src: "assets/projects/uxui/protodealership/cover/cover.png",
+        position: "68% center",
+        tint: "rgba(7, 10, 18, 0.12)",
+        shadow: "rgba(7, 10, 18, 0.74)"
+      },
+      media:             [
         {
           type: "visual",
-          title: "Sistema editorial",
-          description:
-            "Espacio listo para mostrar grilla, jerarquías tipográficas y aperturas de secciones."
+          title: "Catalogue Protodealersip",
+          image: "assets/projects/uxui/protodealership/images/catalogue-protodealersip.png"
         },
         {
           type: "visual",
-          title: "Páginas destacadas",
-          description:
-            "Bloque preparado para spreads, detalles de composición y piezas interiores."
+          title: "Dashboard Presentation",
+          image: "assets/projects/uxui/protodealership/images/dashboard-presentation.png"
+        },
+        {
+          type: "visual",
+          title: "HUD",
+          image: "assets/projects/uxui/protodealership/images/hud-protodealership.png"
+        },
+        {
+          type: "visual",
+          title: "More",
+          image: "assets/projects/uxui/protodealership/images/more-protodealership.png"
+        },
+        {
+          type: "visual",
+          title: "Catalogue Part 1",
+          image: "assets/projects/uxui/protodealership/images/property-1-catalogue-part-1.png"
+        },
+        {
+          type: "visual",
+          title: "Catalogue Part 2",
+          image: "assets/projects/uxui/protodealership/images/property-1-catalogue-part-2.png"
+        },
+        {
+          type: "visual",
+          title: "Catalogue Part 3",
+          image: "assets/projects/uxui/protodealership/images/property-1-catalogue-part-3.png"
+        },
+        {
+          type: "visual",
+          title: "Catalogue Part 4",
+          image: "assets/projects/uxui/protodealership/images/property-1-catalogue-part-4.png"
+        },
+        {
+          type: "visual",
+          title: "Catalogue Part 5",
+          image: "assets/projects/uxui/protodealership/images/property-1-catalogue-part-5.png"
+        },
+        {
+          type: "visual",
+          title: "Catalogue Part 6",
+          image: "assets/projects/uxui/protodealership/images/property-1-catalogue-part-6.png"
+        },
+        {
+          type: "visual",
+          title: "Catalogue Part 7",
+          image: "assets/projects/uxui/protodealership/images/property-1-catalogue-part-7.png"
+        },
+        {
+          type: "visual",
+          title: "Catalogue Transition",
+          image: "assets/projects/uxui/protodealership/images/property-1-catalogue-transition.png"
+        },
+        {
+          type: "visual",
+          title: "Default",
+          image: "assets/projects/uxui/protodealership/images/property-1-default.png"
+        },
+        {
+          type: "visual",
+          title: "Variant 10",
+          image: "assets/projects/uxui/protodealership/images/property-1-variant10.png"
+        },
+        {
+          type: "visual",
+          title: "Variant 16",
+          image: "assets/projects/uxui/protodealership/images/property-1-variant16.png"
+        },
+        {
+          type: "visual",
+          title: "Variant 2",
+          image: "assets/projects/uxui/protodealership/images/property-1-variant2.png"
+        },
+        {
+          type: "visual",
+          title: "Variant 20",
+          image: "assets/projects/uxui/protodealership/images/property-1-variant20.png"
+        },
+        {
+          type: "visual",
+          title: "Variant 3",
+          image: "assets/projects/uxui/protodealership/images/property-1-variant3.png"
+        },
+        {
+          type: "visual",
+          title: "Variant 4",
+          image: "assets/projects/uxui/protodealership/images/property-1-variant4.png"
+        },
+        {
+          type: "visual",
+          title: "Variant 5",
+          image: "assets/projects/uxui/protodealership/images/property-1-variant5.png"
+        },
+        {
+          type: "visual",
+          title: "Variant 6",
+          image: "assets/projects/uxui/protodealership/images/property-1-variant6.png"
+        },
+        {
+          type: "visual",
+          title: "Variant 7",
+          image: "assets/projects/uxui/protodealership/images/property-1-variant7.png"
+        },
+        {
+          type: "visual",
+          title: "Variant 8",
+          image: "assets/projects/uxui/protodealership/images/property-1-variant8.png"
+        },
+        {
+          type: "visual",
+          title: "Variant 9",
+          image: "assets/projects/uxui/protodealership/images/property-1-variant9.png"
+        }
+      ]
+    },
+    {
+      id: "protogalaxy",
+      title: "ProtoGalaxy",
+      category: "UX/UI",
+      categories:       [
+        "UX/UI"
+      ],
+      context: "Sitio web UI",
+      year: "2024",
+      summary:
+        "Website conceptual con estética inmersiva y narrativa espacial, diseñado para comunicar profundidad y exploración.",
+      overview:
+        "Caso UX/UI web desarrollado para una experiencia visual cinematográfica, con bloques inmersivos y una interfaz clara dentro de un universo oscuro.",
+      objective:
+        "Construir una interfaz impactante que mantenga orden visual y una navegación clara dentro de un concepto gráfico muy protagonista.",
+      challenge:
+        "El reto fue equilibrar espectacularidad visual, legibilidad y continuidad entre pantallas con gran carga de imagen.",
+      process:       [
+        "Definición del concepto visual y del clima general del sitio.",
+        "Diseño de pantallas clave para home, about us, fotos y contacto.",
+        "Construcción de componentes oscuros con foco en contraste y profundidad.",
+        "Revisión del flujo para que el recorrido no pierda claridad dentro del concepto inmersivo."
+      ],
+      tools:       [
+        "Figma",
+        "Diseño UI",
+        "Diseño web",
+        "Dirección visual"
+      ],
+      deliverables:       [
+        "Home inmersivo",
+        "Pantallas internas",
+        "Sistema visual oscuro",
+        "Galería de variaciones"
+      ],
+      outcome:
+        "La propuesta resuelve una experiencia web más atmosférica y aspiracional, manteniendo estructura y foco narrativo.",
+      learnings:
+        "Incluso en interfaces muy visuales, la consistencia de componentes sigue siendo la base de una navegación sólida.",
+      accent: {
+        start: "#0c1020",
+        end: "#7a5f74",
+        label: "Experiencia inmersiva"
+      },
+      cover: {
+        src: "assets/projects/uxui/protogalaxy/cover/cover.png",
+        position: "center center",
+        tint: "rgba(5, 8, 18, 0.16)",
+        shadow: "rgba(5, 8, 18, 0.8)"
+      },
+      media:             [
+        {
+          type: "visual",
+          title: "The Galaxy Is In Your Hands",
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands.png"
+        },
+        {
+          type: "visual",
+          title: "About Us Part 1",
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-about-us-part-1.png"
+        },
+        {
+          type: "visual",
+          title: "About Us Part 2",
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-about-us-part-2.png"
+        },
+        {
+          type: "visual",
+          title: "About Us Part 3",
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-about-us-part-3.png"
+        },
+        {
+          type: "visual",
+          title: "Contact Part 1",
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-contact-part-1.png"
+        },
+        {
+          type: "visual",
+          title: "Contact Part 2",
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-contact-part-2.png"
+        },
+        {
+          type: "visual",
+          title: "Contact Part 3",
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-contact-part-3.png"
+        },
+        {
+          type: "visual",
+          title: "Photos Part 1",
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-photos-part-1.png"
+        },
+        {
+          type: "visual",
+          title: "Photos Part 2",
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-photos-part-2.png"
+        },
+        {
+          type: "visual",
+          title: "Photos Part 3",
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-photos-part-3.png"
+        },
+        {
+          type: "visual",
+          title: "Principal Button Part 1",
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-principal-button-part-1.png"
+        },
+        {
+          type: "visual",
+          title: "Principal Button Part 2",
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-principal-button-part-2.png"
+        }
+      ]
+    },
+    {
+      id: "protored",
+      title: "ProtoRed",
+      category: "UX/UI",
+      categories:       [
+        "UX/UI"
+      ],
+      context: "App mobile UI",
+      year: "2024",
+      summary:
+        "Concepto de red social mobile con foco en feed, perfiles, cámara, mensajes y continuidad entre vistas clave.",
+      overview:
+        "Caso UX/UI para una aplicación social pensado para mostrar diseño de feed, perfiles, llamadas y una estructura mobile consistente.",
+      objective:
+        "Desarrollar una app visualmente distintiva pero fácil de recorrer, con un lenguaje cercano al de un producto real.",
+      challenge:
+        "El sistema debía resolver muchas vistas dentro de una misma identidad sin perder coherencia ni claridad de uso.",
+      process:       [
+        "Definición del estilo general de la app y de sus pantallas esenciales.",
+        "Diseño del perfil, feed, navegación inferior y estados de interacción social.",
+        "Pruebas de composición para balancear imagen, tipografía e interacción.",
+        "Ajustes del sistema UI para sostener continuidad entre vistas y acciones."
+      ],
+      tools:       [
+        "Figma",
+        "Diseño de app",
+        "Diseño mobile",
+        "Sistemas UI"
+      ],
+      deliverables:       [
+        "Pantallas de perfil y feed",
+        "Vistas de interacción social",
+        "Navegación principal",
+        "Galería de estados"
+      ],
+      outcome:
+        "La propuesta funciona como un concepto de app social sólido, con identidad propia y buen control del layout mobile.",
+      learnings:
+        "Un producto con múltiples vistas necesita una base UI muy consistente para que la experiencia siga siendo intuitiva.",
+      accent: {
+        start: "#c9c8ca",
+        end: "#8d8b90",
+        label: "App social"
+      },
+      cover: {
+        src: "assets/projects/uxui/protored/cover/cover.png",
+        position: "center center",
+        tint: "rgba(20, 20, 20, 0.08)",
+        shadow: "rgba(26, 26, 30, 0.46)"
+      },
+      media:             [
+        {
+          type: "visual",
+          title: "Call",
+          image: "assets/projects/uxui/protored/images/call-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Camera",
+          image: "assets/projects/uxui/protored/images/camera-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Camera 1",
+          image: "assets/projects/uxui/protored/images/camera-protored-1.png"
+        },
+        {
+          type: "visual",
+          title: "Chat",
+          image: "assets/projects/uxui/protored/images/chat-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Create Post",
+          image: "assets/projects/uxui/protored/images/create-post-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Highlights Perfil",
+          image: "assets/projects/uxui/protored/images/highlights-perfil-protored.png"
+        },
+        {
+          type: "visual",
+          title: "History Perfil",
+          image: "assets/projects/uxui/protored/images/history-perfil-protored.png"
+        },
+        {
+          type: "visual",
+          title: "History",
+          image: "assets/projects/uxui/protored/images/history-protored.png"
+        },
+        {
+          type: "visual",
+          title: "HUD",
+          image: "assets/projects/uxui/protored/images/hud-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Login",
+          image: "assets/projects/uxui/protored/images/login-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Messages",
+          image: "assets/projects/uxui/protored/images/messages-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Notification Scene",
+          image: "assets/projects/uxui/protored/images/notification-scene-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Perfil Person Notification",
+          image: "assets/projects/uxui/protored/images/perfil-person-notification-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Perfil Person",
+          image: "assets/projects/uxui/protored/images/perfil-person-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Perfil Person Search",
+          image: "assets/projects/uxui/protored/images/perfil-person-search-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Perfil",
+          image: "assets/projects/uxui/protored/images/perfil-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Post Comments",
+          image: "assets/projects/uxui/protored/images/post-comments-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Post Comments 1",
+          image: "assets/projects/uxui/protored/images/post-comments-protored-1.png"
+        },
+        {
+          type: "visual",
+          title: "Publicacion Perfil",
+          image: "assets/projects/uxui/protored/images/publicacion-perfil-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Register",
+          image: "assets/projects/uxui/protored/images/register-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Search",
+          image: "assets/projects/uxui/protored/images/search-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Videocall",
+          image: "assets/projects/uxui/protored/images/videocall-protored.png"
+        }
+      ]
+    },
+    {
+      id: "prototv",
+      title: "ProtoTV",
+      category: "UX/UI",
+      categories:       [
+        "UX/UI"
+      ],
+      context: "Sitio web UI",
+      year: "2024",
+      summary:
+        "Concepto de streaming con biblioteca visual, navegación por categorías y una experiencia pensada para explorar contenido.",
+      overview:
+        "Caso UX/UI para una plataforma de streaming orientado a exhibir organización de contenido, módulos visuales y experiencia de browsing.",
+      objective:
+        "Diseñar una interfaz de streaming clara, actual y entretenida, con foco en contenido destacado y navegación horizontal.",
+      challenge:
+        "La grilla debía verse atractiva y reconocible sin saturar la pantalla ni perder jerarquía entre secciones.",
+      process:       [
+        "Definición de navegación principal y categorías de contenido.",
+        "Diseño de módulos horizontales, estados de portadas y áreas destacadas.",
+        "Ajuste de contraste entre UI oscura, posters y acciones del usuario.",
+        "Prototipado de la experiencia general y refinamiento del layout final."
+      ],
+      tools:       [
+        "Figma",
+        "Diseño web",
+        "UI kit",
+        "Prototipado"
+      ],
+      deliverables:       [
+        "Home de streaming",
+        "Sistema de categorías",
+        "Grillas de contenido",
+        "Pantallas de reproducción"
+      ],
+      outcome:
+        "La propuesta resuelve una interfaz de streaming moderna, reconocible y lista para escalar hacia más vistas y funciones.",
+      learnings:
+        "La organización del contenido es tan importante como la estética cuando la experiencia depende de explorar rápido.",
+      accent: {
+        start: "#0c1016",
+        end: "#8f95a8",
+        label: "Interfaz de streaming"
+      },
+      cover: {
+        src: "assets/projects/uxui/prototv/cover/cover.png",
+        position: "center center",
+        tint: "rgba(7, 10, 18, 0.1)",
+        shadow: "rgba(7, 10, 18, 0.56)"
+      },
+      media:             [
+        {
+          type: "visual",
+          title: "Agree Perfil",
+          image: "assets/projects/uxui/prototv/images/agree-perfil-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "Choose Account",
+          image: "assets/projects/uxui/prototv/images/choose-account-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "Film Repodructor For Explore",
+          image: "assets/projects/uxui/prototv/images/film-repodructor-for-explore-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "Film Repodructor For Explore 1",
+          image: "assets/projects/uxui/prototv/images/film-repodructor-for-explore-prototv-1.png"
+        },
+        {
+          type: "visual",
+          title: "Film Repodructor For My List",
+          image: "assets/projects/uxui/prototv/images/film-repodructor-for-my-list-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "Film Repodructor For My List 1",
+          image: "assets/projects/uxui/prototv/images/film-repodructor-for-my-list-prototv-1.png"
+        },
+        {
+          type: "visual",
+          title: "Film Repodructor For Popular News",
+          image: "assets/projects/uxui/prototv/images/film-repodructor-for-popular-news-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "Film Repodructor For Popular News 1",
+          image: "assets/projects/uxui/prototv/images/film-repodructor-for-popular-news-prototv-1.png"
+        },
+        {
+          type: "visual",
+          title: "Film Repodructor",
+          image: "assets/projects/uxui/prototv/images/film-repodructor-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "Film Repodructor 1",
+          image: "assets/projects/uxui/prototv/images/film-repodructor-prototv-1.png"
+        },
+        {
+          type: "visual",
+          title: "HUD Explore Languages",
+          image: "assets/projects/uxui/prototv/images/hud-explore-languages-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "HUD Films Presentation For Explore",
+          image: "assets/projects/uxui/prototv/images/hud-films-presentation-for-explore-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "HUD Films Presentation For My List",
+          image: "assets/projects/uxui/prototv/images/hud-films-presentation-for-my-list-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "HUD Films Presentation For Popular News",
+          image: "assets/projects/uxui/prototv/images/hud-films-presentation-for-popular-news-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "HUD Films Presentation",
+          image: "assets/projects/uxui/prototv/images/hud-films-presentation-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "HUD Films",
+          image: "assets/projects/uxui/prototv/images/hud-films-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "HUD My List",
+          image: "assets/projects/uxui/prototv/images/hud-my-list-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "HUD Popular News",
+          image: "assets/projects/uxui/prototv/images/hud-popular-news-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "HUD Serie",
+          image: "assets/projects/uxui/prototv/images/hud-serie-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "HUD Series Presentation For Explore",
+          image: "assets/projects/uxui/prototv/images/hud-series-presentation-for-explore-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "HUD Series Presentation For My List",
+          image: "assets/projects/uxui/prototv/images/hud-series-presentation-for-my-list-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "HUD Series Presentation For Popular News",
+          image: "assets/projects/uxui/prototv/images/hud-series-presentation-for-popular-news-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "HUD Series Presentation",
+          image: "assets/projects/uxui/prototv/images/hud-series-presentation-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "HUD Start",
+          image: "assets/projects/uxui/prototv/images/hud-start-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "Presentation",
+          image: "assets/projects/uxui/prototv/images/prototv-presentation.png"
+        },
+        {
+          type: "visual",
+          title: "Register",
+          image: "assets/projects/uxui/prototv/images/register-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "Sign In",
+          image: "assets/projects/uxui/prototv/images/sign-in-prototv.png"
         }
       ]
     },
     {
       id: "motion-launch",
-      title: "Motion launch visual",
+      title: "Napoly Barbershop | Animación de isotipo",
       category: "Motion",
-      categories: ["Motion", "Social Media"],
-      context: "Contenido audiovisual",
-      year: "2024",
+      categories: ["Motion", "Branding"],
+      context: "After Effects / Napoly Barbershop",
+      year: "2025",
       summary:
-        "Secuencia breve para lanzamiento digital con animaciones limpias, ritmo visual y narrativa orientada a redes.",
+        "Animación breve del isotipo creada para Napoly Barbershop, enfocada en presencia de marca, ritmo visual y una entrada limpia y reconocible.",
       overview:
-        "Caso base para integrar reels, piezas animadas, visuales promocionales o videos exportados desde After Effects y Premiere.",
+        "Proyecto motion desarrollado para Napoly Barbershop, pensado para presentar el isotipo de la barbería con una ejecución sobria, actual y orientada a branding.",
       objective:
-        "Diseñar una pieza corta y dinámica que potencie el mensaje de marca sin perder claridad en pantalla.",
+        "Construir una animación corta y precisa que refuerce la identidad visual de Napoly Barbershop y funcione como pieza de presentación de marca.",
       challenge:
-        "La animación debía sentirse premium y moderna, evitando efectos excesivos y manteniendo legibilidad.",
+        "La pieza debía transmitir carácter, estilo y profesionalismo, manteniendo una estética limpia y una lectura clara del isotipo en pocos segundos.",
       process: [
-        "Definición de keyframes, ritmo de transición y jerarquía de mensajes.",
-        "Diseño de escenas principales con sistema de color y composición consistente.",
-        "Animación en After Effects y ajuste de timings para plataformas digitales.",
-        "Edición final y exportación optimizada para redes sociales."
+        "Definición del comportamiento del isotipo de Napoly Barbershop y del timing general de entrada, pausa y salida.",
+        "Construcción de la secuencia principal en After Effects con foco en limpieza, ritmo y presencia de marca.",
+        "Desarrollo de una segunda variante para explorar otra cadencia visual dentro del mismo sistema.",
+        "Ajuste final de transiciones, velocidad y exportación para presentación digital y portfolio."
       ],
-      tools: ["After Effects", "Premiere Pro", "Motion graphics básico"],
+      tools: ["After Effects", "Motion graphics básico", "Branding"],
       deliverables: [
-        "Storyboard visual",
-        "Frames clave",
-        "Pieza exportada para redes",
-        "Versiones cortas adaptadas"
+        "Animación principal del isotipo",
+        "Animación secundaria",
+        "Portada visual",
+        "Exportes listos para portfolio"
       ],
       outcome:
-        "La pieza final aporta dinamismo y sofisticación, acompañando la identidad de marca con movimiento controlado.",
+        "El resultado presenta la identidad de Napoly Barbershop en movimiento con una ejecución sobria, precisa y pensada para reforzar el reconocimiento de marca.",
       learnings:
-        "En motion, una buena transición debe ordenar la atención antes que llamar la atención por sí sola.",
+        "En motion branding, el impacto no depende de sumar efectos sino de controlar tiempos, energía y legibilidad para que la marca se perciba con claridad.",
       accent: {
-        start: "#dee6f5",
-        end: "#c3d1eb",
-        label: "Ritmo y transición"
+        start: "#dfe4ea",
+        end: "#c5d0db",
+        label: "Motion de marca"
+      },
+      cover: {
+        src: "assets/projects/motion/isotipo-animado/cover/cover.png",
+        position: "center center",
+        tint: "rgba(10, 12, 16, 0.08)",
+        shadow: "rgba(10, 12, 16, 0.3)"
       },
       media: [
         {
           type: "video",
-          title: "Video principal",
+          title: "Principal",
+          src: "assets/projects/motion/isotipo-animado/videos/principal.mp4",
+          poster: "assets/projects/motion/isotipo-animado/cover/cover.png",
           description:
-            "Podés sumar aquí un MP4 exportado desde After Effects o Premiere para reproducirlo dentro del portfolio."
+            "Versión principal de la animación del isotipo de Napoly Barbershop, pensada como pieza base de presentación visual."
         },
         {
-          type: "visual",
-          title: "Frames clave",
+          type: "video",
+          title: "Secundario",
+          src: "assets/projects/motion/isotipo-animado/videos/secundario.mp4",
+          poster: "assets/projects/motion/isotipo-animado/cover/cover.png",
           description:
-            "Área preparada para mostrar capturas de escenas, storyboard o secuencias visuales."
+            "Segunda variante del movimiento para complementar el caso y mostrar otra resolución visual de la identidad de Napoly Barbershop."
         }
       ]
     },
     {
-      id: "social-launch-kit",
-      title: "Kit social para lanzamiento",
+      id: "mastantuono-real-madrid",
+      title: "Future of Real Madrid | Mastantuono",
       category: "Social Media",
-      categories: ["Social Media", "Branding"],
-      context: "Campaña digital",
-      year: "2024",
-      summary:
-        "Sistema de piezas para redes con consistencia visual, modularidad y adaptación a distintos formatos.",
-      overview:
-        "Caso útil para mostrar piezas de comunicación digital, layouts seriados y continuidad gráfica en campañas.",
-      objective:
-        "Construir una familia de publicaciones clara, flexible y reconocible, lista para escalar en redes.",
-      challenge:
-        "La campaña requería mantener identidad visual y ritmo de marca en formatos con tamaños y tiempos distintos.",
-      process: [
-        "Diseño del módulo base para posteos, stories y recursos complementarios.",
-        "Prueba de jerarquías, templates y consistencia cromática.",
-        "Adaptación del sistema a múltiples formatos con continuidad visual.",
-        "Optimización de entregables para publicación digital."
-      ],
-      tools: ["Photoshop", "Illustrator", "Diseño para redes sociales"],
-      deliverables: [
-        "Templates base",
-        "Piezas estáticas",
-        "Adaptaciones para stories",
-        "Lineamientos rápidos de uso"
-      ],
-      outcome:
-        "El resultado deja una campaña ordenada, reconocible y lista para operar de forma consistente en canales digitales.",
-      learnings:
-        "La modularidad acelera la producción y sostiene mejor la coherencia cuando el sistema visual está bien resuelto.",
-      accent: {
-        start: "#f0dfd8",
-        end: "#e3c1b0",
-        label: "Sistema modular"
-      },
-      media: [
-        {
-          type: "visual",
-          title: "Set de piezas",
-          description:
-            "Bloque preparado para mostrar carruseles, posteos, stories y variantes de campaña."
-        },
-        {
-          type: "visual",
-          title: "Adaptaciones",
-          description:
-            "Espacio ideal para destacar consistencia entre formatos y recursos gráficos."
-        }
-      ]
-    },
-    {
-      id: "vector-bloom",
-      title: "Serie ilustrada Vector Bloom",
-      category: "Ilustración",
-      categories: ["Ilustración"],
-      context: "Exploración visual",
+      categories: ["Social Media"],
+      context: "Flyer para redes sociales",
       year: "2025",
       summary:
-        "Colección de ilustraciones digitales con foco en composición, color y construcción visual adaptable a piezas gráficas.",
+        "Flyer conceptual para redes sobre Mastantuono en clave Real Madrid, con composición editorial, alto contraste y foco aspiracional.",
       overview:
-        "Proyecto pensado para exhibir sensibilidad creativa, manejo de color y capacidad expresiva dentro del portfolio.",
+        "Pieza pensada para mostrar criterio de composición en social media, manejo de imagen deportiva y una narrativa visual de impacto en formato cuadrado.",
       objective:
-        "Desarrollar una serie visual con identidad propia que pueda convivir con branding, editorial o contenido digital.",
+        "Diseñar un flyer estático con lectura inmediata, presencia visual fuerte y una estética futbolera premium orientada a redes.",
       challenge:
-        "La serie debía sostener unidad estilística sin volverse repetitiva y conservar impacto visual en distintas aplicaciones.",
+        "La composición debía equilibrar múltiples recortes del jugador, branding implícito del club y una jerarquía tipográfica dominante sin perder limpieza.",
       process: [
-        "Búsqueda de lenguaje gráfico, paleta y recursos de forma.",
-        "Definición de composiciones, balance de color y texturas visuales.",
-        "Ajustes finales para uso en medios digitales e impresos.",
-        "Exploración de aplicaciones complementarias dentro del portfolio."
+        "Definición del concepto visual con tono aspiracional y eje en la promesa de futuro deportivo.",
+        "Composición del flyer con layering de recortes, escudo, humo, tipografía condensada y fondo claro texturado.",
+        "Ajuste de jerarquías entre claim, nombre del jugador y elementos secundarios para lectura rápida en redes.",
+        "Refinamiento final de contraste, profundidad y balance general para publicación digital."
       ],
-      tools: ["Illustrator", "Photoshop", "Color", "Composición visual"],
+      tools: ["Photoshop", "Diseño para redes sociales", "Composición visual"],
       deliverables: [
-        "Serie principal de ilustraciones",
-        "Aplicaciones visuales",
-        "Versiones para impresión o digital"
+        "Flyer principal 1:1",
+        "Versión lista para publicación digital",
+        "Dirección visual deportiva",
+        "Composición de alto impacto"
       ],
       outcome:
-        "La colección funciona como una capa más expresiva dentro del portfolio y amplía la percepción de versatilidad creativa.",
+        "La pieza logra una presencia visual fuerte y contemporánea, con foco en impacto inmediato, narrativa deportiva y carácter editorial para social media.",
       learnings:
-        "Los proyectos autorales también fortalecen un perfil profesional cuando muestran criterio formal y consistencia.",
+        "En piezas deportivas para redes, la jerarquía tipográfica y la profundidad entre planos son clave para construir dramatismo sin saturar la lectura.",
       accent: {
-        start: "#ebe0f0",
-        end: "#ecced9",
-        label: "Expresión visual"
+        start: "#e6e6e4",
+        end: "#bababa",
+        label: "Flyer deportivo"
+      },
+      cover: {
+        src: "assets/projects/social-media/mastantuono-real-madrid/cover/cover.png",
+        position: "center center",
+        tint: "rgba(12, 14, 18, 0.04)",
+        shadow: "rgba(12, 14, 18, 0.22)"
       },
       media: [
         {
           type: "visual",
-          title: "Serie principal",
+          title: "Flyer principal",
+          image: "assets/projects/social-media/mastantuono-real-madrid/images/mastantuono-real-madrid-flyer.png",
           description:
-            "Área lista para incorporar ilustraciones completas, recortes o composiciones destacadas."
-        },
-        {
-          type: "visual",
-          title: "Aplicaciones",
-          description:
-            "Espacio pensado para mostrar cómo la serie se adapta a posters, redes o piezas editoriales."
-        }
-      ]
-    },
-    {
-      id: "creative-studio-landing",
-      title: "Landing para estudio creativo",
-      category: "UX/UI",
-      categories: ["UX/UI", "Branding"],
-      context: "Proyecto freelance",
-      year: "2025",
-      summary:
-        "Concepto web editorial para un estudio creativo, combinando narrativa visual, foco comercial y una interfaz de alto nivel.",
-      overview:
-        "Caso ideal para exhibir diseño web, jerarquía de secciones, narrativa visual y consistencia entre contenido y experiencia.",
-      objective:
-        "Diseñar una landing capaz de presentar servicios, casos y posicionamiento con claridad y sofisticación.",
-      challenge:
-        "Había que construir una experiencia impactante, pero clara y rápida de recorrer, sin perder rendimiento ni legibilidad.",
-      process: [
-        "Definición de arquitectura de contenidos y navegación principal.",
-        "Diseño de hero, bloques editoriales y zonas de conversión.",
-        "Construcción del sistema UI y ritmo entre secciones.",
-        "Refinamiento visual con animaciones sutiles y microinteracciones."
-      ],
-      tools: ["Figma", "UX/UI", "Branding", "Diseño de interfaces"],
-      deliverables: [
-        "Arquitectura del sitio",
-        "Mockup completo de landing",
-        "Sistema UI",
-        "Prototipo y lineamientos de animación"
-      ],
-      outcome:
-        "La propuesta resuelve una presencia digital moderna, premium y comercial, lista para escalar en futuras páginas o estudios de caso.",
-      learnings:
-        "Un layout bien jerarquizado puede transformar contenido complejo en una experiencia ligera, editorial y convincente.",
-      accent: {
-        start: "#dfe8e1",
-        end: "#cad7df",
-        label: "Web editorial"
-      },
-      external: {
-        label: "Abrir caso",
-        href: "https://www.behance.net/leonelkunst"
-      },
-      media: [
-        {
-          type: "visual",
-          title: "Wireframes y secciones",
-          description:
-            "Espacio listo para arquitectura, wireframes y layout base del sitio."
-        },
-        {
-          type: "visual",
-          title: "Pantallas finales",
-          description:
-            "Bloque preparado para mockups de desktop y mobile con foco en hero, servicios y CTA."
-        },
-        {
-          type: "embed",
-          title: "Embed o prototipo",
-          description:
-            "Podés integrar aquí un prototipo web de Figma o un enlace al caso publicado."
+            "Flyer cuadrado orientado a redes sociales con una construcción aspiracional, composición en capas y foco total en el impacto visual."
         }
       ]
     }
   ]
 };
+
+
+
+
+
+
 
 
 

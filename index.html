@@ -13,7 +13,7 @@
       content="Leonel Kunst, portfolio, diseñador UX/UI, diseñador gráfico, branding, motion graphics, diseño editorial, packaging, Figma"
     />
     <meta name="author" content="Leonel Kunst" />
-    <meta name="theme-color" content="#f7f6f2" />
+    <meta name="theme-color" content="#f7f6f2" id="theme-color-meta" />
     <meta property="og:title" content="Leonel Kunst | Portfolio UX/UI y Diseño Gráfico" />
     <meta
       property="og:description"
@@ -22,6 +22,23 @@
     <meta property="og:type" content="website" />
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <link rel="preconnect" href="https://api.fontshare.com" />
+    <script>
+      (function () {
+        const storageKey = "leonel-portfolio-theme";
+        let theme = "light";
+
+        try {
+          const storedTheme = window.localStorage.getItem(storageKey);
+          if (storedTheme === "light" || storedTheme === "dark") {
+            theme = storedTheme;
+          } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            theme = "dark";
+          }
+        } catch {}
+
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
     <link
       href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=satoshi@400,500,700,900&display=swap"
       rel="stylesheet"
@@ -92,7 +109,24 @@
           <a href="#trayectoria">Trayectoria</a>
           <a href="#habilidades">Habilidades</a>
           <a href="#contacto">Contacto</a>
+
+          <button class="theme-toggle theme-toggle-mobile" type="button" data-theme-toggle aria-pressed="false" aria-label="Activar modo oscuro">
+            <span class="theme-toggle-copy">
+              <span class="theme-toggle-title" data-theme-title>Modo oscuro</span>
+              <span class="theme-toggle-subtitle">Cambiar apariencia</span>
+            </span>
+            <span class="theme-toggle-switch" aria-hidden="true">
+              <span class="theme-toggle-knob"></span>
+            </span>
+          </button>
         </nav>
+
+        <button class="theme-toggle theme-toggle-desktop" type="button" data-theme-toggle aria-pressed="false" aria-label="Activar modo oscuro">
+          <span class="theme-toggle-label" data-theme-label>Oscuro</span>
+          <span class="theme-toggle-switch" aria-hidden="true">
+            <span class="theme-toggle-knob"></span>
+          </span>
+        </button>
       </header>
 
       <main>
@@ -324,7 +358,20 @@
             </article>
 
             <article class="content-panel contact-form-panel" data-reveal="up">
-              <form class="contact-form" data-contact-form>
+              <form
+                class="contact-form"
+                data-contact-form
+                action="https://formsubmit.co/leonelivankunst19@gmail.com"
+                method="POST"
+                target="contact-submit-frame"
+                accept-charset="UTF-8"
+              >
+                <input type="hidden" name="_subject" value="Consulta desde portfolio | Leonel Kunst" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_replyto" value="" />
+                <input class="contact-honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" />
+
                 <label>
                   <span>Nombre</span>
                   <input type="text" name="nombre" placeholder="Tu nombre" required />
@@ -345,9 +392,18 @@
                   ></textarea>
                 </label>
 
-                <button class="btn btn-primary" type="submit">Enviar consulta</button>
-                <p class="form-note">El formulario abre tu cliente de correo con el mensaje listo para enviar.</p>
+                <button class="btn btn-primary" type="submit" data-contact-submit>Enviar consulta</button>
+                <p class="form-note" data-form-status>El formulario envía la consulta directamente desde la web.</p>
               </form>
+
+              <iframe
+                name="contact-submit-frame"
+                title="Envío del formulario de contacto"
+                class="contact-submit-frame"
+                src="about:blank"
+                hidden
+                data-contact-frame
+              ></iframe>
             </article>
           </div>
         </section>

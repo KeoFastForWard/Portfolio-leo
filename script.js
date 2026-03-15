@@ -1,4 +1,24 @@
-﻿const state = {
+﻿if ("scrollRestoration" in window.history) {
+  window.history.scrollRestoration = "manual";
+}
+
+const THEME_STORAGE_KEY = "leonel-portfolio-theme";
+
+function resetPageScrollPosition() {
+  window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+
+  window.requestAnimationFrame(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  });
+
+  window.setTimeout(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, 0);
+}
+
+window.addEventListener("load", resetPageScrollPosition);
+window.addEventListener("pageshow", resetPageScrollPosition);
+const state = {
   activeFilter: "Todos",
   activeProjectId: null,
   lastFocusedElement: null
@@ -8,6 +28,9 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 let immersiveMotionBooted = false;
 let pointerDepthBooted = false;
 let headerScrollBound = false;
+let headerIsHidden = false;
+let headerVisibilityTween = null;
+let contactSubmitTimeout = null;
 let lastScrollY = 0;
 let scrollTicking = false;
 
@@ -20,6 +43,9 @@ const heroRevealSelectors = [
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
+  resetPageScrollPosition();
+  initTheme();
+
   if (typeof portfolioData === "undefined") {
     return;
   }
@@ -54,6 +80,11 @@ function hydrateProfile() {
     node.textContent = profile.email;
     node.setAttribute("href", `mailto:${profile.email}`);
   });
+
+  const contactForm = document.querySelector("[data-contact-form]");
+  if (contactForm instanceof HTMLFormElement) {
+    contactForm.setAttribute("action", `https://formsubmit.co/${profile.email}`);
+  }
 
   document.querySelectorAll("[data-profile-linkedin]").forEach((node) => {
     node.setAttribute("href", profile.linkedin);
@@ -112,16 +143,34 @@ function renderProjects() {
   animateRenderedProjects();
 }
 
+function getProjectSurfaceStyle(project) {
+  const styles = [
+    `--cover-start: ${project.accent.start}`,
+    `--cover-end: ${project.accent.end}`
+  ];
+
+  if (project.cover?.src) {
+    styles.push(`--cover-image: url('${project.cover.src}')`);
+    styles.push(`--cover-position: ${project.cover.position || "center center"}`);
+    styles.push(`--cover-size: ${project.cover.size || "cover"}`);
+    styles.push(`--cover-tint: ${project.cover.tint || "rgba(8, 10, 16, 0.18)"}`);
+    styles.push(`--cover-shadow: ${project.cover.shadow || "rgba(8, 10, 16, 0.58)"}`);
+  }
+
+  return styles.join("; ");
+}
+
 function createProjectCard(project, index) {
   const number = String(index + 1).padStart(2, "0");
+  const thumbClass = project.cover?.src ? "project-thumb has-cover" : "project-thumb";
 
   return `
     <article class="project-card" data-reveal="up">
       <button type="button" data-project-trigger="${project.id}" aria-label="Abrir ${project.title}">
         <div class="project-card-shell">
           <div
-            class="project-thumb"
-            style="--cover-start: ${project.accent.start}; --cover-end: ${project.accent.end};"
+            class="${thumbClass}"
+            style="${getProjectSurfaceStyle(project)}"
           >
             <div class="project-thumb-inner">
               <div class="project-thumb-top">
@@ -184,7 +233,7 @@ function renderExperience() {
           <span class="timeline-period">${item.period}</span>
           <h4>${item.company} | ${item.role}</h4>
           <p>${item.type}</p>
-          <p>${item.description}</p>
+          ${item.description ? `${item.description ? `${item.description ? `<p>${item.description}</p>` : ""}` : ""}` : ""}
           <ul>
             ${item.bullets.map((bullet) => `<li>${bullet}</li>`).join("")}
           </ul>
@@ -205,7 +254,7 @@ function renderEducation() {
           <span class="timeline-period">${item.period}</span>
           <h4>${item.degree}</h4>
           <p>${item.institution}</p>
-          <p>${item.description}</p>
+          ${item.description ? `${item.description ? `${item.description ? `<p>${item.description}</p>` : ""}` : ""}` : ""}
         </article>
       `
     )
@@ -240,12 +289,22 @@ function bindEvents() {
     form.addEventListener("submit", handleContactSubmit);
   }
 
+  const contactFrame = document.querySelector("[data-contact-frame]");
+  if (contactFrame instanceof HTMLIFrameElement) {
+    contactFrame.addEventListener("load", handleContactFrameLoad);
+  }
+
   document.querySelectorAll(".site-nav a").forEach((link) => {
     link.addEventListener("click", closeMobileNav);
   });
 }
 
 function handleDocumentClick(event) {
+  if (event.target.closest("[data-theme-toggle]")) {
+    toggleTheme();
+    return;
+  }
+
   const filterButton = event.target.closest("[data-filter]");
   if (filterButton) {
     state.activeFilter = filterButton.dataset.filter;
@@ -270,6 +329,59 @@ function handleDocumentClick(event) {
   }
 }
 
+function initTheme() {
+  applyTheme(getPreferredTheme());
+}
+
+function getPreferredTheme() {
+  try {
+    const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+    if (storedTheme === "light" || storedTheme === "dark") {
+      return storedTheme;
+    }
+  } catch {}
+
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+  const nextTheme = currentTheme === "dark" ? "light" : "dark";
+
+  applyTheme(nextTheme);
+
+  try {
+    window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+  } catch {}
+}
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  const themeColorMeta = document.querySelector("#theme-color-meta");
+  if (themeColorMeta) {
+    themeColorMeta.setAttribute("content", theme === "dark" ? "#050608" : "#f7f6f2");
+  }
+  updateThemeToggleUI(theme);
+}
+
+function updateThemeToggleUI(theme) {
+  const isDark = theme === "dark";
+
+  document.querySelectorAll("[data-theme-toggle]").forEach((toggle) => {
+    toggle.setAttribute("aria-pressed", String(isDark));
+    toggle.setAttribute("aria-label", isDark ? "Activar modo claro" : "Activar modo oscuro");
+    toggle.dataset.themeState = theme;
+  });
+
+  document.querySelectorAll("[data-theme-label]").forEach((label) => {
+    label.textContent = isDark ? "Claro" : "Oscuro";
+  });
+
+  document.querySelectorAll("[data-theme-title]").forEach((label) => {
+    label.textContent = isDark ? "Modo claro" : "Modo oscuro";
+  });
+}
+
 function handleKeydown(event) {
   if (event.key === "Escape" && state.activeProjectId) {
     closeProject();
@@ -289,10 +401,8 @@ function openProject(projectId) {
 
   if (!modal || !hero || !body) return;
 
-  hero.setAttribute(
-    "style",
-    `--cover-start: ${project.accent.start}; --cover-end: ${project.accent.end};`
-  );
+  hero.className = project.cover?.src ? "modal-hero has-cover" : "modal-hero";
+  hero.setAttribute("style", getProjectSurfaceStyle(project));
   hero.innerHTML = `
     <div class="modal-hero-top">
       <span>${project.category}</span>
@@ -366,9 +476,11 @@ function openProject(projectId) {
     </section>
   `;
 
+  resetProjectModalScroll(modal);
   modal.hidden = false;
   document.body.classList.add("modal-open");
   showHeader(true);
+  resetProjectModalScroll(modal);
 
   const closeButton = modal.querySelector(".modal-close");
   if (closeButton) closeButton.focus();
@@ -382,6 +494,17 @@ function openProject(projectId) {
   }
 }
 
+function resetProjectModalScroll(modal) {
+  const modalScroll = modal?.querySelector(".modal-scroll");
+  if (!(modalScroll instanceof HTMLElement)) return;
+
+  modalScroll.scrollTop = 0;
+
+  window.requestAnimationFrame(() => {
+    modalScroll.scrollTop = 0;
+  });
+}
+
 function createMediaBlock(item, project) {
   if (item.type === "video") {
     if (item.src) {
@@ -392,7 +515,7 @@ function createMediaBlock(item, project) {
           </video>
           <div class="media-caption">
             <strong>${item.title}</strong>
-            <p>${item.description}</p>
+            ${item.description ? `${item.description ? `${item.description ? `<p>${item.description}</p>` : ""}` : ""}` : ""}
           </div>
         </article>
       `;
@@ -408,7 +531,7 @@ function createMediaBlock(item, project) {
             <span class="project-badge">Video / Motion</span>
             <strong>${item.title}</strong>
           </div>
-          <p>${item.description}</p>
+          ${item.description ? `${item.description ? `${item.description ? `<p>${item.description}</p>` : ""}` : ""}` : ""}
         </div>
       </article>
     `;
@@ -427,7 +550,7 @@ function createMediaBlock(item, project) {
           ></iframe>
           <div class="embed-caption">
             <strong>${item.title}</strong>
-            <p>${item.description}</p>
+            ${item.description ? `${item.description ? `${item.description ? `<p>${item.description}</p>` : ""}` : ""}` : ""}
           </div>
         </article>
       `;
@@ -443,7 +566,7 @@ function createMediaBlock(item, project) {
             <span class="project-badge">Embed listo</span>
             <strong>${item.title}</strong>
           </div>
-          <p>${item.description}</p>
+          ${item.description ? `${item.description ? `${item.description ? `<p>${item.description}</p>` : ""}` : ""}` : ""}
           <a class="btn btn-secondary" href="https://www.figma.com/" target="_blank" rel="noreferrer">Agregar Figma</a>
         </div>
       </article>
@@ -456,7 +579,7 @@ function createMediaBlock(item, project) {
         <img src="${item.image}" alt="${item.title}" loading="lazy" />
         <div class="media-caption">
           <strong>${item.title}</strong>
-          <p>${item.description}</p>
+          ${item.description ? `${item.description ? `${item.description ? `<p>${item.description}</p>` : ""}` : ""}` : ""}
         </div>
       </article>
     `;
@@ -472,7 +595,7 @@ function createMediaBlock(item, project) {
           <span class="project-badge">${project.category}</span>
           <strong>${item.title}</strong>
         </div>
-        <p>${item.description}</p>
+        ${item.description ? `${item.description ? `${item.description ? `<p>${item.description}</p>` : ""}` : ""}` : ""}
       </div>
     </article>
   `;
@@ -482,6 +605,7 @@ function closeProject() {
   const modal = document.querySelector("[data-project-modal]");
   if (!modal) return;
 
+  resetProjectModalScroll(modal);
   modal.hidden = true;
   document.body.classList.remove("modal-open");
   state.activeProjectId = null;
@@ -491,22 +615,134 @@ function closeProject() {
   }
 }
 
-function handleContactSubmit(event) {
+async function handleContactSubmit(event) {
   event.preventDefault();
 
   const form = event.currentTarget;
+  if (!(form instanceof HTMLFormElement)) return;
+
   const data = new FormData(form);
-  const name = data.get("nombre");
-  const email = data.get("email");
-  const message = data.get("mensaje");
+  const name = String(data.get("nombre") || "").trim();
+  const email = String(data.get("email") || "").trim();
+  const message = String(data.get("mensaje") || "").trim();
 
-  const subject = encodeURIComponent(`Consulta desde portfolio | ${name}`);
-  const body = encodeURIComponent(
-    `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`
-  );
+  if (!name || !email || !message) {
+    event.preventDefault();
+    setContactFormStatus(form, "error", "Completá nombre, email y mensaje antes de enviar.");
+    return;
+  }
 
-  window.location.href = `mailto:${portfolioData.profile.email}?subject=${subject}&body=${body}`;
+  const subjectInput = form.querySelector('input[name="_subject"]');
+  const replyToInput = form.querySelector('input[name="_replyto"]');
+
+  if (subjectInput instanceof HTMLInputElement) {
+    subjectInput.value = `Consulta desde portfolio | ${name}`;
+  }
+
+  if (replyToInput instanceof HTMLInputElement) {
+    replyToInput.value = email;
+  }
+
+  form.dataset.submitting = "true";
+  setContactFormStatus(form, "sending", "Enviando consulta...");
+  setContactFormDisabled(form, true);
+
+  window.clearTimeout(contactSubmitTimeout);
+  contactSubmitTimeout = window.setTimeout(() => {
+    if (form.dataset.submitting !== "true") return;
+
+    form.dataset.submitting = "false";
+    setContactFormDisabled(form, false);
+    setContactFormStatus(
+      form,
+      "error",
+      "No pude confirmar el envío. Probá de nuevo o escribime directo a leonelivankunst19@gmail.com."
+    );
+  }, 12000);
+
+  const requestBody = new FormData(form);
+  const endpoint = form.action.replace("https://formsubmit.co/", "https://formsubmit.co/ajax/");
+
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        Accept: "application/json"
+      },
+      body: requestBody
+    });
+
+    let result = null;
+    try {
+      result = await response.json();
+    } catch {
+      result = null;
+    }
+
+    const sentSuccessfully =
+      response.ok && (result?.success === true || result?.success === "true");
+
+    if (!sentSuccessfully) {
+      throw new Error(typeof result?.message === "string" ? result.message : "No pude confirmar el envío.");
+    }
+
+    form.dataset.submitting = "false";
+    window.clearTimeout(contactSubmitTimeout);
+    setContactFormDisabled(form, false);
+    setContactFormStatus(form, "success", "Consulta enviada correctamente.");
+    form.reset();
+  } catch {
+    try {
+      form.submit();
+    } catch {
+      form.dataset.submitting = "false";
+      window.clearTimeout(contactSubmitTimeout);
+      setContactFormDisabled(form, false);
+      setContactFormStatus(
+        form,
+        "error",
+        "No pude confirmar el envío. Probá de nuevo o escribime directo a leonelivankunst19@gmail.com."
+      );
+    }
+  }
+}
+
+function handleContactFrameLoad() {
+  const frame = document.querySelector("[data-contact-frame]");
+  const form = document.querySelector("[data-contact-form]");
+  if (!(frame instanceof HTMLIFrameElement) || !(form instanceof HTMLFormElement)) return;
+
+  if (form.dataset.submitting !== "true") return;
+
+  form.dataset.submitting = "false";
+  window.clearTimeout(contactSubmitTimeout);
+  setContactFormDisabled(form, false);
+  setContactFormStatus(form, "success", "Consulta enviada correctamente.");
   form.reset();
+}
+
+function setContactFormDisabled(form, disabled) {
+  const submitButton = form.querySelector("[data-contact-submit]");
+  if (submitButton instanceof HTMLButtonElement) {
+    submitButton.disabled = disabled;
+    submitButton.textContent = disabled ? "Enviando..." : "Enviar consulta";
+  }
+}
+
+function setContactFormStatus(form, stateName, message) {
+  const statusNode = form.querySelector("[data-form-status]");
+  if (!(statusNode instanceof HTMLElement)) return;
+
+  statusNode.textContent = message;
+  statusNode.classList.remove("is-sending", "is-success", "is-error");
+
+  if (stateName === "sending") {
+    statusNode.classList.add("is-sending");
+  } else if (stateName === "success") {
+    statusNode.classList.add("is-success");
+  } else if (stateName === "error") {
+    statusNode.classList.add("is-error");
+  }
 }
 
 function updateCurrentYear() {
@@ -681,6 +917,16 @@ function setupHeaderAutoHide() {
 
   const updateHeaderState = () => {
     const currentScroll = window.scrollY;
+    const isDesktopHeader = window.matchMedia("(min-width: 781px)").matches;
+    const trajectorySection = document.querySelector("#trayectoria");
+    const desktopHideStart =
+      trajectorySection instanceof HTMLElement
+        ? Math.max(1080, trajectorySection.offsetTop - 140)
+        : 1080;
+    const headerRevealZone = isDesktopHeader ? 72 : 24;
+    const headerHideStart = isDesktopHeader ? desktopHideStart : 72;
+    const hideDelta = isDesktopHeader ? 18 : 8;
+    const showDelta = isDesktopHeader ? 9 : 5;
 
     if (document.body.classList.contains("modal-open") || header.classList.contains("is-open")) {
       showHeader(true);
@@ -689,16 +935,23 @@ function setupHeaderAutoHide() {
       return;
     }
 
-    if (currentScroll <= 24) {
+    if (currentScroll <= headerRevealZone) {
       showHeader(true);
       lastScrollY = currentScroll;
       scrollTicking = false;
       return;
     }
 
-    if (currentScroll > lastScrollY + 6) {
+    if (currentScroll < headerHideStart) {
+      showHeader();
+      lastScrollY = currentScroll;
+      scrollTicking = false;
+      return;
+    }
+
+    if (currentScroll > lastScrollY + hideDelta) {
       hideHeader();
-    } else if (currentScroll < lastScrollY - 4) {
+    } else if (currentScroll < lastScrollY - showDelta) {
       showHeader();
     }
 
@@ -722,16 +975,62 @@ function showHeader(immediate = false) {
   const header = document.querySelector(".site-header");
   if (!header) return;
 
+  headerIsHidden = false;
   header.classList.remove("is-hidden");
 
   if (immediate && window.gsap) {
-    gsap.set(header, { clearProps: "transform,opacity" });
+    headerVisibilityTween?.kill();
+    gsap.set(header, {
+      y: 0,
+      autoAlpha: 1,
+      scale: 1,
+      filter: "blur(0px)",
+      clearProps: "transform,opacity,filter,visibility"
+    });
+    return;
+  }
+
+  if (window.gsap) {
+    headerVisibilityTween?.kill();
+    headerVisibilityTween = gsap.to(header, {
+      y: 0,
+      autoAlpha: 1,
+      scale: 1,
+      filter: "blur(0px)",
+      duration: 0.86,
+      ease: "power2.out",
+      overwrite: "auto",
+      onStart: () => {
+        header.classList.remove("is-hidden");
+      }
+    });
   }
 }
 
 function hideHeader() {
   const header = document.querySelector(".site-header");
   if (!header) return;
+
+  if (headerIsHidden) return;
+
+  headerIsHidden = true;
+
+  if (window.gsap) {
+    headerVisibilityTween?.kill();
+    headerVisibilityTween = gsap.to(header, {
+      y: -18,
+      autoAlpha: 0,
+      scale: 0.992,
+      filter: "blur(14px)",
+      duration: 1.12,
+      ease: "power2.out",
+      overwrite: "auto",
+      onComplete: () => {
+        header.classList.add("is-hidden");
+      }
+    });
+    return;
+  }
 
   header.classList.add("is-hidden");
 }
@@ -987,11 +1286,12 @@ function setupBackgroundLineMotion() {
 
   const svg = document.querySelector(".background-lines");
   const lines = Array.from(document.querySelectorAll(".bg-line"));
+  const baseLines = Array.from(document.querySelectorAll(".bg-line-base"));
   if (!svg || !lines.length) return;
 
   const scrollDistance = Math.max(window.innerHeight * 1.8, document.documentElement.scrollHeight - window.innerHeight);
 
-  gsap.set(svg, { autoAlpha: 1, y: 0 });
+  gsap.set(svg, { autoAlpha: 1, y: 0, x: 0, scale: 1.02 });
 
   const timeline = gsap.timeline({
     defaults: { ease: "none" },
@@ -1006,26 +1306,55 @@ function setupBackgroundLineMotion() {
 
   lines.forEach((line, index) => {
     const length = line.getTotalLength();
+    const driftX = [4.8, -4.2, 5.2, -3.6, 3.2, -2.8][index % 6];
+    const driftY = [-2.8, 3.4, -4.1, 2.6, -3.2, 3.8][index % 6];
 
     gsap.set(line, {
       strokeDasharray: length,
       strokeDashoffset: length * 0.98,
-      autoAlpha: index < 4 ? 0.34 : 0.24
+      autoAlpha: index < 4 ? 0.42 : 0.3,
+      xPercent: driftX * -0.35,
+      yPercent: driftY * -0.3,
+      rotate: driftX * -0.04,
+      transformOrigin: "center center"
     });
 
     timeline.to(
       line,
       {
         strokeDashoffset: 0,
-        autoAlpha: index < 4 ? 1 : 0.86,
+        autoAlpha: index < 4 ? 1 : 0.9,
+        xPercent: driftX,
+        yPercent: driftY,
+        rotate: driftX * 0.08,
         duration: 1
       },
-      index * 0.18
+      index * 0.14
     );
   });
 
+  baseLines.forEach((line, index) => {
+    const driftX = [1.8, -1.4, 2.2, -1.6, 1.2, -1][index % 6];
+    const driftY = [-1.4, 1.8, -2, 1.4, -1.7, 1.6][index % 6];
+
+    gsap.to(line, {
+      xPercent: driftX,
+      yPercent: driftY,
+      ease: "none",
+      scrollTrigger: {
+        id: `bg-line-base-${index}`,
+        trigger: document.documentElement,
+        start: "top top",
+        end: `+=${scrollDistance}`,
+        scrub: 1.15
+      }
+    });
+  });
+
   gsap.to(svg, {
-    yPercent: -5,
+    yPercent: -8,
+    xPercent: 1.8,
+    scale: 1.055,
     ease: "none",
     scrollTrigger: {
       id: "bg-lines-parallax",
@@ -1107,6 +1436,15 @@ function initFallbackReveal() {
 
   elements.forEach((element) => observer.observe(element));
 }
+
+
+
+
+
+
+
+
+
 
 
 
