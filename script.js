@@ -1293,15 +1293,16 @@ function setupBackgroundLineMotion() {
 
   const svg = document.querySelector(".background-lines");
   const allLines = Array.from(document.querySelectorAll(".bg-line-base, .bg-line"));
+  const primaryLines = Array.from(document.querySelectorAll(".bg-line"));
   if (!svg || !allLines.length) return;
 
   const linePresets = {
-    "bg-line-one": { x: 12, y: -8, rotate: -0.35, float: 28, draw: 30, delay: -2.4 },
-    "bg-line-two": { x: -10, y: 7, rotate: 0.28, float: 34, draw: 36, delay: -8.2 },
-    "bg-line-three": { x: 14, y: 9, rotate: -0.26, float: 31, draw: 33, delay: -12.4 },
-    "bg-line-four": { x: -9, y: -10, rotate: 0.32, float: 37, draw: 39, delay: -5.6 },
-    "bg-line-five": { x: 8, y: 12, rotate: -0.18, float: 40, draw: 42, delay: -15.1 },
-    "bg-line-six": { x: -7, y: -11, rotate: 0.22, float: 35, draw: 38, delay: -10.3 }
+    "bg-line-one": { x: 74, y: -42, rotate: -1.45, float: 15, draw: 18, delay: -2.4, glint: 4.6 },
+    "bg-line-two": { x: -68, y: 38, rotate: 1.18, float: 17, draw: 21, delay: -8.2, glint: 5.1 },
+    "bg-line-three": { x: 82, y: 44, rotate: -1.12, float: 16, draw: 19, delay: -12.4, glint: 4.4 },
+    "bg-line-four": { x: -62, y: -48, rotate: 1.24, float: 18, draw: 22, delay: -5.6, glint: 5.4 },
+    "bg-line-five": { x: 52, y: 58, rotate: -0.82, float: 20, draw: 24, delay: -15.1, glint: 5.8 },
+    "bg-line-six": { x: -48, y: -56, rotate: 0.94, float: 18, draw: 22, delay: -10.3, glint: 5.2 }
   };
 
   allLines.forEach((line) => {
@@ -1327,6 +1328,35 @@ function setupBackgroundLineMotion() {
       line.style.removeProperty("stroke-dashoffset");
       line.style.removeProperty("transform");
     }
+  });
+
+  if (prefersReducedMotion) {
+    return;
+  }
+
+  primaryLines.forEach((line) => {
+    const variantClass = Array.from(line.classList).find((className) =>
+      Object.prototype.hasOwnProperty.call(linePresets, className)
+    );
+    const preset = variantClass ? linePresets[variantClass] : linePresets["bg-line-one"];
+    const strokeWidth = Number.parseFloat(line.getAttribute("stroke-width") || "2");
+    const length = line.getTotalLength();
+    const segment = Math.max(240, Math.min(length * 0.22, 420));
+    const clone = line.cloneNode(false);
+
+    clone.setAttribute("class", ["bg-line-glint", variantClass || "bg-line-one"].join(" "));
+    clone.setAttribute("stroke-width", String((strokeWidth + 1.55).toFixed(2)));
+    clone.removeAttribute("style");
+    clone.style.setProperty("--line-length", `${length.toFixed(2)}`);
+    clone.style.setProperty("--line-drift-x", `${(preset.x * 0.96).toFixed(2)}px`);
+    clone.style.setProperty("--line-drift-y", `${(preset.y * 0.96).toFixed(2)}px`);
+    clone.style.setProperty("--line-rotate", `${(preset.rotate * 0.96).toFixed(3)}deg`);
+    clone.style.setProperty("--float-duration", `${preset.float}s`);
+    clone.style.setProperty("--float-delay", `${preset.delay}s`);
+    clone.style.setProperty("--glint-duration", `${preset.glint}s`);
+    clone.style.setProperty("--glint-delay", `${preset.delay * 0.68}s`);
+    clone.style.setProperty("--glint-segment", `${segment.toFixed(2)}`);
+    line.insertAdjacentElement("afterend", clone);
   });
 }
 
