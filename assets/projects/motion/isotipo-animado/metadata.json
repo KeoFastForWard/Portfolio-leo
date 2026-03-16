@@ -1,0 +1,20 @@
+{
+  "id": "motion-launch",
+  "title": "Animacion de isotipo",
+  "category": "Motion",
+  "context": "After Effects / Branding",
+  "year": "2025",
+  "cover": "cover/cover.png",
+  "videos": [
+    {
+      "title": "Principal",
+      "src": "videos/principal.mp4",
+      "order": 1
+    },
+    {
+      "title": "Secundario",
+      "src": "videos/secundario.mp4",
+      "order": 2
+    }
+  ]
+}

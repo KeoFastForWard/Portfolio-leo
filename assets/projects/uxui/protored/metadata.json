@@ -1,0 +1,104 @@
+﻿{
+    "title":  "ProtoRed",
+    "slug":  "protored",
+    "category":  "UX/UI",
+    "context":  "App mobile UI",
+    "summary":  "Concepto de red social mobile con foco en feed, perfiles, cámara, mensajes y continuidad entre vistas clave.",
+    "cover":  {
+                  "path":  "assets/projects/uxui/protored/cover/cover.png",
+                  "title":  "Portada"
+              },
+    "images":  [
+                   {
+                       "title":  "Call",
+                       "path":  "assets/projects/uxui/protored/images/call-protored.png"
+                   },
+                   {
+                       "title":  "Camera",
+                       "path":  "assets/projects/uxui/protored/images/camera-protored.png"
+                   },
+                   {
+                       "title":  "Camera 1",
+                       "path":  "assets/projects/uxui/protored/images/camera-protored-1.png"
+                   },
+                   {
+                       "title":  "Chat",
+                       "path":  "assets/projects/uxui/protored/images/chat-protored.png"
+                   },
+                   {
+                       "title":  "Create Post",
+                       "path":  "assets/projects/uxui/protored/images/create-post-protored.png"
+                   },
+                   {
+                       "title":  "Highlights Perfil",
+                       "path":  "assets/projects/uxui/protored/images/highlights-perfil-protored.png"
+                   },
+                   {
+                       "title":  "History Perfil",
+                       "path":  "assets/projects/uxui/protored/images/history-perfil-protored.png"
+                   },
+                   {
+                       "title":  "History",
+                       "path":  "assets/projects/uxui/protored/images/history-protored.png"
+                   },
+                   {
+                       "title":  "HUD",
+                       "path":  "assets/projects/uxui/protored/images/hud-protored.png"
+                   },
+                   {
+                       "title":  "Login",
+                       "path":  "assets/projects/uxui/protored/images/login-protored.png"
+                   },
+                   {
+                       "title":  "Messages",
+                       "path":  "assets/projects/uxui/protored/images/messages-protored.png"
+                   },
+                   {
+                       "title":  "Notification Scene",
+                       "path":  "assets/projects/uxui/protored/images/notification-scene-protored.png"
+                   },
+                   {
+                       "title":  "Perfil Person Notification",
+                       "path":  "assets/projects/uxui/protored/images/perfil-person-notification-protored.png"
+                   },
+                   {
+                       "title":  "Perfil Person",
+                       "path":  "assets/projects/uxui/protored/images/perfil-person-protored.png"
+                   },
+                   {
+                       "title":  "Perfil Person Search",
+                       "path":  "assets/projects/uxui/protored/images/perfil-person-search-protored.png"
+                   },
+                   {
+                       "title":  "Perfil",
+                       "path":  "assets/projects/uxui/protored/images/perfil-protored.png"
+                   },
+                   {
+                       "title":  "Post Comments",
+                       "path":  "assets/projects/uxui/protored/images/post-comments-protored.png"
+                   },
+                   {
+                       "title":  "Post Comments 1",
+                       "path":  "assets/projects/uxui/protored/images/post-comments-protored-1.png"
+                   },
+                   {
+                       "title":  "Publicacion Perfil",
+                       "path":  "assets/projects/uxui/protored/images/publicacion-perfil-protored.png"
+                   },
+                   {
+                       "title":  "Register",
+                       "path":  "assets/projects/uxui/protored/images/register-protored.png"
+                   },
+                   {
+                       "title":  "Search",
+                       "path":  "assets/projects/uxui/protored/images/search-protored.png"
+                   },
+                   {
+                       "title":  "Videocall",
+                       "path":  "assets/projects/uxui/protored/images/videocall-protored.png"
+                   }
+               ],
+    "videos":  [
+
+               ]
+}

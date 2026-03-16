@@ -1,0 +1,15 @@
+{
+  "id": "napoly-brand-manual",
+  "title": "Napoly Barbershop | Manual de marca",
+  "category": "Branding",
+  "year": "2025",
+  "context": "Identidad visual / Manual de marca",
+  "cover": "cover/cover.png",
+  "images": [
+    "images/isotipo-negro-fondo-blanco.png",
+    "images/isotipo-blanco-fondo-negro.png"
+  ],
+  "documents": [
+    "docs/manual-de-marca-napoly-barbershop.pdf"
+  ]
+}

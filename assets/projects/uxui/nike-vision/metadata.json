@@ -1,0 +1,35 @@
+﻿{
+    "title":  "Nike Vision",
+    "slug":  "nike-vision",
+    "category":  "UX/UI",
+    "context":  "Sitio web UI",
+    "summary":  "Landing conceptual para una línea Nike con foco en producto, narrativa visual y una experiencia de browsing limpia.",
+    "cover":  {
+                  "path":  "assets/projects/uxui/nike-vision/cover/cover.png",
+                  "title":  "Portada"
+              },
+    "images":  [
+                   {
+                       "title":  "HUD",
+                       "path":  "assets/projects/uxui/nike-vision/images/nike-vision-hud.png"
+                   },
+                   {
+                       "title":  "Product Page",
+                       "path":  "assets/projects/uxui/nike-vision/images/nike-vision-product-page.png"
+                   },
+                   {
+                       "title":  "Product Page Complete",
+                       "path":  "assets/projects/uxui/nike-vision/images/nike-vision-product-page-complete.png"
+                   },
+                   {
+                       "title":  "Slide",
+                       "path":  "assets/projects/uxui/nike-vision/images/slide.png"
+                   }
+               ],
+    "videos":  [
+                   {
+                       "title":  "Demo en video",
+                       "path":  "assets/projects/uxui/nike-vision/videos/2024-07-21-17-36-34.mp4"
+                   }
+               ]
+}

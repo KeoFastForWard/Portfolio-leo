@@ -1,0 +1,112 @@
+﻿{
+    "title":  "ProtoDealership",
+    "slug":  "protodealership",
+    "category":  "UX/UI",
+    "context":  "Sitio web UI",
+    "summary":  "Landing interactiva para una concesionaria digital con foco en catálogo, producto y una experiencia web clara.",
+    "cover":  {
+                  "path":  "assets/projects/uxui/protodealership/cover/cover.png",
+                  "title":  "Portada"
+              },
+    "images":  [
+                   {
+                       "title":  "Catalogue Protodealersip",
+                       "path":  "assets/projects/uxui/protodealership/images/catalogue-protodealersip.png"
+                   },
+                   {
+                       "title":  "Dashboard Presentation",
+                       "path":  "assets/projects/uxui/protodealership/images/dashboard-presentation.png"
+                   },
+                   {
+                       "title":  "HUD",
+                       "path":  "assets/projects/uxui/protodealership/images/hud-protodealership.png"
+                   },
+                   {
+                       "title":  "More",
+                       "path":  "assets/projects/uxui/protodealership/images/more-protodealership.png"
+                   },
+                   {
+                       "title":  "Catalogue Part 1",
+                       "path":  "assets/projects/uxui/protodealership/images/property-1-catalogue-part-1.png"
+                   },
+                   {
+                       "title":  "Catalogue Part 2",
+                       "path":  "assets/projects/uxui/protodealership/images/property-1-catalogue-part-2.png"
+                   },
+                   {
+                       "title":  "Catalogue Part 3",
+                       "path":  "assets/projects/uxui/protodealership/images/property-1-catalogue-part-3.png"
+                   },
+                   {
+                       "title":  "Catalogue Part 4",
+                       "path":  "assets/projects/uxui/protodealership/images/property-1-catalogue-part-4.png"
+                   },
+                   {
+                       "title":  "Catalogue Part 5",
+                       "path":  "assets/projects/uxui/protodealership/images/property-1-catalogue-part-5.png"
+                   },
+                   {
+                       "title":  "Catalogue Part 6",
+                       "path":  "assets/projects/uxui/protodealership/images/property-1-catalogue-part-6.png"
+                   },
+                   {
+                       "title":  "Catalogue Part 7",
+                       "path":  "assets/projects/uxui/protodealership/images/property-1-catalogue-part-7.png"
+                   },
+                   {
+                       "title":  "Catalogue Transition",
+                       "path":  "assets/projects/uxui/protodealership/images/property-1-catalogue-transition.png"
+                   },
+                   {
+                       "title":  "Default",
+                       "path":  "assets/projects/uxui/protodealership/images/property-1-default.png"
+                   },
+                   {
+                       "title":  "Variant 10",
+                       "path":  "assets/projects/uxui/protodealership/images/property-1-variant10.png"
+                   },
+                   {
+                       "title":  "Variant 16",
+                       "path":  "assets/projects/uxui/protodealership/images/property-1-variant16.png"
+                   },
+                   {
+                       "title":  "Variant 2",
+                       "path":  "assets/projects/uxui/protodealership/images/property-1-variant2.png"
+                   },
+                   {
+                       "title":  "Variant 20",
+                       "path":  "assets/projects/uxui/protodealership/images/property-1-variant20.png"
+                   },
+                   {
+                       "title":  "Variant 3",
+                       "path":  "assets/projects/uxui/protodealership/images/property-1-variant3.png"
+                   },
+                   {
+                       "title":  "Variant 4",
+                       "path":  "assets/projects/uxui/protodealership/images/property-1-variant4.png"
+                   },
+                   {
+                       "title":  "Variant 5",
+                       "path":  "assets/projects/uxui/protodealership/images/property-1-variant5.png"
+                   },
+                   {
+                       "title":  "Variant 6",
+                       "path":  "assets/projects/uxui/protodealership/images/property-1-variant6.png"
+                   },
+                   {
+                       "title":  "Variant 7",
+                       "path":  "assets/projects/uxui/protodealership/images/property-1-variant7.png"
+                   },
+                   {
+                       "title":  "Variant 8",
+                       "path":  "assets/projects/uxui/protodealership/images/property-1-variant8.png"
+                   },
+                   {
+                       "title":  "Variant 9",
+                       "path":  "assets/projects/uxui/protodealership/images/property-1-variant9.png"
+                   }
+               ],
+    "videos":  [
+
+               ]
+}

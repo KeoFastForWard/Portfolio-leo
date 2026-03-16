@@ -1,0 +1,64 @@
+﻿{
+    "title":  "ProtoGalaxy",
+    "slug":  "protogalaxy",
+    "category":  "UX/UI",
+    "context":  "Sitio web UI",
+    "summary":  "Website conceptual con estética inmersiva y narrativa espacial, diseñado para comunicar profundidad y exploración.",
+    "cover":  {
+                  "path":  "assets/projects/uxui/protogalaxy/cover/cover.png",
+                  "title":  "Portada"
+              },
+    "images":  [
+                   {
+                       "title":  "The Galaxy Is In Your Hands",
+                       "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands.png"
+                   },
+                   {
+                       "title":  "About Us Part 1",
+                       "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-about-us-part-1.png"
+                   },
+                   {
+                       "title":  "About Us Part 2",
+                       "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-about-us-part-2.png"
+                   },
+                   {
+                       "title":  "About Us Part 3",
+                       "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-about-us-part-3.png"
+                   },
+                   {
+                       "title":  "Contact Part 1",
+                       "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-contact-part-1.png"
+                   },
+                   {
+                       "title":  "Contact Part 2",
+                       "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-contact-part-2.png"
+                   },
+                   {
+                       "title":  "Contact Part 3",
+                       "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-contact-part-3.png"
+                   },
+                   {
+                       "title":  "Photos Part 1",
+                       "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-photos-part-1.png"
+                   },
+                   {
+                       "title":  "Photos Part 2",
+                       "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-photos-part-2.png"
+                   },
+                   {
+                       "title":  "Photos Part 3",
+                       "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-photos-part-3.png"
+                   },
+                   {
+                       "title":  "Principal Button Part 1",
+                       "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-principal-button-part-1.png"
+                   },
+                   {
+                       "title":  "Principal Button Part 2",
+                       "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-principal-button-part-2.png"
+                   }
+               ],
+    "videos":  [
+
+               ]
+}

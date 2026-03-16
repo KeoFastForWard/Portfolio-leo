@@ -1,0 +1,124 @@
+﻿{
+    "title":  "ProtoTV",
+    "slug":  "prototv",
+    "category":  "UX/UI",
+    "context":  "Sitio web UI",
+    "summary":  "Concepto de streaming con biblioteca visual, navegación por categorías y una experiencia pensada para explorar contenido.",
+    "cover":  {
+                  "path":  "assets/projects/uxui/prototv/cover/cover.png",
+                  "title":  "Portada"
+              },
+    "images":  [
+                   {
+                       "title":  "Agree Perfil",
+                       "path":  "assets/projects/uxui/prototv/images/agree-perfil-prototv.png"
+                   },
+                   {
+                       "title":  "Choose Account",
+                       "path":  "assets/projects/uxui/prototv/images/choose-account-prototv.png"
+                   },
+                   {
+                       "title":  "Film Repodructor For Explore",
+                       "path":  "assets/projects/uxui/prototv/images/film-repodructor-for-explore-prototv.png"
+                   },
+                   {
+                       "title":  "Film Repodructor For Explore 1",
+                       "path":  "assets/projects/uxui/prototv/images/film-repodructor-for-explore-prototv-1.png"
+                   },
+                   {
+                       "title":  "Film Repodructor For My List",
+                       "path":  "assets/projects/uxui/prototv/images/film-repodructor-for-my-list-prototv.png"
+                   },
+                   {
+                       "title":  "Film Repodructor For My List 1",
+                       "path":  "assets/projects/uxui/prototv/images/film-repodructor-for-my-list-prototv-1.png"
+                   },
+                   {
+                       "title":  "Film Repodructor For Popular News",
+                       "path":  "assets/projects/uxui/prototv/images/film-repodructor-for-popular-news-prototv.png"
+                   },
+                   {
+                       "title":  "Film Repodructor For Popular News 1",
+                       "path":  "assets/projects/uxui/prototv/images/film-repodructor-for-popular-news-prototv-1.png"
+                   },
+                   {
+                       "title":  "Film Repodructor",
+                       "path":  "assets/projects/uxui/prototv/images/film-repodructor-prototv.png"
+                   },
+                   {
+                       "title":  "Film Repodructor 1",
+                       "path":  "assets/projects/uxui/prototv/images/film-repodructor-prototv-1.png"
+                   },
+                   {
+                       "title":  "HUD Explore Languages",
+                       "path":  "assets/projects/uxui/prototv/images/hud-explore-languages-prototv.png"
+                   },
+                   {
+                       "title":  "HUD Films Presentation For Explore",
+                       "path":  "assets/projects/uxui/prototv/images/hud-films-presentation-for-explore-prototv.png"
+                   },
+                   {
+                       "title":  "HUD Films Presentation For My List",
+                       "path":  "assets/projects/uxui/prototv/images/hud-films-presentation-for-my-list-prototv.png"
+                   },
+                   {
+                       "title":  "HUD Films Presentation For Popular News",
+                       "path":  "assets/projects/uxui/prototv/images/hud-films-presentation-for-popular-news-prototv.png"
+                   },
+                   {
+                       "title":  "HUD Films Presentation",
+                       "path":  "assets/projects/uxui/prototv/images/hud-films-presentation-prototv.png"
+                   },
+                   {
+                       "title":  "HUD Films",
+                       "path":  "assets/projects/uxui/prototv/images/hud-films-prototv.png"
+                   },
+                   {
+                       "title":  "HUD My List",
+                       "path":  "assets/projects/uxui/prototv/images/hud-my-list-prototv.png"
+                   },
+                   {
+                       "title":  "HUD Popular News",
+                       "path":  "assets/projects/uxui/prototv/images/hud-popular-news-prototv.png"
+                   },
+                   {
+                       "title":  "HUD Serie",
+                       "path":  "assets/projects/uxui/prototv/images/hud-serie-prototv.png"
+                   },
+                   {
+                       "title":  "HUD Series Presentation For Explore",
+                       "path":  "assets/projects/uxui/prototv/images/hud-series-presentation-for-explore-prototv.png"
+                   },
+                   {
+                       "title":  "HUD Series Presentation For My List",
+                       "path":  "assets/projects/uxui/prototv/images/hud-series-presentation-for-my-list-prototv.png"
+                   },
+                   {
+                       "title":  "HUD Series Presentation For Popular News",
+                       "path":  "assets/projects/uxui/prototv/images/hud-series-presentation-for-popular-news-prototv.png"
+                   },
+                   {
+                       "title":  "HUD Series Presentation",
+                       "path":  "assets/projects/uxui/prototv/images/hud-series-presentation-prototv.png"
+                   },
+                   {
+                       "title":  "HUD Start",
+                       "path":  "assets/projects/uxui/prototv/images/hud-start-prototv.png"
+                   },
+                   {
+                       "title":  "Presentation",
+                       "path":  "assets/projects/uxui/prototv/images/prototv-presentation.png"
+                   },
+                   {
+                       "title":  "Register",
+                       "path":  "assets/projects/uxui/prototv/images/register-prototv.png"
+                   },
+                   {
+                       "title":  "Sign In",
+                       "path":  "assets/projects/uxui/prototv/images/sign-in-prototv.png"
+                   }
+               ],
+    "videos":  [
+
+               ]
+}

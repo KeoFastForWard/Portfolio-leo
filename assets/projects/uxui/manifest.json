@@ -1,0 +1,441 @@
+﻿[
+    {
+        "title":  "Nike Vision",
+        "slug":  "nike-vision",
+        "category":  "UX/UI",
+        "context":  "Sitio web UI",
+        "summary":  "Landing conceptual para una línea Nike con foco en producto, narrativa visual y una experiencia de browsing limpia.",
+        "cover":  {
+                      "path":  "assets/projects/uxui/nike-vision/cover/cover.png",
+                      "title":  "Portada"
+                  },
+        "images":  [
+                       {
+                           "title":  "HUD",
+                           "path":  "assets/projects/uxui/nike-vision/images/nike-vision-hud.png"
+                       },
+                       {
+                           "title":  "Product Page",
+                           "path":  "assets/projects/uxui/nike-vision/images/nike-vision-product-page.png"
+                       },
+                       {
+                           "title":  "Product Page Complete",
+                           "path":  "assets/projects/uxui/nike-vision/images/nike-vision-product-page-complete.png"
+                       },
+                       {
+                           "title":  "Slide",
+                           "path":  "assets/projects/uxui/nike-vision/images/slide.png"
+                       }
+                   ],
+        "videos":  [
+                       {
+                           "title":  "Demo en video",
+                           "path":  "assets/projects/uxui/nike-vision/videos/2024-07-21-17-36-34.mp4"
+                       }
+                   ]
+    },
+    {
+        "title":  "ProtoDealership",
+        "slug":  "protodealership",
+        "category":  "UX/UI",
+        "context":  "Sitio web UI",
+        "summary":  "Landing interactiva para una concesionaria digital con foco en catálogo, producto y una experiencia web clara.",
+        "cover":  {
+                      "path":  "assets/projects/uxui/protodealership/cover/cover.png",
+                      "title":  "Portada"
+                  },
+        "images":  [
+                       {
+                           "title":  "Catalogue Protodealersip",
+                           "path":  "assets/projects/uxui/protodealership/images/catalogue-protodealersip.png"
+                       },
+                       {
+                           "title":  "Dashboard Presentation",
+                           "path":  "assets/projects/uxui/protodealership/images/dashboard-presentation.png"
+                       },
+                       {
+                           "title":  "HUD",
+                           "path":  "assets/projects/uxui/protodealership/images/hud-protodealership.png"
+                       },
+                       {
+                           "title":  "More",
+                           "path":  "assets/projects/uxui/protodealership/images/more-protodealership.png"
+                       },
+                       {
+                           "title":  "Catalogue Part 1",
+                           "path":  "assets/projects/uxui/protodealership/images/property-1-catalogue-part-1.png"
+                       },
+                       {
+                           "title":  "Catalogue Part 2",
+                           "path":  "assets/projects/uxui/protodealership/images/property-1-catalogue-part-2.png"
+                       },
+                       {
+                           "title":  "Catalogue Part 3",
+                           "path":  "assets/projects/uxui/protodealership/images/property-1-catalogue-part-3.png"
+                       },
+                       {
+                           "title":  "Catalogue Part 4",
+                           "path":  "assets/projects/uxui/protodealership/images/property-1-catalogue-part-4.png"
+                       },
+                       {
+                           "title":  "Catalogue Part 5",
+                           "path":  "assets/projects/uxui/protodealership/images/property-1-catalogue-part-5.png"
+                       },
+                       {
+                           "title":  "Catalogue Part 6",
+                           "path":  "assets/projects/uxui/protodealership/images/property-1-catalogue-part-6.png"
+                       },
+                       {
+                           "title":  "Catalogue Part 7",
+                           "path":  "assets/projects/uxui/protodealership/images/property-1-catalogue-part-7.png"
+                       },
+                       {
+                           "title":  "Catalogue Transition",
+                           "path":  "assets/projects/uxui/protodealership/images/property-1-catalogue-transition.png"
+                       },
+                       {
+                           "title":  "Default",
+                           "path":  "assets/projects/uxui/protodealership/images/property-1-default.png"
+                       },
+                       {
+                           "title":  "Variant 10",
+                           "path":  "assets/projects/uxui/protodealership/images/property-1-variant10.png"
+                       },
+                       {
+                           "title":  "Variant 16",
+                           "path":  "assets/projects/uxui/protodealership/images/property-1-variant16.png"
+                       },
+                       {
+                           "title":  "Variant 2",
+                           "path":  "assets/projects/uxui/protodealership/images/property-1-variant2.png"
+                       },
+                       {
+                           "title":  "Variant 20",
+                           "path":  "assets/projects/uxui/protodealership/images/property-1-variant20.png"
+                       },
+                       {
+                           "title":  "Variant 3",
+                           "path":  "assets/projects/uxui/protodealership/images/property-1-variant3.png"
+                       },
+                       {
+                           "title":  "Variant 4",
+                           "path":  "assets/projects/uxui/protodealership/images/property-1-variant4.png"
+                       },
+                       {
+                           "title":  "Variant 5",
+                           "path":  "assets/projects/uxui/protodealership/images/property-1-variant5.png"
+                       },
+                       {
+                           "title":  "Variant 6",
+                           "path":  "assets/projects/uxui/protodealership/images/property-1-variant6.png"
+                       },
+                       {
+                           "title":  "Variant 7",
+                           "path":  "assets/projects/uxui/protodealership/images/property-1-variant7.png"
+                       },
+                       {
+                           "title":  "Variant 8",
+                           "path":  "assets/projects/uxui/protodealership/images/property-1-variant8.png"
+                       },
+                       {
+                           "title":  "Variant 9",
+                           "path":  "assets/projects/uxui/protodealership/images/property-1-variant9.png"
+                       }
+                   ],
+        "videos":  [
+
+                   ]
+    },
+    {
+        "title":  "ProtoGalaxy",
+        "slug":  "protogalaxy",
+        "category":  "UX/UI",
+        "context":  "Sitio web UI",
+        "summary":  "Website conceptual con estética inmersiva y narrativa espacial, diseñado para comunicar profundidad y exploración.",
+        "cover":  {
+                      "path":  "assets/projects/uxui/protogalaxy/cover/cover.png",
+                      "title":  "Portada"
+                  },
+        "images":  [
+                       {
+                           "title":  "The Galaxy Is In Your Hands",
+                           "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands.png"
+                       },
+                       {
+                           "title":  "About Us Part 1",
+                           "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-about-us-part-1.png"
+                       },
+                       {
+                           "title":  "About Us Part 2",
+                           "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-about-us-part-2.png"
+                       },
+                       {
+                           "title":  "About Us Part 3",
+                           "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-about-us-part-3.png"
+                       },
+                       {
+                           "title":  "Contact Part 1",
+                           "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-contact-part-1.png"
+                       },
+                       {
+                           "title":  "Contact Part 2",
+                           "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-contact-part-2.png"
+                       },
+                       {
+                           "title":  "Contact Part 3",
+                           "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-contact-part-3.png"
+                       },
+                       {
+                           "title":  "Photos Part 1",
+                           "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-photos-part-1.png"
+                       },
+                       {
+                           "title":  "Photos Part 2",
+                           "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-photos-part-2.png"
+                       },
+                       {
+                           "title":  "Photos Part 3",
+                           "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-photos-part-3.png"
+                       },
+                       {
+                           "title":  "Principal Button Part 1",
+                           "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-principal-button-part-1.png"
+                       },
+                       {
+                           "title":  "Principal Button Part 2",
+                           "path":  "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-principal-button-part-2.png"
+                       }
+                   ],
+        "videos":  [
+
+                   ]
+    },
+    {
+        "title":  "ProtoRed",
+        "slug":  "protored",
+        "category":  "UX/UI",
+        "context":  "App mobile UI",
+        "summary":  "Concepto de red social mobile con foco en feed, perfiles, cámara, mensajes y continuidad entre vistas clave.",
+        "cover":  {
+                      "path":  "assets/projects/uxui/protored/cover/cover.png",
+                      "title":  "Portada"
+                  },
+        "images":  [
+                       {
+                           "title":  "Call",
+                           "path":  "assets/projects/uxui/protored/images/call-protored.png"
+                       },
+                       {
+                           "title":  "Camera",
+                           "path":  "assets/projects/uxui/protored/images/camera-protored.png"
+                       },
+                       {
+                           "title":  "Camera 1",
+                           "path":  "assets/projects/uxui/protored/images/camera-protored-1.png"
+                       },
+                       {
+                           "title":  "Chat",
+                           "path":  "assets/projects/uxui/protored/images/chat-protored.png"
+                       },
+                       {
+                           "title":  "Create Post",
+                           "path":  "assets/projects/uxui/protored/images/create-post-protored.png"
+                       },
+                       {
+                           "title":  "Highlights Perfil",
+                           "path":  "assets/projects/uxui/protored/images/highlights-perfil-protored.png"
+                       },
+                       {
+                           "title":  "History Perfil",
+                           "path":  "assets/projects/uxui/protored/images/history-perfil-protored.png"
+                       },
+                       {
+                           "title":  "History",
+                           "path":  "assets/projects/uxui/protored/images/history-protored.png"
+                       },
+                       {
+                           "title":  "HUD",
+                           "path":  "assets/projects/uxui/protored/images/hud-protored.png"
+                       },
+                       {
+                           "title":  "Login",
+                           "path":  "assets/projects/uxui/protored/images/login-protored.png"
+                       },
+                       {
+                           "title":  "Messages",
+                           "path":  "assets/projects/uxui/protored/images/messages-protored.png"
+                       },
+                       {
+                           "title":  "Notification Scene",
+                           "path":  "assets/projects/uxui/protored/images/notification-scene-protored.png"
+                       },
+                       {
+                           "title":  "Perfil Person Notification",
+                           "path":  "assets/projects/uxui/protored/images/perfil-person-notification-protored.png"
+                       },
+                       {
+                           "title":  "Perfil Person",
+                           "path":  "assets/projects/uxui/protored/images/perfil-person-protored.png"
+                       },
+                       {
+                           "title":  "Perfil Person Search",
+                           "path":  "assets/projects/uxui/protored/images/perfil-person-search-protored.png"
+                       },
+                       {
+                           "title":  "Perfil",
+                           "path":  "assets/projects/uxui/protored/images/perfil-protored.png"
+                       },
+                       {
+                           "title":  "Post Comments",
+                           "path":  "assets/projects/uxui/protored/images/post-comments-protored.png"
+                       },
+                       {
+                           "title":  "Post Comments 1",
+                           "path":  "assets/projects/uxui/protored/images/post-comments-protored-1.png"
+                       },
+                       {
+                           "title":  "Publicacion Perfil",
+                           "path":  "assets/projects/uxui/protored/images/publicacion-perfil-protored.png"
+                       },
+                       {
+                           "title":  "Register",
+                           "path":  "assets/projects/uxui/protored/images/register-protored.png"
+                       },
+                       {
+                           "title":  "Search",
+                           "path":  "assets/projects/uxui/protored/images/search-protored.png"
+                       },
+                       {
+                           "title":  "Videocall",
+                           "path":  "assets/projects/uxui/protored/images/videocall-protored.png"
+                       }
+                   ],
+        "videos":  [
+
+                   ]
+    },
+    {
+        "title":  "ProtoTV",
+        "slug":  "prototv",
+        "category":  "UX/UI",
+        "context":  "Sitio web UI",
+        "summary":  "Concepto de streaming con biblioteca visual, navegación por categorías y una experiencia pensada para explorar contenido.",
+        "cover":  {
+                      "path":  "assets/projects/uxui/prototv/cover/cover.png",
+                      "title":  "Portada"
+                  },
+        "images":  [
+                       {
+                           "title":  "Agree Perfil",
+                           "path":  "assets/projects/uxui/prototv/images/agree-perfil-prototv.png"
+                       },
+                       {
+                           "title":  "Choose Account",
+                           "path":  "assets/projects/uxui/prototv/images/choose-account-prototv.png"
+                       },
+                       {
+                           "title":  "Film Repodructor For Explore",
+                           "path":  "assets/projects/uxui/prototv/images/film-repodructor-for-explore-prototv.png"
+                       },
+                       {
+                           "title":  "Film Repodructor For Explore 1",
+                           "path":  "assets/projects/uxui/prototv/images/film-repodructor-for-explore-prototv-1.png"
+                       },
+                       {
+                           "title":  "Film Repodructor For My List",
+                           "path":  "assets/projects/uxui/prototv/images/film-repodructor-for-my-list-prototv.png"
+                       },
+                       {
+                           "title":  "Film Repodructor For My List 1",
+                           "path":  "assets/projects/uxui/prototv/images/film-repodructor-for-my-list-prototv-1.png"
+                       },
+                       {
+                           "title":  "Film Repodructor For Popular News",
+                           "path":  "assets/projects/uxui/prototv/images/film-repodructor-for-popular-news-prototv.png"
+                       },
+                       {
+                           "title":  "Film Repodructor For Popular News 1",
+                           "path":  "assets/projects/uxui/prototv/images/film-repodructor-for-popular-news-prototv-1.png"
+                       },
+                       {
+                           "title":  "Film Repodructor",
+                           "path":  "assets/projects/uxui/prototv/images/film-repodructor-prototv.png"
+                       },
+                       {
+                           "title":  "Film Repodructor 1",
+                           "path":  "assets/projects/uxui/prototv/images/film-repodructor-prototv-1.png"
+                       },
+                       {
+                           "title":  "HUD Explore Languages",
+                           "path":  "assets/projects/uxui/prototv/images/hud-explore-languages-prototv.png"
+                       },
+                       {
+                           "title":  "HUD Films Presentation For Explore",
+                           "path":  "assets/projects/uxui/prototv/images/hud-films-presentation-for-explore-prototv.png"
+                       },
+                       {
+                           "title":  "HUD Films Presentation For My List",
+                           "path":  "assets/projects/uxui/prototv/images/hud-films-presentation-for-my-list-prototv.png"
+                       },
+                       {
+                           "title":  "HUD Films Presentation For Popular News",
+                           "path":  "assets/projects/uxui/prototv/images/hud-films-presentation-for-popular-news-prototv.png"
+                       },
+                       {
+                           "title":  "HUD Films Presentation",
+                           "path":  "assets/projects/uxui/prototv/images/hud-films-presentation-prototv.png"
+                       },
+                       {
+                           "title":  "HUD Films",
+                           "path":  "assets/projects/uxui/prototv/images/hud-films-prototv.png"
+                       },
+                       {
+                           "title":  "HUD My List",
+                           "path":  "assets/projects/uxui/prototv/images/hud-my-list-prototv.png"
+                       },
+                       {
+                           "title":  "HUD Popular News",
+                           "path":  "assets/projects/uxui/prototv/images/hud-popular-news-prototv.png"
+                       },
+                       {
+                           "title":  "HUD Serie",
+                           "path":  "assets/projects/uxui/prototv/images/hud-serie-prototv.png"
+                       },
+                       {
+                           "title":  "HUD Series Presentation For Explore",
+                           "path":  "assets/projects/uxui/prototv/images/hud-series-presentation-for-explore-prototv.png"
+                       },
+                       {
+                           "title":  "HUD Series Presentation For My List",
+                           "path":  "assets/projects/uxui/prototv/images/hud-series-presentation-for-my-list-prototv.png"
+                       },
+                       {
+                           "title":  "HUD Series Presentation For Popular News",
+                           "path":  "assets/projects/uxui/prototv/images/hud-series-presentation-for-popular-news-prototv.png"
+                       },
+                       {
+                           "title":  "HUD Series Presentation",
+                           "path":  "assets/projects/uxui/prototv/images/hud-series-presentation-prototv.png"
+                       },
+                       {
+                           "title":  "HUD Start",
+                           "path":  "assets/projects/uxui/prototv/images/hud-start-prototv.png"
+                       },
+                       {
+                           "title":  "Presentation",
+                           "path":  "assets/projects/uxui/prototv/images/prototv-presentation.png"
+                       },
+                       {
+                           "title":  "Register",
+                           "path":  "assets/projects/uxui/prototv/images/register-prototv.png"
+                       },
+                       {
+                           "title":  "Sign In",
+                           "path":  "assets/projects/uxui/prototv/images/sign-in-prototv.png"
+                       }
+                   ],
+        "videos":  [
+
+                   ]
+    }
+]
