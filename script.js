@@ -539,6 +539,8 @@ function createMediaBlock(item, project) {
 
   if (item.type === "embed") {
     if (item.embedUrl) {
+      const frameStyle = item.frameHeight ? `style="min-height: ${item.frameHeight};"` : "";
+
       return `
         <article class="media-card">
           <iframe
@@ -546,6 +548,7 @@ function createMediaBlock(item, project) {
             src="${item.embedUrl}"
             title="${item.title}"
             loading="lazy"
+            ${frameStyle}
             allowfullscreen
           ></iframe>
           <div class="embed-caption">
@@ -776,6 +779,8 @@ function closeMobileNav() {
 }
 
 function initAnimations() {
+  setupBackgroundLineMotion();
+
   if (prefersReducedMotion || !window.gsap) {
     initFallbackReveal();
     return;
@@ -1275,93 +1280,52 @@ function animateRenderedProjects() {
 
 
 function setupBackgroundLineMotion() {
-  if (!window.ScrollTrigger || !window.gsap) return;
-
-  ScrollTrigger.getAll().forEach((trigger) => {
-    const id = trigger.vars && trigger.vars.id;
-    if (typeof id === "string" && id.startsWith("bg-line")) {
-      trigger.kill();
-    }
-  });
-
-  const svg = document.querySelector(".background-lines");
-  const lines = Array.from(document.querySelectorAll(".bg-line"));
-  const baseLines = Array.from(document.querySelectorAll(".bg-line-base"));
-  if (!svg || !lines.length) return;
-
-  const scrollDistance = Math.max(window.innerHeight * 1.8, document.documentElement.scrollHeight - window.innerHeight);
-
-  gsap.set(svg, { autoAlpha: 1, y: 0, x: 0, scale: 1.02 });
-
-  const timeline = gsap.timeline({
-    defaults: { ease: "none" },
-    scrollTrigger: {
-      id: "bg-lines-master",
-      trigger: document.documentElement,
-      start: "top top",
-      end: `+=${scrollDistance}`,
-      scrub: 0.9
-    }
-  });
-
-  lines.forEach((line, index) => {
-    const length = line.getTotalLength();
-    const driftX = [4.8, -4.2, 5.2, -3.6, 3.2, -2.8][index % 6];
-    const driftY = [-2.8, 3.4, -4.1, 2.6, -3.2, 3.8][index % 6];
-
-    gsap.set(line, {
-      strokeDasharray: length,
-      strokeDashoffset: length * 0.98,
-      autoAlpha: index < 4 ? 0.42 : 0.3,
-      xPercent: driftX * -0.35,
-      yPercent: driftY * -0.3,
-      rotate: driftX * -0.04,
-      transformOrigin: "center center"
-    });
-
-    timeline.to(
-      line,
-      {
-        strokeDashoffset: 0,
-        autoAlpha: index < 4 ? 1 : 0.9,
-        xPercent: driftX,
-        yPercent: driftY,
-        rotate: driftX * 0.08,
-        duration: 1
-      },
-      index * 0.14
-    );
-  });
-
-  baseLines.forEach((line, index) => {
-    const driftX = [1.8, -1.4, 2.2, -1.6, 1.2, -1][index % 6];
-    const driftY = [-1.4, 1.8, -2, 1.4, -1.7, 1.6][index % 6];
-
-    gsap.to(line, {
-      xPercent: driftX,
-      yPercent: driftY,
-      ease: "none",
-      scrollTrigger: {
-        id: `bg-line-base-${index}`,
-        trigger: document.documentElement,
-        start: "top top",
-        end: `+=${scrollDistance}`,
-        scrub: 1.15
+  if (window.ScrollTrigger) {
+    ScrollTrigger.getAll().forEach((trigger) => {
+      const id = trigger.vars && trigger.vars.id;
+      if (typeof id === "string" && id.startsWith("bg-line")) {
+        trigger.kill();
       }
     });
-  });
+  }
 
-  gsap.to(svg, {
-    yPercent: -8,
-    xPercent: 1.8,
-    scale: 1.055,
-    ease: "none",
-    scrollTrigger: {
-      id: "bg-lines-parallax",
-      trigger: document.documentElement,
-      start: "top top",
-      end: `+=${scrollDistance}`,
-      scrub: 1.1
+  document.querySelectorAll(".bg-line-glint").forEach((line) => line.remove());
+
+  const svg = document.querySelector(".background-lines");
+  const allLines = Array.from(document.querySelectorAll(".bg-line-base, .bg-line"));
+  if (!svg || !allLines.length) return;
+
+  const linePresets = {
+    "bg-line-one": { x: 12, y: -8, rotate: -0.35, float: 28, draw: 30, delay: -2.4 },
+    "bg-line-two": { x: -10, y: 7, rotate: 0.28, float: 34, draw: 36, delay: -8.2 },
+    "bg-line-three": { x: 14, y: 9, rotate: -0.26, float: 31, draw: 33, delay: -12.4 },
+    "bg-line-four": { x: -9, y: -10, rotate: 0.32, float: 37, draw: 39, delay: -5.6 },
+    "bg-line-five": { x: 8, y: 12, rotate: -0.18, float: 40, draw: 42, delay: -15.1 },
+    "bg-line-six": { x: -7, y: -11, rotate: 0.22, float: 35, draw: 38, delay: -10.3 }
+  };
+
+  allLines.forEach((line) => {
+    const variantClass = Array.from(line.classList).find((className) =>
+      Object.prototype.hasOwnProperty.call(linePresets, className)
+    );
+    const preset = variantClass ? linePresets[variantClass] : linePresets["bg-line-one"];
+    const isPrimaryLine = line.classList.contains("bg-line") && !line.classList.contains("bg-line-base");
+    const driftScale = isPrimaryLine ? 1 : 0.54;
+    const length = line.getTotalLength();
+
+    line.style.setProperty("--line-length", `${length.toFixed(2)}`);
+    line.style.setProperty("--line-drift-x", `${(preset.x * driftScale).toFixed(2)}px`);
+    line.style.setProperty("--line-drift-y", `${(preset.y * driftScale).toFixed(2)}px`);
+    line.style.setProperty("--line-rotate", `${(preset.rotate * driftScale).toFixed(3)}deg`);
+    line.style.setProperty("--float-duration", `${preset.float}s`);
+    line.style.setProperty("--float-delay", `${preset.delay}s`);
+    line.style.setProperty("--draw-duration", `${preset.draw}s`);
+    line.style.setProperty("--draw-delay", `${preset.delay * 0.8}s`);
+
+    if (prefersReducedMotion) {
+      line.style.removeProperty("stroke-dasharray");
+      line.style.removeProperty("stroke-dashoffset");
+      line.style.removeProperty("transform");
     }
   });
 }

@@ -140,7 +140,8 @@
         "Portada principal",
         "Pantallas de producto",
         "Sistema UI web",
-        "Video de presentación"
+        "Video de presentación",
+        "Prototipo interactivo en Figma"
       ],
       outcome:
         "El proyecto deja una propuesta visual limpia y aspiracional, con foco en producto y una interfaz fácil de recorrer.",
@@ -158,6 +159,15 @@
         shadow: "rgba(8, 8, 8, 0.34)"
       },
       media:             [
+        {
+          type: "embed",
+          title: "Prototipo interactivo en Figma",
+          embedUrl:
+            "https://embed.figma.com/proto/pjCniFuPBce7iySlz3jsKS/Nike-Vision?page-id=0%3A1&node-id=1-2&viewport=343%2C467%2C0.33&scaling=contain&content-scaling=fixed&embed-host=leonel-portfolio",
+          frameHeight: "46rem",
+          description:
+            "Versión navegable del prototipo de Nike Vision embebida dentro del portfolio para recorrer la propuesta UX/UI directamente desde el caso."
+        },
         {
           type: "visual",
           title: "HUD",
@@ -218,7 +228,8 @@
         "Portada visual del home",
         "Sistema UI desktop",
         "Sección catálogo",
-        "Galería de pantallas"
+        "Galería de pantallas",
+        "Prototipo interactivo en Figma"
       ],
       outcome:
         "El caso comunica una presencia digital más aspiracional, con foco comercial y una interfaz web visualmente ordenada.",
@@ -236,6 +247,15 @@
         shadow: "rgba(7, 10, 18, 0.74)"
       },
       media:             [
+        {
+          type: "embed",
+          title: "Prototipo interactivo en Figma",
+          embedUrl:
+            "https://embed.figma.com/proto/PHevkRtgAuxpbFm0lmxbjK/ProtoDealership?page-id=0%3A1&node-id=7-168&viewport=301%2C700%2C0.27&scaling=contain&content-scaling=fixed&embed-host=leonel-portfolio",
+          frameHeight: "46rem",
+          description:
+            "Versión navegable del prototipo de ProtoDealership embebida dentro del portfolio para recorrer la experiencia web directamente desde el caso."
+        },
         {
           type: "visual",
           title: "Catalogue Protodealersip",
@@ -391,7 +411,8 @@
         "Home inmersivo",
         "Pantallas internas",
         "Sistema visual oscuro",
-        "Galería de variaciones"
+        "Galería de variaciones",
+        "Prototipo interactivo en Figma"
       ],
       outcome:
         "La propuesta resuelve una experiencia web más atmosférica y aspiracional, manteniendo estructura y foco narrativo.",
@@ -409,6 +430,15 @@
         shadow: "rgba(5, 8, 18, 0.8)"
       },
       media:             [
+        {
+          type: "embed",
+          title: "Prototipo interactivo en Figma",
+          embedUrl:
+            "https://embed.figma.com/proto/yzWBzgHpJ1EFDtV5vXr0Zp/ProtoGalaxy?page-id=0%3A1&node-id=1-2&viewport=260%2C224%2C0.06&scaling=contain&content-scaling=fixed&embed-host=leonel-portfolio",
+          frameHeight: "46rem",
+          description:
+            "Versión navegable del prototipo de ProtoGalaxy embebida dentro del portfolio para explorar el recorrido inmersivo desde el propio caso."
+        },
         {
           type: "visual",
           title: "The Galaxy Is In Your Hands",
@@ -504,7 +534,8 @@
         "Pantallas de perfil y feed",
         "Vistas de interacción social",
         "Navegación principal",
-        "Galería de estados"
+        "Galería de estados",
+        "Prototipo interactivo en Figma"
       ],
       outcome:
         "La propuesta funciona como un concepto de app social sólido, con identidad propia y buen control del layout mobile.",
@@ -522,6 +553,15 @@
         shadow: "rgba(26, 26, 30, 0.46)"
       },
       media:             [
+        {
+          type: "embed",
+          title: "Prototipo interactivo en Figma",
+          embedUrl:
+            "https://embed.figma.com/proto/RkhSqzdlB3IXr1fZ60lqep/ProtoRed?page-id=0%3A1&node-id=37-396&viewport=1087%2C666%2C0.37&scaling=scale-down&content-scaling=fixed&starting-point-node-id=37%3A396&embed-host=leonel-portfolio",
+          frameHeight: "46rem",
+          description:
+            "Versión navegable del prototipo de ProtoRed embebida dentro del portfolio para revisar flujo, vistas mobile e interacción social desde el caso."
+        },
         {
           type: "visual",
           title: "Call",
@@ -667,7 +707,8 @@
         "Home de streaming",
         "Sistema de categorías",
         "Grillas de contenido",
-        "Pantallas de reproducción"
+        "Pantallas de reproducción",
+        "Prototipo interactivo en Figma"
       ],
       outcome:
         "La propuesta resuelve una interfaz de streaming moderna, reconocible y lista para escalar hacia más vistas y funciones.",
@@ -685,6 +726,15 @@
         shadow: "rgba(7, 10, 18, 0.56)"
       },
       media:             [
+        {
+          type: "embed",
+          title: "Prototipo interactivo en Figma",
+          embedUrl:
+            "https://embed.figma.com/proto/m9QyksYlUIQ9oRZDibRemz/ProtoTV?page-id=1%3A6&node-id=56-1834&viewport=2092%2C795%2C0.11&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=56%3A1834&embed-host=leonel-portfolio",
+          frameHeight: "48rem",
+          description:
+            "Versión navegable del prototipo de ProtoTV embebida dentro del portfolio para recorrer la experiencia de streaming desde el propio caso."
+        },
         {
           type: "visual",
           title: "Agree Perfil",
@@ -819,6 +869,73 @@
           type: "visual",
           title: "Sign In",
           image: "assets/projects/uxui/prototv/images/sign-in-prototv.png"
+        }
+      ]
+    },
+    {
+      id: "napoly-brand-manual",
+      title: "Napoly Barbershop | Manual de marca",
+      category: "Branding",
+      categories: ["Branding"],
+      context: "Identidad visual / Manual de marca",
+      year: "2025",
+      summary:
+        "Sistema visual para Napoly Barbershop con isotipo aplicado en positivo y negativo, acompañado por un manual de marca en PDF.",
+      overview:
+        "Proyecto de branding orientado a definir una base visual clara para Napoly Barbershop, mostrando el isotipo y una guía de uso resumida en formato editorial.",
+      objective:
+        "Presentar una identidad visual consistente para la barbería y ordenar sus criterios básicos de aplicación dentro de un manual de marca.",
+      challenge:
+        "La pieza debía transmitir carácter y prolijidad, sosteniendo una estética sobria y fácilmente reconocible para futuras aplicaciones de marca.",
+      process: [
+        "Definición del isotipo principal y de sus versiones sobre fondo claro y oscuro.",
+        "Organización de una presentación editorial para resumir lineamientos de identidad en un documento legible.",
+        "Ajuste de contraste, presencia visual y consistencia general entre símbolo, fondo y sistema.",
+        "Preparación del manual en PDF y de los archivos visuales listos para portfolio."
+      ],
+      tools: ["Branding", "Identidad visual", "Diseño editorial"],
+      deliverables: [
+        "Isotipo principal",
+        "Versión positiva y negativa",
+        "Manual de marca en PDF",
+        "Presentación visual para portfolio"
+      ],
+      outcome:
+        "El proyecto deja una base de identidad clara para Napoly Barbershop, con un isotipo reconocible y un documento que ordena visualmente su uso.",
+      learnings:
+        "En branding, incluso una pieza breve gana valor cuando el sistema se muestra con criterio, contraste y una documentación visual ordenada.",
+      accent: {
+        start: "#efe8df",
+        end: "#cfbeb0",
+        label: "Sistema de marca"
+      },
+      cover: {
+        src: "assets/projects/branding/napoly-barbershop-manual/cover/cover.png",
+        position: "center center",
+        tint: "rgba(10, 10, 10, 0.02)",
+        shadow: "rgba(10, 10, 10, 0.16)"
+      },
+      media: [
+        {
+          type: "visual",
+          title: "Isotipo sobre fondo claro",
+          image: "assets/projects/branding/napoly-barbershop-manual/images/isotipo-negro-fondo-blanco.png",
+          description:
+            "Versión principal del isotipo presentada sobre fondo claro para mostrar lectura, peso visual y definición de la marca."
+        },
+        {
+          type: "visual",
+          title: "Isotipo sobre fondo oscuro",
+          image: "assets/projects/branding/napoly-barbershop-manual/images/isotipo-blanco-fondo-negro.png",
+          description:
+            "Aplicación invertida del isotipo para validar contraste y consistencia de marca en superficies oscuras."
+        },
+        {
+          type: "embed",
+          title: "Manual de marca (PDF)",
+          embedUrl: "assets/projects/branding/napoly-barbershop-manual/docs/manual-de-marca-napoly-barbershop.pdf",
+          description:
+            "Documento en PDF con la presentación del sistema visual y los lineamientos principales de identidad para Napoly Barbershop."
         }
       ]
     },
