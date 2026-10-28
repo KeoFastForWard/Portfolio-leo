@@ -175,18 +175,8 @@
         },
         {
           type: "visual",
-          title: "Product Page",
-          image: "assets/projects/uxui/nike-vision/images/nike-vision-product-page.png"
-        },
-        {
-          type: "visual",
           title: "Product Page Complete",
           image: "assets/projects/uxui/nike-vision/images/nike-vision-product-page-complete.png"
-        },
-        {
-          type: "visual",
-          title: "Slide",
-          image: "assets/projects/uxui/nike-vision/images/slide.png"
         },
         {
           type: "video",
@@ -258,23 +248,8 @@
         },
         {
           type: "visual",
-          title: "Catalogue Protodealersip",
-          image: "assets/projects/uxui/protodealership/images/catalogue-protodealersip.png"
-        },
-        {
-          type: "visual",
-          title: "Dashboard Presentation",
-          image: "assets/projects/uxui/protodealership/images/dashboard-presentation.png"
-        },
-        {
-          type: "visual",
           title: "HUD",
           image: "assets/projects/uxui/protodealership/images/hud-protodealership.png"
-        },
-        {
-          type: "visual",
-          title: "More",
-          image: "assets/projects/uxui/protodealership/images/more-protodealership.png"
         },
         {
           type: "visual",
@@ -283,58 +258,8 @@
         },
         {
           type: "visual",
-          title: "Catalogue Part 2",
-          image: "assets/projects/uxui/protodealership/images/property-1-catalogue-part-2.png"
-        },
-        {
-          type: "visual",
-          title: "Catalogue Part 3",
-          image: "assets/projects/uxui/protodealership/images/property-1-catalogue-part-3.png"
-        },
-        {
-          type: "visual",
-          title: "Catalogue Part 4",
-          image: "assets/projects/uxui/protodealership/images/property-1-catalogue-part-4.png"
-        },
-        {
-          type: "visual",
-          title: "Catalogue Part 5",
-          image: "assets/projects/uxui/protodealership/images/property-1-catalogue-part-5.png"
-        },
-        {
-          type: "visual",
-          title: "Catalogue Part 6",
-          image: "assets/projects/uxui/protodealership/images/property-1-catalogue-part-6.png"
-        },
-        {
-          type: "visual",
-          title: "Catalogue Part 7",
-          image: "assets/projects/uxui/protodealership/images/property-1-catalogue-part-7.png"
-        },
-        {
-          type: "visual",
-          title: "Catalogue Transition",
-          image: "assets/projects/uxui/protodealership/images/property-1-catalogue-transition.png"
-        },
-        {
-          type: "visual",
-          title: "Default",
-          image: "assets/projects/uxui/protodealership/images/property-1-default.png"
-        },
-        {
-          type: "visual",
-          title: "Variant 10",
-          image: "assets/projects/uxui/protodealership/images/property-1-variant10.png"
-        },
-        {
-          type: "visual",
           title: "Variant 16",
           image: "assets/projects/uxui/protodealership/images/property-1-variant16.png"
-        },
-        {
-          type: "visual",
-          title: "Variant 2",
-          image: "assets/projects/uxui/protodealership/images/property-1-variant2.png"
         },
         {
           type: "visual",
@@ -343,18 +268,8 @@
         },
         {
           type: "visual",
-          title: "Variant 3",
-          image: "assets/projects/uxui/protodealership/images/property-1-variant3.png"
-        },
-        {
-          type: "visual",
           title: "Variant 4",
           image: "assets/projects/uxui/protodealership/images/property-1-variant4.png"
-        },
-        {
-          type: "visual",
-          title: "Variant 5",
-          image: "assets/projects/uxui/protodealership/images/property-1-variant5.png"
         },
         {
           type: "visual",
@@ -363,18 +278,8 @@
         },
         {
           type: "visual",
-          title: "Variant 7",
-          image: "assets/projects/uxui/protodealership/images/property-1-variant7.png"
-        },
-        {
-          type: "visual",
           title: "Variant 8",
           image: "assets/projects/uxui/protodealership/images/property-1-variant8.png"
-        },
-        {
-          type: "visual",
-          title: "Variant 9",
-          image: "assets/projects/uxui/protodealership/images/property-1-variant9.png"
         }
       ]
     },
@@ -446,43 +351,8 @@
         },
         {
           type: "visual",
-          title: "About Us Part 1",
-          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-about-us-part-1.png"
-        },
-        {
-          type: "visual",
-          title: "About Us Part 2",
-          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-about-us-part-2.png"
-        },
-        {
-          type: "visual",
           title: "About Us Part 3",
           image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-about-us-part-3.png"
-        },
-        {
-          type: "visual",
-          title: "Contact Part 1",
-          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-contact-part-1.png"
-        },
-        {
-          type: "visual",
-          title: "Contact Part 2",
-          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-contact-part-2.png"
-        },
-        {
-          type: "visual",
-          title: "Contact Part 3",
-          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-contact-part-3.png"
-        },
-        {
-          type: "visual",
-          title: "Photos Part 1",
-          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-photos-part-1.png"
-        },
-        {
-          type: "visual",
-          title: "Photos Part 2",
-          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-photos-part-2.png"
         },
         {
           type: "visual",
@@ -491,13 +361,13 @@
         },
         {
           type: "visual",
-          title: "Principal Button Part 1",
-          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-principal-button-part-1.png"
+          title: "Principal Button Part 2",
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-principal-button-part-2.png"
         },
         {
           type: "visual",
-          title: "Principal Button Part 2",
-          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-principal-button-part-2.png"
+          title: "Contact Part 3",
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-contact-part-3.png"
         }
       ]
     },
@@ -564,78 +434,8 @@
         },
         {
           type: "visual",
-          title: "Call",
-          image: "assets/projects/uxui/protored/images/call-protored.png"
-        },
-        {
-          type: "visual",
-          title: "Camera",
-          image: "assets/projects/uxui/protored/images/camera-protored.png"
-        },
-        {
-          type: "visual",
-          title: "Camera 1",
-          image: "assets/projects/uxui/protored/images/camera-protored-1.png"
-        },
-        {
-          type: "visual",
-          title: "Chat",
-          image: "assets/projects/uxui/protored/images/chat-protored.png"
-        },
-        {
-          type: "visual",
-          title: "Create Post",
-          image: "assets/projects/uxui/protored/images/create-post-protored.png"
-        },
-        {
-          type: "visual",
-          title: "Highlights Perfil",
-          image: "assets/projects/uxui/protored/images/highlights-perfil-protored.png"
-        },
-        {
-          type: "visual",
-          title: "History Perfil",
-          image: "assets/projects/uxui/protored/images/history-perfil-protored.png"
-        },
-        {
-          type: "visual",
-          title: "History",
-          image: "assets/projects/uxui/protored/images/history-protored.png"
-        },
-        {
-          type: "visual",
           title: "HUD",
           image: "assets/projects/uxui/protored/images/hud-protored.png"
-        },
-        {
-          type: "visual",
-          title: "Login",
-          image: "assets/projects/uxui/protored/images/login-protored.png"
-        },
-        {
-          type: "visual",
-          title: "Messages",
-          image: "assets/projects/uxui/protored/images/messages-protored.png"
-        },
-        {
-          type: "visual",
-          title: "Notification Scene",
-          image: "assets/projects/uxui/protored/images/notification-scene-protored.png"
-        },
-        {
-          type: "visual",
-          title: "Perfil Person Notification",
-          image: "assets/projects/uxui/protored/images/perfil-person-notification-protored.png"
-        },
-        {
-          type: "visual",
-          title: "Perfil Person",
-          image: "assets/projects/uxui/protored/images/perfil-person-protored.png"
-        },
-        {
-          type: "visual",
-          title: "Perfil Person Search",
-          image: "assets/projects/uxui/protored/images/perfil-person-search-protored.png"
         },
         {
           type: "visual",
@@ -644,33 +444,53 @@
         },
         {
           type: "visual",
-          title: "Post Comments",
-          image: "assets/projects/uxui/protored/images/post-comments-protored.png"
-        },
-        {
-          type: "visual",
-          title: "Post Comments 1",
-          image: "assets/projects/uxui/protored/images/post-comments-protored-1.png"
-        },
-        {
-          type: "visual",
-          title: "Publicacion Perfil",
-          image: "assets/projects/uxui/protored/images/publicacion-perfil-protored.png"
-        },
-        {
-          type: "visual",
-          title: "Register",
-          image: "assets/projects/uxui/protored/images/register-protored.png"
-        },
-        {
-          type: "visual",
           title: "Search",
           image: "assets/projects/uxui/protored/images/search-protored.png"
         },
         {
           type: "visual",
+          title: "Create Post",
+          image: "assets/projects/uxui/protored/images/create-post-protored.png"
+        },
+        {
+          type: "visual",
+          title: "History",
+          image: "assets/projects/uxui/protored/images/history-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Messages",
+          image: "assets/projects/uxui/protored/images/messages-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Chat",
+          image: "assets/projects/uxui/protored/images/chat-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Notification Scene",
+          image: "assets/projects/uxui/protored/images/notification-scene-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Call",
+          image: "assets/projects/uxui/protored/images/call-protored.png"
+        },
+        {
+          type: "visual",
           title: "Videocall",
           image: "assets/projects/uxui/protored/images/videocall-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Login",
+          image: "assets/projects/uxui/protored/images/login-protored.png"
+        },
+        {
+          type: "visual",
+          title: "Register",
+          image: "assets/projects/uxui/protored/images/register-protored.png"
         }
       ]
     },
@@ -737,128 +557,8 @@
         },
         {
           type: "visual",
-          title: "Agree Perfil",
-          image: "assets/projects/uxui/prototv/images/agree-perfil-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "Choose Account",
-          image: "assets/projects/uxui/prototv/images/choose-account-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "Film Repodructor For Explore",
-          image: "assets/projects/uxui/prototv/images/film-repodructor-for-explore-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "Film Repodructor For Explore 1",
-          image: "assets/projects/uxui/prototv/images/film-repodructor-for-explore-prototv-1.png"
-        },
-        {
-          type: "visual",
-          title: "Film Repodructor For My List",
-          image: "assets/projects/uxui/prototv/images/film-repodructor-for-my-list-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "Film Repodructor For My List 1",
-          image: "assets/projects/uxui/prototv/images/film-repodructor-for-my-list-prototv-1.png"
-        },
-        {
-          type: "visual",
-          title: "Film Repodructor For Popular News",
-          image: "assets/projects/uxui/prototv/images/film-repodructor-for-popular-news-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "Film Repodructor For Popular News 1",
-          image: "assets/projects/uxui/prototv/images/film-repodructor-for-popular-news-prototv-1.png"
-        },
-        {
-          type: "visual",
-          title: "Film Repodructor",
-          image: "assets/projects/uxui/prototv/images/film-repodructor-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "Film Repodructor 1",
-          image: "assets/projects/uxui/prototv/images/film-repodructor-prototv-1.png"
-        },
-        {
-          type: "visual",
-          title: "HUD Explore Languages",
-          image: "assets/projects/uxui/prototv/images/hud-explore-languages-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "HUD Films Presentation For Explore",
-          image: "assets/projects/uxui/prototv/images/hud-films-presentation-for-explore-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "HUD Films Presentation For My List",
-          image: "assets/projects/uxui/prototv/images/hud-films-presentation-for-my-list-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "HUD Films Presentation For Popular News",
-          image: "assets/projects/uxui/prototv/images/hud-films-presentation-for-popular-news-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "HUD Films Presentation",
-          image: "assets/projects/uxui/prototv/images/hud-films-presentation-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "HUD Films",
-          image: "assets/projects/uxui/prototv/images/hud-films-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "HUD My List",
-          image: "assets/projects/uxui/prototv/images/hud-my-list-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "HUD Popular News",
-          image: "assets/projects/uxui/prototv/images/hud-popular-news-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "HUD Serie",
-          image: "assets/projects/uxui/prototv/images/hud-serie-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "HUD Series Presentation For Explore",
-          image: "assets/projects/uxui/prototv/images/hud-series-presentation-for-explore-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "HUD Series Presentation For My List",
-          image: "assets/projects/uxui/prototv/images/hud-series-presentation-for-my-list-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "HUD Series Presentation For Popular News",
-          image: "assets/projects/uxui/prototv/images/hud-series-presentation-for-popular-news-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "HUD Series Presentation",
-          image: "assets/projects/uxui/prototv/images/hud-series-presentation-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "HUD Start",
-          image: "assets/projects/uxui/prototv/images/hud-start-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "Presentation",
-          image: "assets/projects/uxui/prototv/images/prototv-presentation.png"
+          title: "Sign In",
+          image: "assets/projects/uxui/prototv/images/sign-in-prototv.png"
         },
         {
           type: "visual",
@@ -867,8 +567,38 @@
         },
         {
           type: "visual",
-          title: "Sign In",
-          image: "assets/projects/uxui/prototv/images/sign-in-prototv.png"
+          title: "Choose Account",
+          image: "assets/projects/uxui/prototv/images/choose-account-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "Agree Perfil",
+          image: "assets/projects/uxui/prototv/images/agree-perfil-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "HUD Start",
+          image: "assets/projects/uxui/prototv/images/hud-start-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "HUD My List",
+          image: "assets/projects/uxui/prototv/images/hud-my-list-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "HUD Serie",
+          image: "assets/projects/uxui/prototv/images/hud-serie-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "HUD Films Presentation",
+          image: "assets/projects/uxui/prototv/images/hud-films-presentation-prototv.png"
+        },
+        {
+          type: "visual",
+          title: "HUD Series Presentation",
+          image: "assets/projects/uxui/prototv/images/hud-series-presentation-prototv.png"
         }
       ]
     },
