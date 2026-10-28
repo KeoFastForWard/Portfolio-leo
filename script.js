@@ -203,25 +203,6 @@ function createProjectCard(project, index) {
                 <span class="project-year">${project.year}</span>
               </div>
 
-              <div class="project-preview" aria-hidden="true">
-                <div class="project-preview-head">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                <div class="project-preview-body">
-                  <span class="project-preview-chip">${project.category}</span>
-                  <span class="preview-line short"></span>
-                  <span class="preview-line"></span>
-                  <span class="preview-line medium"></span>
-                  <div class="preview-grid">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                </div>
-              </div>
-
               <div class="project-thumb-bottom">
                 <span class="project-kicker">${project.accent.label}</span>
                 <strong>${project.title}</strong>
@@ -1249,7 +1230,6 @@ function setupProjectScrollScenes() {
       card.querySelector("[data-project-trigger]")?.dataset.projectTrigger || `card-${index}`;
     const shell = card.querySelector(".project-card-shell");
     const thumb = card.querySelector(".project-thumb");
-    const preview = card.querySelector(".project-preview");
     const body = card.querySelector(".project-body");
 
     if (shell) {
@@ -1267,27 +1247,6 @@ function setupProjectScrollScenes() {
             filter: "blur(0px)",
             duration: 0.9,
             ease: "power3.out",
-            overwrite: true
-          });
-        }
-      });
-    }
-
-    if (preview) {
-      gsap.set(preview, { y: 24, autoAlpha: 0, rotate: index % 2 === 0 ? -1.6 : 1.6 });
-      ScrollTrigger.create({
-        id: `project-preview-${projectId}`,
-        trigger: card,
-        start: "top 84%",
-        once: true,
-        onEnter: () => {
-          gsap.to(preview, {
-            y: 0,
-            autoAlpha: 1,
-            rotate: 0,
-            duration: 0.84,
-            ease: "power3.out",
-            delay: 0.08,
             overwrite: true
           });
         }

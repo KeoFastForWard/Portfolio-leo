@@ -878,7 +878,7 @@
       category: "Branding",
       categories: ["Branding"],
       context: "Identidad visual / Manual de marca",
-      year: "2025",
+      year: "2026",
       summary:
         "Sistema visual para Napoly Barbershop con isotipo aplicado en positivo y negativo, acompañado por un manual de marca en PDF.",
       overview:
@@ -945,7 +945,7 @@
       category: "Motion",
       categories: ["Motion", "Branding"],
       context: "After Effects / Napoly Barbershop",
-      year: "2025",
+      year: "2026",
       summary:
         "Animación breve del isotipo creada para Napoly Barbershop, enfocada en presencia de marca, ritmo visual y una entrada limpia y reconocible.",
       overview:
