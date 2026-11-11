@@ -946,6 +946,15 @@ button {
   pointer-events: none;
 }
 
+.contact-email-fallback:not([hidden]) {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  min-height: 44px;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
 .contact-form label {
   display: grid;
   gap: 0.55rem;

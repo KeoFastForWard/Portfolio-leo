@@ -17,12 +17,17 @@ function setup(response) {
   class Button extends Element {}
   const status = new Element();
   const button = new Button();
+  const emailLink = { hidden: true };
   let resets = 0;
   let requests = 0;
   class Form {
     dataset = {};
     action = `https://formsubmit.co/${recipient}`;
-    querySelector(selector) { return selector === '[data-form-status]' ? status : button; }
+    querySelector(selector) {
+      if (selector === '[data-form-status]') return status;
+      if (selector === '[data-contact-email-fallback]') return emailLink;
+      return button;
+    }
     reset() { resets++; }
   }
   const context = vm.createContext({
@@ -45,7 +50,7 @@ function setup(response) {
   const form = new Form();
   return {
     async submit() { await context.handleContactSubmit({ currentTarget: form, preventDefault() {} }); },
-    status, button, form, counts: () => ({ requests, resets })
+    status, button, form, emailLink, counts: () => ({ requests, resets })
   };
 }
 
@@ -53,6 +58,7 @@ test('Contact clears the message only when FormSubmit confirms receipt', async (
   const contact = setup(() => ({ ok: true, json: async () => ({ success: 'true' }) }));
   await contact.submit();
   assert.ok(contact.status.classList.has('is-success'));
+  assert.equal(contact.emailLink.hidden, true);
   assert.deepEqual(contact.counts(), { requests: 1, resets: 1 });
 });
 
@@ -69,6 +75,9 @@ test('Contact preserves the message and does not retry on activation or network 
     assert.ok(contact.status.textContent.includes(recipient));
     assert.equal(contact.form.dataset.submitting, 'false');
     assert.equal(contact.button.disabled, false);
+    assert.equal(contact.emailLink.hidden, false);
+    assert.ok(contact.emailLink.href.startsWith(`mailto:${recipient}?`));
+    assert.match(decodeURIComponent(contact.emailLink.href), /Consulta de prueba\r\n\r\nNombre: Prueba/);
     assert.deepEqual(contact.counts(), { requests: 1, resets: 0 });
   }
 });

@@ -295,6 +295,10 @@ function bindEvents() {
   const form = document.querySelector("[data-contact-form]");
   if (form) {
     form.addEventListener("submit", handleContactSubmit);
+    form.addEventListener("input", () => {
+      const emailLink = form.querySelector("[data-contact-email-fallback]");
+      if (emailLink && !emailLink.hidden) offerContactEmail(form);
+    });
   }
 
   document.querySelectorAll(".site-nav a").forEach((link) => {
@@ -812,12 +816,12 @@ async function handleContactSubmit(event) {
   }
 
   form.dataset.submitting = "true";
-  setContactFormStatus(form, "sending", "Enviando consulta...");
+  setContactFormStatus(form, "sending", "Enviando consulta. La confirmación puede tardar unos segundos.");
   setContactFormDisabled(form, true);
 
   const endpoint = form.action.replace("https://formsubmit.co/", "https://formsubmit.co/ajax/");
   const controller = new AbortController();
-  const timeout = window.setTimeout(() => controller.abort(), 12000);
+  const timeout = window.setTimeout(() => controller.abort(), 45000);
   const fallback = `Podés escribirme directamente a ${portfolioData.profile.email}.`;
 
   try {
@@ -831,6 +835,7 @@ async function handleContactSubmit(event) {
     const result = await response.json();
     if (/activat|confirm (?:your|the) (?:form|email)/i.test(result?.message || "")) {
       setContactFormStatus(form, "error", `El formulario todavía requiere activación. ${fallback}`);
+      offerContactEmail(form);
       return;
     }
 
@@ -839,14 +844,30 @@ async function handleContactSubmit(event) {
     }
 
     setContactFormStatus(form, "success", "Consulta recibida por el servicio de envío.");
+    const emailLink = form.querySelector("[data-contact-email-fallback]");
+    if (emailLink) emailLink.hidden = true;
     form.reset();
   } catch {
     setContactFormStatus(form, "error", `No pude confirmar el envío. ${fallback}`);
+    offerContactEmail(form);
   } finally {
     window.clearTimeout(timeout);
     form.dataset.submitting = "false";
     setContactFormDisabled(form, false);
   }
+}
+
+function offerContactEmail(form) {
+  const link = form.querySelector("[data-contact-email-fallback]");
+  if (!link) return;
+  const data = new FormData(form);
+  const name = String(data.get("nombre") || "").trim();
+  const email = String(data.get("email") || "").trim();
+  const message = String(data.get("mensaje") || "").trim();
+  const subject = encodeURIComponent("Consulta desde el portfolio");
+  const body = encodeURIComponent(`${message}\r\n\r\nNombre: ${name}\r\nEmail: ${email}`);
+  link.href = `mailto:${portfolioData.profile.email}?subject=${subject}&body=${body}`;
+  link.hidden = false;
 }
 
 function setContactFormDisabled(form, disabled) {
