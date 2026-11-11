@@ -24,7 +24,7 @@ test('Flick/ProtoTV is not part of the published collection', () => {
 
 test('Public names and project IDs are consistent', () => {
   assert.equal(new Set(projects.map(p => p.id)).size, projects.length);
-  for (const [id, title] of Object.entries({ protodealership: 'Vértice Motors', protogalaxy: 'Órbita', protored: 'Pulso' })) {
+  for (const [id, title] of Object.entries({ protodealership: 'Vértice Motors', protogalaxy: 'Órbita', 'nike-vision': 'Just Vision', protored: 'Proto Red' })) {
     assert.equal(projects.find(p => p.id === id).title, title);
   }
 });
@@ -118,7 +118,7 @@ test('Napoly book lists 25 distinct, ordered local pages and only loads the firs
   });
 });
 
-test('Pulso places its original screen assets inside the iPhone frame', () => {
+test('Proto Red places its original screen assets inside the iPhone frame', () => {
   const project = projects.find(p => p.id === 'protored');
   const html = context.window.ProjectExperiences.render(project, context.createMediaBlock);
   assert.match(html, /experience-browser experience-iphone18/);
@@ -127,4 +127,11 @@ test('Pulso places its original screen assets inside the iPhone frame', () => {
   for (const { mediaIndex } of project.experience.chapters) {
     assert.ok(html.includes(`src="${project.media[mediaIndex].image}"`));
   }
+});
+
+test('The gallery and home sections follow the requested order without numbered badges', () => {
+  assert.equal(projects.map(project => project.id).join(','), 'protogalaxy,protodealership,nike-vision,protored,napoly-brand-manual,motion-launch,mastantuono-real-madrid');
+  const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  assert.ok(html.indexOf('id="proyectos"') < html.indexOf('id="sobre-mi"'));
+  assert.doesNotMatch(html, /section-number|<h2>undefined<\/h2>/);
 });

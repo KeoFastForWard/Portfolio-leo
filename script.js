@@ -163,7 +163,7 @@ function renderProjects() {
   }
 
   grid.innerHTML = visibleProjects
-    .map((project, index) => createProjectCard(project, index))
+    .map(createProjectCard)
     .join("");
   if (immersiveMotionBooted) window.ScrollTrigger?.refresh();
 }
@@ -185,8 +185,7 @@ function getProjectSurfaceStyle(project) {
   return styles.join("; ");
 }
 
-function createProjectCard(project, index) {
-  const number = String(index + 1).padStart(2, "0");
+function createProjectCard(project) {
   const thumbClass = project.cover?.src ? `project-thumb has-cover${project.experience ? " has-experience-art" : ""}` : "project-thumb";
 
   return `
@@ -200,7 +199,6 @@ function createProjectCard(project, index) {
             ${project.experience ? `<img class="experience-card-art" src="${project.cover.src}" alt="" loading="lazy" draggable="false" />` : ""}
             <div class="project-thumb-inner">
               <div class="project-thumb-top">
-                <span class="project-index">${number}</span>
                 <span class="project-year">${project.year}</span>
               </div>
 

@@ -107,26 +107,25 @@
     }
   ],
   projects: [
-        {
-      id: "nike-vision",
-      title: "Nike Vision",
+    {
+      id: "protogalaxy",
+      title: "Órbita",
       experience: {
-        theme: "vision",
-        eyebrow: "Producto en primer plano",
-        headline: "De la primera mirada al detalle.",
-        introduction: "Una tienda conceptual donde la imagen abre el recorrido y la interfaz organiza el paso hacia la ficha de producto.",
-        tourTitle: "Dos escalas de una misma tienda.",
-        thinkingTitle: "De la imagen a la información.",
+        theme: "cosmos",
+        eyebrow: "Una interfaz para explorar",
+        headline: "Un universo visual. Un recorrido claro.",
+        introduction: "Una exploración de diseño web donde la fotografía espacial construye la atmósfera y una navegación persistente conecta cada parte del recorrido.",
         chapters: [
-          { label: "Inicio", title: "Primera impresión.", description: "La portada establece el tono visual y da protagonismo al producto sin ocultar la navegación.", mediaIndex: 1 },
-          { label: "Ficha de producto", title: "La información toma el relevo.", description: "La ficha completa muestra cómo cambia la jerarquía cuando la atención pasa de la marca al producto.", mediaIndex: 2 }
+          { label: "Inicio", title: "El comienzo de la exploración.", description: "Un paisaje inmersivo introduce el universo visual, con acciones destacadas sobre la imagen.", mediaIndex: 1 },
+          { label: "Galería", title: "La imagen guía el viaje.", description: "La galería da protagonismo a la fotografía y mantiene a mano las secciones principales.", mediaIndex: 3 },
+          { label: "Contacto", title: "Una salida reconocible.", description: "El contacto conserva el lenguaje visual de la experiencia sin abandonar su estructura de navegación.", mediaIndex: 5 }
         ]
       },
       presentation: {
         role: "Investigación, diseño UI y prototipado",
         format: "Web · Figma",
-        focus: "Producto, navegación y detalle de compra",
-        evidence: "Interfaz, video de recorrido y prototipo navegable."
+        focus: "Exploración visual y navegación entre secciones",
+        evidence: "Inicio, galería, contacto y prototipo navegable."
       },
       category: "UX/UI",
       categories:       [
@@ -135,71 +134,81 @@
       context: "Sitio web UI",
       year: "2024",
       summary:
-        "Landing conceptual para una línea Nike con foco en producto, narrativa visual y una experiencia de browsing limpia.",
+        "Website conceptual con estética inmersiva y narrativa espacial, diseñado para comunicar profundidad y exploración.",
       overview:
-        "Proyecto UX/UI web pensado para presentar una línea de producto con una interfaz clara, minimalista y visualmente comercial.",
+        "Caso UX/UI web desarrollado para una experiencia visual cinematográfica, con bloques inmersivos y una interfaz clara dentro de un universo oscuro.",
       objective:
-        "Construir una página interactiva que destaque producto, identidad de marca y navegación con una lectura simple y actual.",
+        "Construir una interfaz impactante que mantenga orden visual y una navegación clara dentro de un concepto gráfico muy protagonista.",
       challenge:
-        "La composición debía equilibrar protagonismo visual, presencia de producto y una interfaz sobria sin perder claridad.",
+        "El reto fue equilibrar espectacularidad visual, legibilidad y continuidad entre pantallas con gran carga de imagen.",
       process:       [
-        "Definición del tono visual del sitio y de la relación entre producto, tipografía e imagen.",
-        "Diseño de hero principal, navegación superior y módulos de producto.",
-        "Exploración de pantallas de producto y variantes de presentación con foco comercial.",
-        "Refinamiento del prototipo y revisión de las jerarquías visuales."
+        "Definición del concepto visual y del clima general del sitio.",
+        "Diseño de pantallas clave para home, about us, fotos y contacto.",
+        "Construcción de componentes oscuros con foco en contraste y profundidad.",
+        "Revisión del flujo para que el recorrido no pierda claridad dentro del concepto inmersivo."
       ],
       tools:       [
         "Figma",
-        "Diseño web",
         "Diseño UI",
-        "Prototipado"
+        "Diseño web",
+        "Dirección visual"
       ],
       deliverables:       [
-        "Portada principal",
-        "Pantallas de producto",
-        "Sistema UI web",
-        "Video de presentación",
+        "Home inmersivo",
+        "Pantallas internas",
+        "Sistema visual oscuro",
+        "Galería de variaciones",
         "Prototipo interactivo en Figma"
       ],
       outcome:
-        "El proyecto deja una propuesta visual limpia y aspiracional, con foco en producto y una interfaz fácil de recorrer.",
+        "La propuesta resuelve una experiencia web más atmosférica y aspiracional, manteniendo estructura y foco narrativo.",
       learnings:
-        "En un sitio orientado a producto, la dirección de arte y la jerarquía visual tienen que trabajar al servicio de la claridad.",
+        "Incluso en interfaces muy visuales, la consistencia de componentes sigue siendo la base de una navegación sólida.",
       accent: {
-        start: "#e8e5e1",
-        end: "#cfcfcf",
-        label: "Producto + interfaz"
+        start: "#0c1020",
+        end: "#7a5f74",
+        label: "Experiencia inmersiva"
       },
       cover: {
-        src: "assets/projects/uxui/nike-vision/cover/cover.png",
+        src: "assets/projects/uxui/protogalaxy/cover/orbita-cover.webp",
         position: "center center",
-        tint: "rgba(8, 8, 8, 0.06)",
-        shadow: "rgba(8, 8, 8, 0.34)"
+        tint: "rgba(0, 0, 0, 0)",
+        shadow: "rgba(0, 0, 0, 0)"
       },
       media:             [
         {
           type: "embed",
           title: "Prototipo interactivo en Figma",
           embedUrl:
-            "https://embed.figma.com/proto/pjCniFuPBce7iySlz3jsKS/Nike-Vision?page-id=0%3A1&node-id=1-2&viewport=343%2C467%2C0.33&scaling=contain&content-scaling=fixed&embed-host=leonel-portfolio",
+            "https://embed.figma.com/proto/yzWBzgHpJ1EFDtV5vXr0Zp/ProtoGalaxy?page-id=0%3A1&node-id=1-2&viewport=260%2C224%2C0.06&scaling=contain&content-scaling=fixed&embed-host=leonel-portfolio",
           frameHeight: "46rem",
           description:
-            "Versión navegable del prototipo de Nike Vision embebida dentro del portfolio para recorrer la propuesta UX/UI directamente desde el caso."
+            "Recorré el inicio, la galería y las secciones de Órbita en el prototipo de Figma."
         },
         {
           type: "visual",
-          title: "HUD",
-          image: "assets/projects/uxui/nike-vision/images/nike-vision-hud.png"
+          title: "The Galaxy Is In Your Hands",
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands.png"
         },
         {
           type: "visual",
-          title: "Product Page Complete",
-          image: "assets/projects/uxui/nike-vision/images/nike-vision-product-page-complete.png"
+          title: "About Us Part 3",
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-about-us-part-3.png"
         },
         {
-          type: "video",
-          title: "Demo en video",
-          src: "assets/projects/uxui/nike-vision/videos/2024-07-21-17-36-34.mp4"
+          type: "visual",
+          title: "Photos Part 3",
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-photos-part-3.png"
+        },
+        {
+          type: "visual",
+          title: "Principal Button Part 2",
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-principal-button-part-2.png"
+        },
+        {
+          type: "visual",
+          title: "Contact Part 3",
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-contact-part-3.png"
         }
       ]
     },
@@ -319,24 +328,25 @@
       ]
     },
     {
-      id: "protogalaxy",
-      title: "Órbita",
+      id: "nike-vision",
+      title: "Just Vision",
       experience: {
-        theme: "cosmos",
-        eyebrow: "Una interfaz para explorar",
-        headline: "Un universo visual. Un recorrido claro.",
-        introduction: "Una exploración de diseño web donde la fotografía espacial construye la atmósfera y una navegación persistente conecta cada parte del recorrido.",
+        theme: "vision",
+        eyebrow: "Producto en primer plano",
+        headline: "De la primera mirada al detalle.",
+        introduction: "Una tienda conceptual donde la imagen abre el recorrido y la interfaz organiza el paso hacia la ficha de producto.",
+        tourTitle: "Dos escalas de una misma tienda.",
+        thinkingTitle: "De la imagen a la información.",
         chapters: [
-          { label: "Inicio", title: "El comienzo de la exploración.", description: "Un paisaje inmersivo introduce el universo visual, con acciones destacadas sobre la imagen.", mediaIndex: 1 },
-          { label: "Galería", title: "La imagen guía el viaje.", description: "La galería da protagonismo a la fotografía y mantiene a mano las secciones principales.", mediaIndex: 3 },
-          { label: "Contacto", title: "Una salida reconocible.", description: "El contacto conserva el lenguaje visual de la experiencia sin abandonar su estructura de navegación.", mediaIndex: 5 }
+          { label: "Inicio", title: "Primera impresión.", description: "La portada establece el tono visual y da protagonismo al producto sin ocultar la navegación.", mediaIndex: 1 },
+          { label: "Ficha de producto", title: "La información toma el relevo.", description: "La ficha completa muestra cómo cambia la jerarquía cuando la atención pasa de la marca al producto.", mediaIndex: 2 }
         ]
       },
       presentation: {
         role: "Investigación, diseño UI y prototipado",
         format: "Web · Figma",
-        focus: "Exploración visual y navegación entre secciones",
-        evidence: "Inicio, galería, contacto y prototipo navegable."
+        focus: "Producto, navegación y detalle de compra",
+        evidence: "Interfaz, video de recorrido y prototipo navegable."
       },
       category: "UX/UI",
       categories:       [
@@ -345,87 +355,77 @@
       context: "Sitio web UI",
       year: "2024",
       summary:
-        "Website conceptual con estética inmersiva y narrativa espacial, diseñado para comunicar profundidad y exploración.",
+        "Landing conceptual para una línea Nike con foco en producto, narrativa visual y una experiencia de browsing limpia.",
       overview:
-        "Caso UX/UI web desarrollado para una experiencia visual cinematográfica, con bloques inmersivos y una interfaz clara dentro de un universo oscuro.",
+        "Proyecto UX/UI web pensado para presentar una línea de producto con una interfaz clara, minimalista y visualmente comercial.",
       objective:
-        "Construir una interfaz impactante que mantenga orden visual y una navegación clara dentro de un concepto gráfico muy protagonista.",
+        "Construir una página interactiva que destaque producto, identidad de marca y navegación con una lectura simple y actual.",
       challenge:
-        "El reto fue equilibrar espectacularidad visual, legibilidad y continuidad entre pantallas con gran carga de imagen.",
+        "La composición debía equilibrar protagonismo visual, presencia de producto y una interfaz sobria sin perder claridad.",
       process:       [
-        "Definición del concepto visual y del clima general del sitio.",
-        "Diseño de pantallas clave para home, about us, fotos y contacto.",
-        "Construcción de componentes oscuros con foco en contraste y profundidad.",
-        "Revisión del flujo para que el recorrido no pierda claridad dentro del concepto inmersivo."
+        "Definición del tono visual del sitio y de la relación entre producto, tipografía e imagen.",
+        "Diseño de hero principal, navegación superior y módulos de producto.",
+        "Exploración de pantallas de producto y variantes de presentación con foco comercial.",
+        "Refinamiento del prototipo y revisión de las jerarquías visuales."
       ],
       tools:       [
         "Figma",
-        "Diseño UI",
         "Diseño web",
-        "Dirección visual"
+        "Diseño UI",
+        "Prototipado"
       ],
       deliverables:       [
-        "Home inmersivo",
-        "Pantallas internas",
-        "Sistema visual oscuro",
-        "Galería de variaciones",
+        "Portada principal",
+        "Pantallas de producto",
+        "Sistema UI web",
+        "Video de presentación",
         "Prototipo interactivo en Figma"
       ],
       outcome:
-        "La propuesta resuelve una experiencia web más atmosférica y aspiracional, manteniendo estructura y foco narrativo.",
+        "El proyecto deja una propuesta visual limpia y aspiracional, con foco en producto y una interfaz fácil de recorrer.",
       learnings:
-        "Incluso en interfaces muy visuales, la consistencia de componentes sigue siendo la base de una navegación sólida.",
+        "En un sitio orientado a producto, la dirección de arte y la jerarquía visual tienen que trabajar al servicio de la claridad.",
       accent: {
-        start: "#0c1020",
-        end: "#7a5f74",
-        label: "Experiencia inmersiva"
+        start: "#e8e5e1",
+        end: "#cfcfcf",
+        label: "Producto + interfaz"
       },
       cover: {
-        src: "assets/projects/uxui/protogalaxy/cover/orbita-cover.webp",
+        src: "assets/projects/uxui/nike-vision/cover/cover.png",
         position: "center center",
-        tint: "rgba(0, 0, 0, 0)",
-        shadow: "rgba(0, 0, 0, 0)"
+        tint: "rgba(8, 8, 8, 0.06)",
+        shadow: "rgba(8, 8, 8, 0.34)"
       },
       media:             [
         {
           type: "embed",
           title: "Prototipo interactivo en Figma",
           embedUrl:
-            "https://embed.figma.com/proto/yzWBzgHpJ1EFDtV5vXr0Zp/ProtoGalaxy?page-id=0%3A1&node-id=1-2&viewport=260%2C224%2C0.06&scaling=contain&content-scaling=fixed&embed-host=leonel-portfolio",
+            "https://embed.figma.com/proto/pjCniFuPBce7iySlz3jsKS/Nike-Vision?page-id=0%3A1&node-id=1-2&viewport=343%2C467%2C0.33&scaling=contain&content-scaling=fixed&embed-host=leonel-portfolio",
           frameHeight: "46rem",
           description:
-            "Recorré el inicio, la galería y las secciones de Órbita en el prototipo de Figma."
+            "Versión navegable del prototipo de Just Vision embebida dentro del portfolio para recorrer la propuesta UX/UI directamente desde el caso."
         },
         {
           type: "visual",
-          title: "The Galaxy Is In Your Hands",
-          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands.png"
+          title: "HUD",
+          image: "assets/projects/uxui/nike-vision/images/nike-vision-hud.png"
         },
         {
           type: "visual",
-          title: "About Us Part 3",
-          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-about-us-part-3.png"
+          title: "Product Page Complete",
+          image: "assets/projects/uxui/nike-vision/images/nike-vision-product-page-complete.png"
         },
         {
-          type: "visual",
-          title: "Photos Part 3",
-          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-photos-part-3.png"
-        },
-        {
-          type: "visual",
-          title: "Principal Button Part 2",
-          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-principal-button-part-2.png"
-        },
-        {
-          type: "visual",
-          title: "Contact Part 3",
-          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-contact-part-3.png"
+          type: "video",
+          title: "Demo en video",
+          src: "assets/projects/uxui/nike-vision/videos/2024-07-21-17-36-34.mp4"
         }
       ]
     },
     {
       id: "protored",
-      title: "Pulso",
+      title: "Proto Red",
       experience: {
         theme: "pulso",
         eyebrow: "Una interfaz para conectar",
@@ -501,7 +501,7 @@
             "https://embed.figma.com/proto/RkhSqzdlB3IXr1fZ60lqep/ProtoRed?page-id=0%3A1&node-id=37-396&viewport=1087%2C666%2C0.37&scaling=scale-down&content-scaling=fixed&starting-point-node-id=37%3A396&embed-host=leonel-portfolio",
           frameHeight: "46rem",
           description:
-            "Explorá el feed, los perfiles y las conversaciones de Pulso en el prototipo de Figma."
+            "Explorá el feed, los perfiles y las conversaciones de Proto Red en el prototipo de Figma."
         },
         {
           type: "visual",

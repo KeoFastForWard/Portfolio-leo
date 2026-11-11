@@ -29,10 +29,10 @@ window.ProjectExperiences = (() => {
         </header>
 
         <section class="experience-tour" id="experience-tour" aria-labelledby="tour-heading" data-case-reveal>
-          <div class="experience-section-label"><span>01 / ${cosmos ? 'El recorrido' : 'Diseño en detalle'}</span><span aria-hidden="true">${cosmos ? '✳' : '↗'}</span></div>
-          <div class="experience-tour-heading"><h3 id="tour-heading">${experience.tourTitle || (cosmos ? 'Elegí tu próxima órbita.' : 'Cada vista tiene una función.')}</h3><p>${experience.tourDescription || 'Cambiá de pantalla para explorar la propuesta.'}</p></div>
+          <div class="experience-section-label"><span>${cosmos ? 'El recorrido' : 'Diseño en detalle'}</span><span aria-hidden="true">${cosmos ? '✳' : '↗'}</span></div>
+          <div class="experience-tour-heading"><h3 id="tour-heading">${experience.tourTitle || (cosmos ? 'Elegí tu próxima órbita.' : 'Cada vista tiene una función.')}</h3>${experience.tourDescription ? `<p>${experience.tourDescription}</p>` : ''}</div>
           ${hasTabs ? `<div class="experience-tabs" role="tablist" aria-label="Vistas de ${project.title}">
-            ${chapters.map((chapter, index) => `<button type="button" role="tab" id="experience-tab-${index}" aria-selected="${index === 0}" aria-controls="experience-panel-${index}" tabindex="${index === 0 ? 0 : -1}" data-experience-tab="${index}"><span aria-hidden="true">0${index + 1}</span>${chapter.label}</button>`).join('')}
+            ${chapters.map((chapter, index) => `<button type="button" role="tab" id="experience-tab-${index}" aria-selected="${index === 0}" aria-controls="experience-panel-${index}" tabindex="${index === 0 ? 0 : -1}" data-experience-tab="${index}">${chapter.label}</button>`).join('')}
           </div>` : ''}
           <div class="experience-stage" data-experience-stage>
             <div class="${cosmos ? 'experience-orbits' : motors ? 'experience-speedlines' : 'experience-scenery'}" data-case-scenery aria-hidden="true"><i></i><i></i><i></i></div>
@@ -48,23 +48,23 @@ window.ProjectExperiences = (() => {
             ${phone ? '<p class="experience-device-caption">Vista en iPhone 18 Pro</p>' : ''}
           </div>
           <div class="experience-chapter-notes" aria-live="polite" aria-atomic="true">
-            ${chapters.map((chapter, index) => `<div data-chapter-note="${index}" ${index ? 'hidden' : ''}><span class="experience-step">0${index + 1}</span><h4>${chapter.title}</h4><p>${chapter.description}</p></div>`).join('')}
+            ${chapters.map((chapter, index) => `<div data-chapter-note="${index}" ${index ? 'hidden' : ''}><h4>${chapter.title}</h4><p>${chapter.description}</p></div>`).join('')}
           </div>
         </section>
 
         <section class="experience-thinking" data-case-reveal>
-          <div class="experience-section-label"><span>02 / Intención y decisiones</span><span aria-hidden="true">+</span></div>
+          <div class="experience-section-label"><span>Intención y decisiones</span><span aria-hidden="true">+</span></div>
           <div class="experience-thinking-grid"><h3>${experience.thinkingTitle || (cosmos ? 'Atmósfera sin perder el rumbo.' : 'Impacto visual. Control de la información.')}</h3><div><h4>El reto</h4><p>${project.challenge}</p><h4>Objetivo de diseño</h4><p>${project.objective}</p></div></div>
-          <ol class="experience-decisions">${project.process.map((step, index) => `<li data-case-reveal><span>0${index + 1}</span><p>${step}</p></li>`).join('')}</ol>
+          <ol class="experience-decisions">${project.process.map(step => `<li data-case-reveal><p>${step}</p></li>`).join('')}</ol>
         </section>
 
         ${demos.length ? `<section class="experience-demo" id="case-demo" data-case-reveal>
-          <div class="experience-section-label"><span>03 / ${manual ? 'Documentación' : 'Prototipo'}</span><span aria-hidden="true">↗</span></div>
+          <div class="experience-section-label"><span>${manual ? 'Documentación' : 'Prototipo'}</span><span aria-hidden="true">↗</span></div>
           ${manual ? `<h3>Manual de marca.</h3><p>${manual.description}</p>` : '<h3>Ahora, probalo vos.</h3><p>Recorré la interfaz en Figma, sin salir del caso.</p>'}
           <div class="experience-media">${demos.map(item => item.type === 'book' ? renderBook(item) : mediaBlock(item, project)).join('')}</div>
         </section>` : ''}
 
-        ${rest.length ? `<section class="experience-gallery" data-case-reveal><div class="experience-section-label"><span>${demos.length ? '04' : '03'} / Más del proyecto</span><span aria-hidden="true">+</span></div><div class="experience-gallery-grid">${rest.map(item => mediaBlock(item, project)).join('')}</div></section>` : ''}
+        ${rest.length ? `<section class="experience-gallery" data-case-reveal><div class="experience-section-label"><span>Más del proyecto</span><span aria-hidden="true">+</span></div><div class="experience-gallery-grid">${rest.map(item => mediaBlock(item, project)).join('')}</div></section>` : ''}
         <footer class="experience-outcome" data-case-reveal><p class="experience-eyebrow">Resultado de diseño</p><h3>${project.outcome}</h3><div><span>Lo que me llevo</span><p>${project.learnings}</p></div><p class="experience-tools">${project.tools.join(' / ')}</p><a href="#experience-tour" data-experience-jump>Volver al recorrido ↑</a></footer>
       </div>`;
   }

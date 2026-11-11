@@ -81,15 +81,13 @@ body:not(.video-performance-mode) .experience-page[data-motion="on"] .experience
 .experience-panel { overflow: hidden; border-radius: 0 0 9px 9px; }
 .experience-panel img { width: 100%; height: auto; aspect-ratio: 1.7778; object-fit: contain; background: var(--case-bg); }
 .experience-chapter-notes { border-top: 1px solid var(--case-line); padding-top: 2rem; min-height: 9rem; }
-.experience-chapter-notes > div { display: grid; grid-template-columns: auto 1fr 1.3fr; gap: 1.5rem; align-items: start; }
+.experience-chapter-notes > div { display: grid; grid-template-columns: 1fr 1.3fr; gap: 1.5rem; align-items: start; }
 .experience-chapter-notes p { color: var(--case-muted); font-size: .95rem; }
-.experience-step { font-size: .75rem; padding-top: .3rem; color: var(--case-accent); }
 .experience-thinking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
 .experience-thinking-grid h4 { margin-bottom: .75rem; }
 .experience-thinking-grid p { margin-bottom: 2rem; color: var(--case-muted); }
 .experience-decisions { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 3rem; }
 .experience-decisions li { border-top: 1px solid var(--case-line); padding: 1.75rem 0; display: flex; gap: 1.5rem; }
-.experience-decisions li > span { color: var(--case-accent); font-size: .75rem; padding-top: .35rem; }
 .experience-decisions li p { font-size: .95rem; }
 .experience-demo { background: var(--case-surface); }
 .experience-demo > p { color: var(--case-muted); margin: 1rem 0 2rem; }
@@ -277,8 +275,7 @@ body:not(.video-performance-mode) .experience-page[data-motion="on"] .experience
   [data-experience="cosmos"] .experience-browser { width: 100%; }
   .experience-browser-bar { padding: .7rem; font-size: .45rem; gap: .5rem; }
   .experience-browser-bar span:first-child { font-size: .4rem; }
-  .experience-chapter-notes > div { grid-template-columns: auto 1fr; gap: .75rem; }
-  .experience-chapter-notes p { grid-column: 2; }
+  .experience-chapter-notes > div { grid-template-columns: 1fr; gap: .75rem; }
   .experience-decisions, .experience-gallery-grid { grid-template-columns: 1fr; }
   .experience-outcome > div { grid-template-columns: 1fr; gap: 1rem; }
   .experience-intro, .experience-thinking, .experience-demo, .experience-gallery, .experience-outcome, .experience-tour { padding: 2rem 1.25rem; }
