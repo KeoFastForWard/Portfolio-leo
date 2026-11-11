@@ -17,7 +17,7 @@ vm.runInContext(fs.readFileSync(path.join(root, 'project-experiences.js'), 'utf8
 const projects = vm.runInContext('portfolioData.projects', context);
 
 test('Flick/ProtoTV is not part of the published collection', () => {
-  assert.equal(projects.length, 7);
+  assert.equal(projects.length, 6);
   assert.ok(!projects.some(p => /prototv|flick/i.test(`${p.id} ${p.title}`)));
   assert.ok(!projects.some(p => p.media.some(m => /prototv|m9QyksYlUIQ9oRZDibRemz/i.test(m.embedUrl || ''))));
 });
@@ -62,6 +62,8 @@ test('Project cards show the contribution without changing legacy cards', () => 
     assert.equal(html.includes('class="project-contribution"'), Boolean(project.presentation));
     assert.doesNotMatch(html, /data-reveal/);
     assert.equal((html.match(/class="experience-card-art"/g) || []).length, 1);
+    assert.doesNotMatch(html, /project-selection/);
+    assert.match(html, /has-experience-art/);
   }
 });
 
@@ -97,9 +99,13 @@ test('Brand, motion and poster cases use media-specific sections', () => {
   const brand = render('napoly-brand-manual');
   assert.match(brand, /data-brand-book/);
   assert.doesNotMatch(brand, /<iframe|\.pdf|Recorré la interfaz en Figma/);
-  const motion = render('motion-launch');
-  assert.equal((motion.match(/<video /g) || []).length, 2);
-  assert.doesNotMatch(motion, /id="case-demo"|data-case-tilt/);
+  assert.equal((brand.match(/<video /g) || []).length, 2);
+  assert.ok(brand.indexOf('<video ') < brand.indexOf('data-brand-book'));
+  assert.match(brand, /Aplicaciones del isotipo/);
+  assert.doesNotMatch(brand, /data-case-tilt|autoplay/);
+  const napoly = projects.filter(project => project.title.includes('Napoly'));
+  assert.equal(napoly.length, 1);
+  assert.deepEqual([...napoly[0].categories], ['Motion', 'Branding']);
   const poster = render('mastantuono-real-madrid');
   assert.doesNotMatch(poster, /role="tablist"|id="case-demo"/);
   assert.equal(projects.find(p => p.id === 'mastantuono-real-madrid').experience.showCover, false);
@@ -130,8 +136,18 @@ test('Proto Red places its original screen assets inside the iPhone frame', () =
 });
 
 test('The gallery and home sections follow the requested order without numbered badges', () => {
-  assert.equal(projects.map(project => project.id).join(','), 'protogalaxy,protodealership,nike-vision,protored,napoly-brand-manual,motion-launch,mastantuono-real-madrid');
+  assert.equal(projects.map(project => project.id).join(','), 'protogalaxy,protodealership,nike-vision,protored,napoly-brand-manual,mastantuono-real-madrid');
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   assert.ok(html.indexOf('id="proyectos"') < html.indexOf('id="sobre-mi"'));
   assert.doesNotMatch(html, /section-number|<h2>undefined<\/h2>/);
+});
+
+test('The bottom dock links to real sections in page order', () => {
+  const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  const dock = html.match(/<header class="portfolio-dock"[\s\S]*?<\/header>/)[0];
+  const links = [...dock.matchAll(/href="#([^"]+)"/g)].map(match => match[1]);
+  assert.deepEqual(links, ['inicio', 'proyectos', 'sobre-mi', 'trayectoria', 'habilidades', 'contacto']);
+  const offsets = links.map(id => html.indexOf(`id="${id}"`));
+  assert.ok(offsets.every((offset, index) => offset >= 0 && (index === 0 || offset > offsets[index - 1])));
+  assert.equal((dock.match(/aria-current="location"/g) || []).length, 1);
 });

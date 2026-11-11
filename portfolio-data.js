@@ -567,102 +567,17 @@
     },
     {
       id: "napoly-brand-manual",
-      title: "Napoly Barbershop | Manual de marca",
-      experience: {
-        theme: "napoly-print",
-        eyebrow: "Identidad visual / Sistema de marca",
-        headline: "Un isotipo. Dos formas de aplicarlo.",
-        introduction: "La identidad de Napoly Barbershop se presenta en positivo y negativo, con un manual que reúne sus criterios de uso.",
-        role: "Diseño de isotipo y manual de marca",
-        format: "Identidad visual · Manual digital",
-        deliverable: "Isotipo en dos versiones y manual",
-        tourTitle: "El contraste también es identidad.",
-        tourDescription: "Alterná entre las dos aplicaciones del isotipo.",
-        thinkingTitle: "Un símbolo claro sobre cualquier fondo previsto.",
-        chapters: [
-          { label: "Positivo", title: "Sobre fondo claro.", description: "La versión oscura deja ver el contorno y el peso del isotipo con nitidez.", mediaIndex: 0 },
-          { label: "Negativo", title: "Sobre fondo oscuro.", description: "La versión invertida conserva la silueta y la lectura del símbolo.", mediaIndex: 1 }
-        ]
-      },
-      category: "Branding",
-      categories: ["Branding"],
-      context: "Identidad visual / Manual de marca",
-      year: "2026",
-      summary:
-        "Sistema visual para Napoly Barbershop con el isotipo en positivo y negativo y un manual de marca que podés hojear en línea.",
-      overview:
-        "Proyecto de branding orientado a definir una base visual clara para Napoly Barbershop, mostrando el isotipo y una guía de uso resumida en formato editorial.",
-      objective:
-        "Presentar una identidad visual consistente para la barbería y ordenar sus criterios básicos de aplicación dentro de un manual de marca.",
-      challenge:
-        "La pieza debía transmitir carácter y prolijidad, sosteniendo una estética sobria y fácilmente reconocible para futuras aplicaciones de marca.",
-      process: [
-        "Definición del isotipo principal y de sus versiones sobre fondo claro y oscuro.",
-        "Organización de una presentación editorial para resumir lineamientos de identidad en un documento legible.",
-        "Ajuste de contraste, presencia visual y consistencia general entre símbolo, fondo y sistema.",
-        "Preparación del manual en PDF y de los archivos visuales listos para portfolio."
-      ],
-      tools: ["Branding", "Identidad visual", "Diseño editorial"],
-      deliverables: [
-        "Isotipo principal",
-        "Versión positiva y negativa",
-        "Manual de marca en PDF",
-        "Presentación visual para portfolio"
-      ],
-      outcome:
-        "El proyecto deja una base de identidad clara para Napoly Barbershop, con un isotipo reconocible y un documento que ordena visualmente su uso.",
-      learnings:
-        "En branding, incluso una pieza breve gana valor cuando el sistema se muestra con criterio, contraste y una documentación visual ordenada.",
-      accent: {
-        start: "#efe8df",
-        end: "#cfbeb0",
-        label: "Sistema de marca"
-      },
-      cover: {
-        src: "assets/projects/branding/napoly-barbershop-manual/cover/cover.png",
-        position: "center center",
-        tint: "rgba(10, 10, 10, 0.02)",
-        shadow: "rgba(10, 10, 10, 0.16)"
-      },
-      media: [
-        {
-          type: "visual",
-          title: "Isotipo sobre fondo claro",
-          image: "assets/projects/branding/napoly-barbershop-manual/images/isotipo-negro-fondo-blanco.png",
-          description:
-            "Versión principal del isotipo presentada sobre fondo claro para mostrar lectura, peso visual y definición de la marca."
-        },
-        {
-          type: "visual",
-          title: "Isotipo sobre fondo oscuro",
-          image: "assets/projects/branding/napoly-barbershop-manual/images/isotipo-blanco-fondo-negro.png",
-          description:
-            "Aplicación invertida del isotipo para validar contraste y consistencia de marca en superficies oscuras."
-        },
-        {
-          type: "book",
-          title: "Manual de marca de Napoly Barbershop",
-          width: 1680,
-          height: 1188,
-          pages: Array.from({ length: 25 }, (_, index) =>
-            `assets/projects/branding/napoly-barbershop-manual/docs/pages/pagina-${String(index + 1).padStart(2, "0")}.jpg`
-          ),
-          description:
-            "Hojeá el sistema visual y sus aplicaciones sin salir del proyecto."
-        }
-      ]
-    },
-    {
-      id: "motion-launch",
-      title: "Napoly Barbershop | Animación de isotipo",
+      title: "Napoly Barbershop",
       experience: {
         theme: "napoly-motion",
-        eyebrow: "Motion branding / After Effects",
+        showCover: false,
+        tourLink: "Ver animaciones",
+        eyebrow: "Identidad visual y motion",
         headline: "La identidad, en movimiento.",
-        introduction: "Dos animaciones breves del mismo isotipo exploran distintas cadencias de presentación para Napoly Barbershop.",
-        role: "Animación del isotipo y edición de ritmo",
-        format: "Motion graphics · After Effects",
-        deliverable: "Dos animaciones exportadas en video",
+        introduction: "Diseñé un isotipo para Napoly Barbershop, documenté sus usos y exploré dos maneras de presentarlo en movimiento.",
+        role: "Diseño de isotipo, manual y animación",
+        format: "Identidad visual · Motion graphics",
+        deliverable: "Isotipo, manual y dos animaciones",
         tourTitle: "Un símbolo, dos cadencias.",
         tourDescription: "Elegí una versión y reproducila para comparar el ritmo.",
         thinkingTitle: "El ritmo también comunica carácter.",
@@ -671,33 +586,34 @@
           { label: "Secundaria", title: "Otra cadencia, el mismo símbolo.", description: "La segunda versión prueba un ritmo distinto sin cambiar la identidad visual.", mediaIndex: 1 }
         ]
       },
-      category: "Motion",
+      category: "Branding",
       categories: ["Motion", "Branding"],
-      context: "After Effects / Napoly Barbershop",
+      context: "Identidad visual / Motion",
       year: "2026",
       summary:
-        "Animación breve del isotipo creada para Napoly Barbershop, enfocada en presencia de marca, ritmo visual y una entrada limpia y reconocible.",
+        "Identidad visual con un isotipo en positivo y negativo, dos animaciones y un manual de marca interactivo.",
       overview:
-        "Proyecto motion desarrollado para Napoly Barbershop, pensado para presentar el isotipo de la barbería con una ejecución sobria, actual y orientada a branding.",
+        "Sistema de identidad para una barbería, con criterios de aplicación y dos piezas de presentación animadas.",
       objective:
-        "Construir una animación corta y precisa que refuerce la identidad visual de Napoly Barbershop y funcione como pieza de presentación de marca.",
+        "Crear un isotipo reconocible en distintos fondos y trasladar su carácter a dos animaciones breves.",
       challenge:
-        "La pieza debía transmitir carácter, estilo y profesionalismo, manteniendo una estética limpia y una lectura clara del isotipo en pocos segundos.",
+        "Mantener la legibilidad del isotipo tanto en aplicaciones estáticas como en secuencias de pocos segundos.",
       process: [
+        "Diseño del isotipo en positivo y negativo y documentación de sus usos en el manual.",
         "Definición del comportamiento del isotipo de Napoly Barbershop y del timing general de entrada, pausa y salida.",
         "Construcción de la secuencia principal en After Effects con foco en limpieza, ritmo y presencia de marca.",
         "Desarrollo de una segunda variante para explorar otra cadencia visual dentro del mismo sistema.",
         "Ajuste final de transiciones, velocidad y exportación para presentación digital y portfolio."
       ],
-      tools: ["After Effects", "Motion graphics básico", "Branding"],
+      tools: ["After Effects", "Identidad visual", "Diseño editorial"],
       deliverables: [
         "Animación principal del isotipo",
         "Animación secundaria",
-        "Portada visual",
-        "Exportes listos para portfolio"
+        "Isotipo en positivo y negativo",
+        "Manual de marca"
       ],
       outcome:
-        "El resultado presenta la identidad de Napoly Barbershop en movimiento con una ejecución sobria, precisa y pensada para reforzar el reconocimiento de marca.",
+        "Un sistema de marca con aplicaciones claras, un manual de uso y dos animaciones que le dan ritmos distintos al mismo símbolo.",
       learnings:
         "En motion branding, el impacto no depende de sumar efectos sino de controlar tiempos, energía y legibilidad para que la marca se perciba con claridad.",
       accent: {
@@ -727,6 +643,31 @@
           poster: "assets/projects/motion/isotipo-animado/cover/cover.png",
           description:
             "Segunda variante del movimiento para complementar el caso y mostrar otra resolución visual de la identidad de Napoly Barbershop."
+        },
+        {
+          type: "visual",
+          title: "Isotipo sobre fondo claro",
+          image: "assets/projects/branding/napoly-barbershop-manual/images/isotipo-negro-fondo-blanco.png",
+          description:
+            "Versión principal del isotipo presentada sobre fondo claro para mostrar lectura, peso visual y definición de la marca."
+        },
+        {
+          type: "visual",
+          title: "Isotipo sobre fondo oscuro",
+          image: "assets/projects/branding/napoly-barbershop-manual/images/isotipo-blanco-fondo-negro.png",
+          description:
+            "Aplicación invertida del isotipo para validar contraste y consistencia de marca en superficies oscuras."
+        },
+        {
+          type: "book",
+          title: "Manual de marca de Napoly Barbershop",
+          width: 1680,
+          height: 1188,
+          pages: Array.from({ length: 25 }, (_, index) =>
+            `assets/projects/branding/napoly-barbershop-manual/docs/pages/pagina-${String(index + 1).padStart(2, "0")}.jpg`
+          ),
+          description:
+            "Hojeá el sistema visual y sus aplicaciones sin salir del proyecto."
         }
       ]
     },

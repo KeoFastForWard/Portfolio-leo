@@ -95,41 +95,39 @@
         <path class="bg-line bg-line-six" fill="none" stroke="#e1f1ff" stroke-opacity="0.68" stroke-width="1.78" d="M1174 -120C1060 318 280 278 230 730C178 1192 1182 1148 1194 1678C1206 2058 476 2010 360 2480" />
       </svg>
 
-      <header class="site-header">
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-expanded="false"
-          aria-controls="main-nav"
-          data-nav-toggle
-        >
-          Menú
-        </button>
-
-        <nav class="site-nav" id="main-nav" data-site-nav>
-          <a href="#inicio">Inicio</a>
-          <a href="#proyectos">Proyectos</a>
-          <a href="#sobre-mi">Sobre mí</a>
-          <a href="#trayectoria">Trayectoria</a>
-          <a href="#habilidades">Habilidades</a>
-          <a href="#contacto">Contacto</a>
-
-          <button class="theme-toggle theme-toggle-mobile" type="button" data-theme-toggle aria-pressed="false" aria-label="Activar modo oscuro">
-            <span class="theme-toggle-copy">
-              <span class="theme-toggle-title" data-theme-title>Modo oscuro</span>
-              <span class="theme-toggle-subtitle">Cambiar apariencia</span>
-            </span>
-            <span class="theme-toggle-switch" aria-hidden="true">
-              <span class="theme-toggle-knob"></span>
-            </span>
-          </button>
+      <header class="portfolio-dock" data-portfolio-dock>
+        <nav class="dock-nav" aria-label="Navegación principal">
+          <a href="#inicio" title="Inicio" aria-current="location">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10 12 3l9 7v10h-6v-6H9v6H3Z"/></svg>
+            <span>Inicio</span>
+          </a>
+          <a href="#proyectos" title="Proyectos">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/></svg>
+            <span>Proyectos</span>
+          </a>
+          <a href="#sobre-mi" title="Sobre mí">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2 M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/></svg>
+            <span>Sobre mí</span>
+          </a>
+          <a href="#trayectoria" title="Trayectoria">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18v13H3zM8 7V4h8v3M3 12h18M10 12v2h4v-2"/></svg>
+            <span>Trayectoria</span>
+          </a>
+          <a href="#habilidades" title="Habilidades">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4m0 12v4M2 12h4m12 0h4M5 5l3 3m8 8 3 3M5 19l3-3m8-8 3-3 M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+            <span>Habilidades</span>
+          </a>
+          <a href="#contacto" title="Contacto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 6l9 7 9-7"/></svg>
+            <span>Contacto</span>
+          </a>
         </nav>
-
-        <button class="theme-toggle theme-toggle-desktop" type="button" data-theme-toggle aria-pressed="false" aria-label="Activar modo oscuro">
-          <span class="theme-toggle-label" data-theme-label>Oscuro</span>
-          <span class="theme-toggle-switch" aria-hidden="true">
-            <span class="theme-toggle-knob"></span>
-          </span>
+        <button class="theme-toggle dock-theme" type="button" data-theme-toggle aria-pressed="false" aria-label="Activar modo oscuro">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path class="dock-moon" d="M20 15a8.6 8.6 0 0 1-11-11 8.6 8.6 0 1 0 11 11Z"/>
+            <path class="dock-sun" d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l2 2m10 10 2 2M5 19l2-2M17 7l2-2 M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/>
+          </svg>
+          <span data-theme-label>Oscuro</span>
         </button>
       </header>
 

@@ -60,13 +60,12 @@
 .design-pointer-light { position: fixed; top: 0; left: 0; width: 220px; height: 220px; border-radius: 50%; z-index: 999; pointer-events: none; contain: strict; opacity: 0; transform: translate3d(-300px,-300px,0); background: radial-gradient(circle,rgba(188,207,238,.11) 0%,rgba(188,207,238,.055) 28%,rgba(188,207,238,.016) 52%,transparent 72%); transition: opacity 220ms ease-out; }
 [data-theme="dark"] .design-pointer-light { background: radial-gradient(circle,rgba(230,239,255,.075) 0%,rgba(218,232,253,.035) 30%,rgba(218,232,253,.012) 52%,transparent 72%); }
 .design-pointer-light[data-visible="true"] { opacity: 1; }
-.design-pointer-light[data-visible="true"][data-over-project="true"] { opacity: .4; }
 .project-card > button { -webkit-user-select: none; user-select: none; }
 .project-card .experience-card-art { -webkit-user-drag: none; }
 .project-card-shell { position: relative; }
-.project-card-shell::after { content: ''; position: absolute; top: 0; left: 0; width: 440px; height: 440px; z-index: 5; pointer-events: none; opacity: 0; transform: translate3d(calc(var(--project-light-x,0px) - 50%),calc(var(--project-light-y,0px) - 50%),0); background: radial-gradient(circle,rgba(255,255,255,.18) 0%,rgba(225,235,251,.09) 28%,rgba(225,235,251,.024) 52%,transparent 72%); transition: opacity 240ms ease-out; }
+.project-card-shell::after { content: ''; position: absolute; top: 36%; left: 50%; width: 440px; height: 440px; z-index: 5; pointer-events: none; opacity: 0; transform: translate3d(-50%,-50%,0); background: radial-gradient(circle,rgba(255,255,255,.18) 0%,rgba(225,235,251,.09) 28%,rgba(225,235,251,.024) 52%,transparent 72%); transition: opacity 240ms ease-out; }
 .project-card-shell.is-pointer-lit::after { opacity: .65; }
-.project-card-shell.is-pointer-dragging::after { opacity: 1; }
+.project-card-shell.is-pointer-dragging::after { top: 0; left: 0; opacity: 1; transform: translate3d(calc(var(--project-light-x,0px) - 50%),calc(var(--project-light-y,0px) - 50%),0); }
 body.modal-open .design-tour-layer, body.modal-open .design-pointer-light { visibility: hidden; }
 body.modal-open .project-card-shell::after { opacity: 0; }
 @media (max-width: 680px) {

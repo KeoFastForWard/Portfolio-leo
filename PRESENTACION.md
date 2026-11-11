@@ -79,15 +79,15 @@ Vértice Motors y Órbita utilizan las portadas PDF entregadas por Leonel el
 las portadas anteriores permanecen conservados.
 
 `project-experiences.js` y `project-experiences.css` comparten la estructura de
-los siete casos sin sustituir las animaciones globales. El campo `experience`
+los seis casos sin sustituir las animaciones globales. El campo `experience`
 define la identidad visual, la introducción y qué imágenes o videos destacar.
 
 - Vértice: tonos acero, estructura lineal, trazos de velocidad y mockup de navegador.
 - Órbita: fondo oscuro, luz cobriza, anillos y un punto animado sobre una elipse.
 - Nike Vision: paleta neutra con acento deportivo y ficha de producto sin recortar.
 - Pulso: marco de teléfono y recorrido por feed, perfil y chat.
-- Napoly: dos aplicaciones del isotipo, un libro interactivo con las 25 páginas
-  del manual y un caso de motion que alterna entre dos versiones de video.
+- Napoly: un solo caso de identidad que abre con dos versiones de video y reúne
+  las aplicaciones del isotipo y las 25 páginas del manual interactivo.
 - Mastantuono: afiche cuadrado a tamaño completo y sin repetir la portada.
 - Los recorridos con varias vistas usan pestañas operables por teclado. Las
   vistas fijas tienen inclinación sutil con mouse; los videos no se inclinan.

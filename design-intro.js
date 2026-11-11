@@ -160,12 +160,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let point = null;
     let frame = null;
     let activeProject = null;
+    let activeCover = null;
     let nativeDragging = false;
     const blocked = () => currentIntro || document.hidden || document.body.classList.contains('modal-open');
-    function selectProject(project) {
+    function selectProject(project, cover = null) {
       if (project === activeProject) return;
       activeProject?.classList.remove('is-pointer-lit', 'is-pointer-dragging');
+      activeCover?.style.removeProperty('transform');
       activeProject = project;
+      activeCover = cover;
     }
     const clear = () => {
       if (frame !== null) cancelAnimationFrame(frame);
@@ -173,7 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
       point = null;
       nativeDragging = false;
       light.dataset.visible = 'false';
-      light.dataset.overProject = 'false';
       selectProject(null);
     };
     function render() {
@@ -184,16 +186,26 @@ document.addEventListener('DOMContentLoaded', () => {
       // Hit-test coordinates instead of event.target so pointer capture during a drag
       // cannot leave the light attached to the previous card.
       const project = document.elementFromPoint(x, y)?.closest('.project-card-shell') || null;
+      const cover = project === activeProject ? activeCover : project?.querySelector('.experience-card-art');
       const rect = project?.getBoundingClientRect();
-      const localX = rect?.width ? (x - rect.left) * project.offsetWidth / rect.width : 0;
-      const localY = rect?.height ? (y - rect.top) * project.offsetHeight / rect.height : 0;
-      selectProject(project);
-      light.style.transform = `translate3d(${x - 110}px, ${y - 110}px, 0)`;
-      light.dataset.visible = 'true';
-      light.dataset.overProject = String(Boolean(project));
+      const relative = (value, start, size) => Math.max(0, Math.min(1, (value - start) / size));
+      const nx = rect?.width ? relative(x, rect.left, rect.width) : .5;
+      const ny = rect?.height ? relative(y, rect.top, rect.height) : .5;
+      const shiftX = cover ? (nx * 2 - 1) * Math.min(7, cover.clientWidth * .022) : 0;
+      const shiftY = cover ? (ny * 2 - 1) * Math.min(5, cover.clientHeight * .022) : 0;
+      const dragPosition = dragging && project ? [nx * project.offsetWidth, ny * project.offsetHeight] : null;
+      selectProject(project, cover);
+      if (!project) light.style.transform = `translate3d(${x - 110}px, ${y - 110}px, 0)`;
+      const showHalo = String(!project);
+      if (light.dataset.visible !== showHalo) light.dataset.visible = showHalo;
+      if (cover) {
+        cover.style.transform = `translate3d(${shiftX.toFixed(2)}px, ${shiftY.toFixed(2)}px, 0) scale(1.05)`;
+      }
       if (project) {
-        project.style.setProperty('--project-light-x', `${localX.toFixed(1)}px`);
-        project.style.setProperty('--project-light-y', `${localY.toFixed(1)}px`);
+        if (dragPosition) {
+          project.style.setProperty('--project-light-x', `${dragPosition[0].toFixed(1)}px`);
+          project.style.setProperty('--project-light-y', `${dragPosition[1].toFixed(1)}px`);
+        }
         project.classList.add('is-pointer-lit');
         project.classList.toggle('is-pointer-dragging', dragging);
       }
@@ -210,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (event.pointerType !== 'mouse') { clear(); return; }
       update(event.clientX, event.clientY, Boolean(event.buttons & 1));
     }
-    // One small halo, one active card, and at most one queued frame. No idle loop.
+    // The halo and cover share one hit test and one queued frame.
     document.addEventListener('pointermove', onPointer, { passive: true });
     document.addEventListener('pointerdown', onPointer, { passive: true });
     document.addEventListener('pointerup', onPointer, { passive: true });

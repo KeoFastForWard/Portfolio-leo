@@ -51,11 +51,6 @@ desktopViewportQuery.addEventListener("change", syncMotionMode);
 
 let immersiveMotionBooted = false;
 let pointerDepthBooted = false;
-let headerScrollBound = false;
-let headerIsHidden = false;
-let headerVisibilityTween = null;
-let lastScrollY = 0;
-let scrollTicking = false;
 let backgroundGlintFrame = null;
 let activeProjectExperience = null;
 
@@ -299,9 +294,7 @@ function bindEvents() {
     });
   }
 
-  document.querySelectorAll(".site-nav a").forEach((link) => {
-    link.addEventListener("click", closeMobileNav);
-  });
+  setupDockLocation();
 }
 
 function handleDocumentClick(event) {
@@ -343,9 +336,6 @@ function handleDocumentClick(event) {
     return;
   }
 
-  if (event.target.closest("[data-nav-toggle]")) {
-    toggleMobileNav();
-  }
 }
 
 function initTheme() {
@@ -512,7 +502,6 @@ function openProject(projectId) {
   resetProjectModalScroll(modal);
   modal.hidden = false;
   document.body.classList.add("modal-open");
-  showHeader(true);
   resetProjectModalScroll(modal);
   prepareProjectMedia(modal);
   if (project.experience && window.ProjectExperiences) {
@@ -899,27 +888,30 @@ function updateCurrentYear() {
   }
 }
 
-function toggleMobileNav() {
-  const header = document.querySelector(".site-header");
-  const toggle = document.querySelector("[data-nav-toggle]");
-  if (!header || !toggle) return;
-
-  const isOpen = header.classList.toggle("is-open");
-  toggle.setAttribute("aria-expanded", String(isOpen));
-
-  if (isOpen) {
-    showHeader(true);
-  }
-}
-
-function closeMobileNav() {
-  const header = document.querySelector(".site-header");
-  const toggle = document.querySelector("[data-nav-toggle]");
-  if (!header || !toggle) return;
-
-  header.classList.remove("is-open");
-  toggle.setAttribute("aria-expanded", "false");
-  showHeader(true);
+function setupDockLocation() {
+  const entries = [...document.querySelectorAll("[data-portfolio-dock] a")].map(link => ({
+    link, section: document.querySelector(link.getAttribute("href"))
+  })).filter(entry => entry.section);
+  let frame = null;
+  let current = entries.find(({ link }) => link.hasAttribute("aria-current"));
+  const update = () => {
+    frame = null;
+    const marker = window.innerHeight * 0.4;
+    let active = entries[0];
+    for (const entry of entries) {
+      if (entry.section.getBoundingClientRect().top <= marker) active = entry;
+    }
+    if (active === current) return;
+    current?.link.removeAttribute("aria-current");
+    active?.link.setAttribute("aria-current", "location");
+    current = active;
+  };
+  const schedule = () => {
+    if (frame === null) frame = window.requestAnimationFrame(update);
+  };
+  window.addEventListener("scroll", schedule, { passive: true });
+  window.addEventListener("resize", schedule, { passive: true });
+  update();
 }
 
 function initAnimations() {
@@ -1008,8 +1000,6 @@ function initImmersiveMotion() {
 
   immersiveMotionBooted = true;
 
-  setupHeaderPolish();
-  setupHeaderAutoHide();
   setupHeroScrollScenes();
   setupSectionScrollScenes();
   setupPanelRevealScenes();
@@ -1017,153 +1007,6 @@ function initImmersiveMotion() {
   setupPointerDepth();
 
   ScrollTrigger.refresh();
-}
-
-function setupHeaderPolish() {
-  const header = document.querySelector(".site-header");
-  if (!header) return;
-
-  gsap.to(header, {
-    backgroundColor: "rgba(255, 255, 255, 0.9)",
-    boxShadow: "0 22px 50px rgba(17, 18, 20, 0.08)",
-    borderColor: "rgba(255, 255, 255, 0.96)",
-    ease: "none",
-    scrollTrigger: {
-      id: "header-polish",
-      start: 0,
-      end: "+=260",
-      scrub: 1
-    }
-  });
-}
-
-function setupHeaderAutoHide() {
-  if (headerScrollBound) return;
-  headerScrollBound = true;
-
-  const header = document.querySelector(".site-header");
-  if (!header) return;
-
-  lastScrollY = window.scrollY;
-
-  const updateHeaderState = () => {
-    const currentScroll = window.scrollY;
-    const isDesktopHeader = window.matchMedia("(min-width: 781px)").matches;
-    const trajectorySection = document.querySelector("#trayectoria");
-    const desktopHideStart =
-      trajectorySection instanceof HTMLElement
-        ? Math.max(1080, trajectorySection.offsetTop - 140)
-        : 1080;
-    const headerRevealZone = isDesktopHeader ? 72 : 24;
-    const headerHideStart = isDesktopHeader ? desktopHideStart : 72;
-    const hideDelta = isDesktopHeader ? 18 : 8;
-    const showDelta = isDesktopHeader ? 9 : 5;
-
-    if (document.body.classList.contains("modal-open") || header.classList.contains("is-open")) {
-      showHeader(true);
-      lastScrollY = currentScroll;
-      scrollTicking = false;
-      return;
-    }
-
-    if (currentScroll <= headerRevealZone) {
-      showHeader(true);
-      lastScrollY = currentScroll;
-      scrollTicking = false;
-      return;
-    }
-
-    if (currentScroll < headerHideStart) {
-      showHeader();
-      lastScrollY = currentScroll;
-      scrollTicking = false;
-      return;
-    }
-
-    if (currentScroll > lastScrollY + hideDelta) {
-      hideHeader();
-    } else if (currentScroll < lastScrollY - showDelta) {
-      showHeader();
-    }
-
-    lastScrollY = currentScroll;
-    scrollTicking = false;
-  };
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (!scrollTicking) {
-        window.requestAnimationFrame(updateHeaderState);
-        scrollTicking = true;
-      }
-    },
-    { passive: true }
-  );
-}
-
-function showHeader(immediate = false) {
-  const header = document.querySelector(".site-header");
-  if (!header) return;
-
-  headerIsHidden = false;
-  header.classList.remove("is-hidden");
-
-  if (immediate && window.gsap) {
-    headerVisibilityTween?.kill();
-    gsap.set(header, {
-      y: 0,
-      autoAlpha: 1,
-      scale: 1,
-      filter: "blur(0px)",
-      clearProps: "transform,opacity,filter,visibility"
-    });
-    return;
-  }
-
-  if (window.gsap) {
-    headerVisibilityTween?.kill();
-    headerVisibilityTween = gsap.to(header, {
-      y: 0,
-      autoAlpha: 1,
-      scale: 1,
-      filter: "blur(0px)",
-      duration: 0.86,
-      ease: "power2.out",
-      overwrite: "auto",
-      onStart: () => {
-        header.classList.remove("is-hidden");
-      }
-    });
-  }
-}
-
-function hideHeader() {
-  const header = document.querySelector(".site-header");
-  if (!header) return;
-
-  if (headerIsHidden) return;
-
-  headerIsHidden = true;
-
-  if (window.gsap) {
-    headerVisibilityTween?.kill();
-    headerVisibilityTween = gsap.to(header, {
-      y: -18,
-      autoAlpha: 0,
-      scale: 0.992,
-      filter: "blur(14px)",
-      duration: 1.12,
-      ease: "power2.out",
-      overwrite: "auto",
-      onComplete: () => {
-        header.classList.add("is-hidden");
-      }
-    });
-    return;
-  }
-
-  header.classList.add("is-hidden");
 }
 
 function setupHeroScrollScenes() {

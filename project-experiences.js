@@ -19,7 +19,7 @@ window.ProjectExperiences = (() => {
           <p class="experience-eyebrow">${experience.eyebrow} <span>${project.category} · ${project.year}</span></p>
           <div class="experience-intro-grid">
             <div><p class="experience-name">${project.title}</p><h2 id="project-modal-title">${experience.headline}</h2></div>
-            <div class="experience-intro-aside"><p>${experience.introduction}</p><a href="#experience-tour" data-experience-jump>Explorar el diseño <span aria-hidden="true">↓</span></a>${manual ? '<a href="#brand-book" data-experience-jump>Hojear el manual <span aria-hidden="true">↓</span></a>' : ''}<button class="experience-motion-toggle" type="button" data-case-motion aria-pressed="true">Pausar movimiento</button></div>
+            <div class="experience-intro-aside"><p>${experience.introduction}</p><a href="#experience-tour" data-experience-jump>${experience.tourLink || 'Explorar el diseño'} <span aria-hidden="true">↓</span></a>${manual ? '<a href="#brand-book" data-experience-jump>Hojear el manual <span aria-hidden="true">↓</span></a>' : ''}<button class="experience-motion-toggle" type="button" data-case-motion aria-pressed="true">Pausar movimiento</button></div>
           </div>
           <dl class="experience-facts">
             <div><dt>Mi aporte</dt><dd>${experience.role || project.presentation.role}</dd></div>
@@ -29,7 +29,7 @@ window.ProjectExperiences = (() => {
         </header>
 
         <section class="experience-tour" id="experience-tour" aria-labelledby="tour-heading" data-case-reveal>
-          <div class="experience-section-label"><span>${cosmos ? 'El recorrido' : 'Diseño en detalle'}</span><span aria-hidden="true">${cosmos ? '✳' : '↗'}</span></div>
+          <div class="experience-section-label"><span>${manual && hasVideo ? 'Motion de marca' : cosmos ? 'El recorrido' : 'Diseño en detalle'}</span><span aria-hidden="true">${cosmos ? '✳' : '↗'}</span></div>
           <div class="experience-tour-heading"><h3 id="tour-heading">${experience.tourTitle || (cosmos ? 'Elegí tu próxima órbita.' : 'Cada vista tiene una función.')}</h3>${experience.tourDescription ? `<p>${experience.tourDescription}</p>` : ''}</div>
           ${hasTabs ? `<div class="experience-tabs" role="tablist" aria-label="Vistas de ${project.title}">
             ${chapters.map((chapter, index) => `<button type="button" role="tab" id="experience-tab-${index}" aria-selected="${index === 0}" aria-controls="experience-panel-${index}" tabindex="${index === 0 ? 0 : -1}" data-experience-tab="${index}">${chapter.label}</button>`).join('')}
@@ -64,7 +64,7 @@ window.ProjectExperiences = (() => {
           <div class="experience-media">${demos.map(item => item.type === 'book' ? renderBook(item) : mediaBlock(item, project)).join('')}</div>
         </section>` : ''}
 
-        ${rest.length ? `<section class="experience-gallery" data-case-reveal><div class="experience-section-label"><span>Más del proyecto</span><span aria-hidden="true">+</span></div><div class="experience-gallery-grid">${rest.map(item => mediaBlock(item, project)).join('')}</div></section>` : ''}
+        ${rest.length ? `<section class="experience-gallery" data-case-reveal><div class="experience-section-label"><span>${manual ? 'Aplicaciones del isotipo' : 'Más del proyecto'}</span><span aria-hidden="true">+</span></div><div class="experience-gallery-grid">${rest.map(item => mediaBlock(item, project)).join('')}</div></section>` : ''}
         <footer class="experience-outcome" data-case-reveal><p class="experience-eyebrow">Resultado de diseño</p><h3>${project.outcome}</h3><div><span>Lo que me llevo</span><p>${project.learnings}</p></div><p class="experience-tools">${project.tools.join(' / ')}</p><a href="#experience-tour" data-experience-jump>Volver al recorrido ↑</a></footer>
       </div>`;
   }
