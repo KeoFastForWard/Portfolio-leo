@@ -37,6 +37,8 @@
         } catch {}
 
         document.documentElement.dataset.theme = theme;
+        document.documentElement.classList.add("design-intro-pending");
+        window.setTimeout(() => document.documentElement.classList.remove("design-intro-pending"), 5000);
       })();
     </script>
     <link
@@ -44,6 +46,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="project-experiences.css" />
+    <link rel="stylesheet" href="design-intro.css" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -136,6 +140,10 @@
               <p class="hero-label">Portfolio seleccionado / 2026</p>
               <p class="hero-role" data-profile-role>Diseñador UX/UI | Diseño Gráfico</p>
               <h1 data-profile-name>Leonel Kunst</h1>
+              <div class="design-hero-tools">
+                <button type="button" data-design-mode aria-pressed="true">Modo diseño <span aria-hidden="true">↗</span></button>
+                <button type="button" data-replay-intro>Repetir entrada</button>
+              </div>
             </div>
 
             <div class="hero-support" data-reveal="up">
@@ -186,7 +194,7 @@
             <div class="section-copy">
               <h2>Una práctica visual clara, versátil y contemporánea.</h2>
               <p>
-                El portfolio está diseñado para transmitir criterio visual, orden, sensibilidad estética y una lectura profesional inmediata para reclutadores, clientes y estudios creativos.
+                Combino mi formación en diseño gráfico con investigación y prototipado para dar forma a experiencias digitales claras y con identidad.
               </p>
             </div>
           </div>
@@ -238,9 +246,9 @@
               <p class="section-label">Proyectos</p>
             </div>
             <div class="section-copy">
-              <h2>Proyectos pensados para verse como casos, no como cajas.</h2>
+              <h2>Trabajo seleccionado.</h2>
               <p>
-                La grilla prioriza imagen, categoría y contexto para que cada trabajo tenga más presencia, mejor jerarquía y una lectura más aspiracional.
+                Interfaces, identidades y piezas visuales. Conocé el reto de cada proyecto y explorá sus pantallas, recorridos y resultados de diseño.
               </p>
             </div>
           </div>
@@ -363,13 +371,11 @@
                 data-contact-form
                 action="https://formsubmit.co/leonelivankunst19@gmail.com"
                 method="POST"
-                target="contact-submit-frame"
                 accept-charset="UTF-8"
               >
                 <input type="hidden" name="_subject" value="Consulta desde portfolio | Leonel Kunst" />
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_replyto" value="" />
                 <input class="contact-honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" />
 
                 <label>
@@ -393,17 +399,8 @@
                 </label>
 
                 <button class="btn btn-primary" type="submit" data-contact-submit>Enviar consulta</button>
-                <p class="form-note" data-form-status>El formulario envía la consulta directamente desde la web.</p>
+                <p class="form-note" data-form-status role="status">El formulario envía la consulta directamente desde la web.</p>
               </form>
-
-              <iframe
-                name="contact-submit-frame"
-                title="Envío del formulario de contacto"
-                class="contact-submit-frame"
-                src="about:blank"
-                hidden
-                data-contact-frame
-              ></iframe>
             </article>
           </div>
         </section>
@@ -448,7 +445,9 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
     <script src="portfolio-data.js" defer></script>
+    <script src="project-experiences.js" defer></script>
     <script src="script.js" defer></script>
+    <script src="design-intro.js" defer></script>
   </body>
 </html>
 

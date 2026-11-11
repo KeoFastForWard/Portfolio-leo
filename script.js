@@ -54,10 +54,10 @@ let pointerDepthBooted = false;
 let headerScrollBound = false;
 let headerIsHidden = false;
 let headerVisibilityTween = null;
-let contactSubmitTimeout = null;
 let lastScrollY = 0;
 let scrollTicking = false;
 let backgroundGlintFrame = null;
+let activeProjectExperience = null;
 
 const heroRevealSelectors = [
   ".hero-label",
@@ -158,14 +158,14 @@ function renderProjects() {
         <p>Podés sumar nuevos casos desde <code>portfolio-data.js</code> cuando quieras ampliar el portfolio.</p>
       </div>
     `;
+    if (immersiveMotionBooted) window.ScrollTrigger?.refresh();
     return;
   }
 
   grid.innerHTML = visibleProjects
     .map((project, index) => createProjectCard(project, index))
     .join("");
-
-  animateRenderedProjects();
+  if (immersiveMotionBooted) window.ScrollTrigger?.refresh();
 }
 
 function getProjectSurfaceStyle(project) {
@@ -187,16 +187,17 @@ function getProjectSurfaceStyle(project) {
 
 function createProjectCard(project, index) {
   const number = String(index + 1).padStart(2, "0");
-  const thumbClass = project.cover?.src ? "project-thumb has-cover" : "project-thumb";
+  const thumbClass = project.cover?.src ? `project-thumb has-cover${project.experience ? " has-experience-art" : ""}` : "project-thumb";
 
   return `
-    <article class="project-card" data-reveal="up">
+    <article class="project-card ${project.experience ? `project-card--${project.experience.theme}` : ""}">
       <button type="button" data-project-trigger="${project.id}" aria-label="Abrir ${project.title}">
         <div class="project-card-shell">
           <div
             class="${thumbClass}"
             style="${getProjectSurfaceStyle(project)}"
           >
+            ${project.experience ? `<img class="experience-card-art" src="${project.cover.src}" alt="" loading="lazy" draggable="false" />` : ""}
             <div class="project-thumb-inner">
               <div class="project-thumb-top">
                 <span class="project-index">${number}</span>
@@ -217,6 +218,7 @@ function createProjectCard(project, index) {
             </div>
             <h3 class="project-title">${project.title}</h3>
             <p class="project-summary">${project.summary}</p>
+            ${project.presentation ? `<p class="project-contribution">${project.presentation.role}</p>` : ""}
             <div class="project-footer">
               <span class="project-tools">${project.tools.slice(0, 3).join(" / ")}</span>
               <span class="project-link">Ver caso</span>
@@ -295,17 +297,26 @@ function bindEvents() {
     form.addEventListener("submit", handleContactSubmit);
   }
 
-  const contactFrame = document.querySelector("[data-contact-frame]");
-  if (contactFrame instanceof HTMLIFrameElement) {
-    contactFrame.addEventListener("load", handleContactFrameLoad);
-  }
-
   document.querySelectorAll(".site-nav a").forEach((link) => {
     link.addEventListener("click", closeMobileNav);
   });
 }
 
 function handleDocumentClick(event) {
+  const caseLink = event.target.closest(".case-navigation a");
+  if (caseLink) {
+    const scroll = caseLink.closest(".modal-scroll");
+    const section = scroll?.querySelector(caseLink.getAttribute("href"));
+    if (scroll && section) {
+      event.preventDefault();
+      const top = scroll.scrollTop + section.getBoundingClientRect().top - scroll.getBoundingClientRect().top - 32;
+      scroll.scrollTo({ top, behavior: isMotionReduced() ? "auto" : "smooth" });
+      section.setAttribute("tabindex", "-1");
+      section.focus({ preventScroll: true });
+    }
+    return;
+  }
+
   if (event.target.closest("[data-theme-toggle]")) {
     toggleTheme();
     return;
@@ -406,10 +417,22 @@ function openProject(projectId) {
   const body = document.querySelector("[data-modal-body]");
 
   if (!modal || !hero || !body) return;
+  activeProjectExperience?.();
+  activeProjectExperience = null;
+  if (project.experience && window.ProjectExperiences) {
+    modal.dataset.experience = project.experience.theme;
+  } else {
+    delete modal.dataset.experience;
+  }
 
   hero.className = project.cover?.src ? "modal-hero has-cover" : "modal-hero";
   hero.setAttribute("style", getProjectSurfaceStyle(project));
-  hero.innerHTML = `
+  const useCaseCover = Boolean(project.presentation || modal.dataset.experience);
+  hero.classList.toggle("case-hero", useCaseCover);
+  hero.hidden = Boolean(modal.dataset.experience && project.experience.showCover === false);
+  hero.innerHTML = hero.hidden ? "" : useCaseCover && project.cover?.src
+    ? `<img class="case-cover-image" src="${project.cover.src}" alt="Portada de ${project.title}" />`
+    : `
     <div class="modal-hero-top">
       <span>${project.category}</span>
       <span>${project.context}</span>
@@ -424,7 +447,9 @@ function openProject(projectId) {
     </div>
   `;
 
-  body.innerHTML = `
+  body.innerHTML = project.experience && window.ProjectExperiences
+    ? window.ProjectExperiences.render(project, createMediaBlock)
+    : project.presentation ? createUXCaseStudy(project) : `
     <section class="modal-overview">
       <article class="modal-section">
         <h3>Descripción general</h3>
@@ -488,6 +513,9 @@ function openProject(projectId) {
   showHeader(true);
   resetProjectModalScroll(modal);
   prepareProjectMedia(modal);
+  if (project.experience && window.ProjectExperiences) {
+    activeProjectExperience = window.ProjectExperiences.mount(modal);
+  }
 
   const closeButton = modal.querySelector(".modal-close");
   if (closeButton) closeButton.focus();
@@ -499,6 +527,90 @@ function openProject(projectId) {
       { y: 0, autoAlpha: 1, scale: 1, duration: 0.42, ease: "power3.out" }
     );
   }
+}
+
+function createUXCaseStudy(project) {
+  const presentation = project.presentation;
+  // Keep demos before the gallery, without loading or duplicating extra media.
+  const demos = project.media.filter((item) => item.type === "video" || item.type === "embed");
+  const visuals = project.media.filter((item) => item.type !== "video" && item.type !== "embed");
+  const orderedDemos = [...demos.filter((item) => item.type === "video"), ...demos.filter((item) => item.type === "embed")];
+  const prototype = demos.find((item) => item.type === "embed" && item.embedUrl?.startsWith("https://embed.figma.com/"));
+  let prototypeLink = "";
+
+  if (prototype) {
+    const url = new URL(prototype.embedUrl);
+    url.hostname = "www.figma.com";
+    url.searchParams.delete("embed-host");
+    prototypeLink = `<a class="text-link" href="${url.href}" target="_blank" rel="noopener noreferrer">Abrir prototipo en Figma ↗</a>`;
+  }
+
+  return `
+    <header class="case-title-block">
+      <p class="project-badge">${project.category} · ${project.year}</p>
+      <h2 id="project-modal-title">${project.title}</h2>
+      <p>${project.summary}</p>
+    </header>
+    <section class="modal-section case-at-a-glance" aria-label="Ficha del proyecto">
+      <dl class="case-facts">
+        <div><dt>Mi aporte</dt><dd>${presentation.role}</dd></div>
+        <div><dt>Formato</dt><dd>${presentation.format}</dd></div>
+        <div><dt>Foco del proyecto</dt><dd>${presentation.focus}</dd></div>
+      </dl>
+      <nav class="case-navigation" aria-label="Dentro del proyecto">
+        ${demos.length ? `<a href="#case-demo">Explorar el recorrido</a>` : ""}
+        <a href="#case-process">Enfoque de diseño</a>
+        ${visuals.length ? `<a href="#case-visuals">Ver pantallas</a>` : ""}
+      </nav>
+    </section>
+
+    <section class="modal-overview">
+      <article class="modal-section">
+        <h3>El reto</h3>
+        <p>${project.challenge}</p>
+        <h3>Objetivo de diseño</h3>
+        <p>${project.objective}</p>
+      </article>
+      <article class="modal-section">
+        <h3>Contexto y alcance</h3>
+        <p>${project.overview}</p>
+        <p>${presentation.evidence}</p>
+        <div class="modal-tags">${project.tools.map((tool) => `<span>${tool}</span>`).join("")}</div>
+      </article>
+    </section>
+
+    ${orderedDemos.length ? `
+      <section class="modal-section case-section" id="case-demo" aria-labelledby="case-demo-title">
+        <div class="case-section-heading">
+          <div><h3 id="case-demo-title">Explorá cómo funciona</h3>
+          <p>${orderedDemos.some((item) => item.type === "video") ? "Mirá el recorrido en video o probá el prototipo a tu ritmo." : "Probá el recorrido en Figma. También podés abrirlo en otra pestaña."}</p></div>
+          ${prototypeLink}
+        </div>
+        <div class="case-demo-media">${orderedDemos.map((item) => createMediaBlock(item, project)).join("")}</div>
+      </section>` : ""}
+
+    <section class="modal-section case-section" id="case-process" aria-labelledby="case-process-title">
+      <h3 id="case-process-title">Enfoque de diseño</h3>
+      <ol class="case-process-list">${project.process.map((step) => `<li>${step}</li>`).join("")}</ol>
+    </section>
+
+    ${visuals.length ? `
+      <section class="modal-section case-section" id="case-visuals" aria-labelledby="case-visuals-title">
+        <h3 id="case-visuals-title">Pantallas y detalles</h3>
+        <div class="media-grid">${visuals.map((item) => createMediaBlock(item, project)).join("")}</div>
+      </section>` : ""}
+
+    <section class="modal-overview">
+      <article class="modal-section">
+        <h3>Resultado de diseño</h3><p>${project.outcome}</p>
+        <h3>Entregables</h3>
+        <ul class="modal-list">${project.deliverables.map((item) => `<li>${item}</li>`).join("")}</ul>
+      </article>
+      <article class="modal-section">
+        <h3>Reflexión</h3><p>${project.learnings}</p>
+      </article>
+    </section>
+  `;
 }
 
 function prepareProjectMedia(modal) {
@@ -514,6 +626,14 @@ function prepareProjectMedia(modal) {
 
     document.body.classList.add("video-performance-mode");
     stopBackgroundGlintMotion();
+  };
+
+  const restoreMotionAfterVideo = (event) => {
+    if (modal.hidden || !event.currentTarget.isConnected || videos.some((video) => !video.paused && !video.ended)) return;
+    if (document.body.classList.contains("video-performance-mode")) {
+      document.body.classList.remove("video-performance-mode");
+      setupBackgroundLineMotion();
+    }
   };
 
   videos.forEach((video) => {
@@ -533,6 +653,8 @@ function prepareProjectMedia(modal) {
 
     video.addEventListener("play", activate);
     video.addEventListener("playing", activate);
+    video.addEventListener("pause", restoreMotionAfterVideo);
+    video.addEventListener("ended", restoreMotionAfterVideo);
   });
 }
 
@@ -649,6 +771,8 @@ function createMediaBlock(item, project) {
 function closeProject() {
   const modal = document.querySelector("[data-project-modal]");
   if (!modal) return;
+  activeProjectExperience?.();
+  activeProjectExperience = null;
 
   modal.querySelectorAll(".media-video").forEach((video) => {
     video.pause();
@@ -675,106 +799,54 @@ async function handleContactSubmit(event) {
   event.preventDefault();
 
   const form = event.currentTarget;
-  if (!(form instanceof HTMLFormElement)) return;
-
+  if (!(form instanceof HTMLFormElement) || form.dataset.submitting === "true") return;
   const data = new FormData(form);
-  const name = String(data.get("nombre") || "").trim();
-  const email = String(data.get("email") || "").trim();
-  const message = String(data.get("mensaje") || "").trim();
 
-  if (!name || !email || !message) {
-    event.preventDefault();
-    setContactFormStatus(form, "error", "Completá nombre, email y mensaje antes de enviar.");
-    return;
-  }
-
-  const subjectInput = form.querySelector('input[name="_subject"]');
-  const replyToInput = form.querySelector('input[name="_replyto"]');
-
-  if (subjectInput instanceof HTMLInputElement) {
-    subjectInput.value = `Consulta desde portfolio | ${name}`;
-  }
-
-  if (replyToInput instanceof HTMLInputElement) {
-    replyToInput.value = email;
+  for (const field of ["nombre", "email", "mensaje"]) {
+    const value = String(data.get(field) || "").trim();
+    if (!value) {
+      setContactFormStatus(form, "error", "Completá nombre, email y mensaje antes de enviar.");
+      return;
+    }
+    data.set(field, value);
   }
 
   form.dataset.submitting = "true";
   setContactFormStatus(form, "sending", "Enviando consulta...");
   setContactFormDisabled(form, true);
 
-  window.clearTimeout(contactSubmitTimeout);
-  contactSubmitTimeout = window.setTimeout(() => {
-    if (form.dataset.submitting !== "true") return;
-
-    form.dataset.submitting = "false";
-    setContactFormDisabled(form, false);
-    setContactFormStatus(
-      form,
-      "error",
-      "No pude confirmar el envío. Probá de nuevo o escribime directo a leonelivankunst19@gmail.com."
-    );
-  }, 12000);
-
-  const requestBody = new FormData(form);
   const endpoint = form.action.replace("https://formsubmit.co/", "https://formsubmit.co/ajax/");
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), 12000);
+  const fallback = `Podés escribirme directamente a ${portfolioData.profile.email}.`;
 
   try {
     const response = await fetch(endpoint, {
       method: "POST",
-      headers: {
-        Accept: "application/json"
-      },
-      body: requestBody
+      headers: { Accept: "application/json" },
+      body: data,
+      signal: controller.signal
     });
 
-    let result = null;
-    try {
-      result = await response.json();
-    } catch {
-      result = null;
+    const result = await response.json();
+    if (/activat|confirm (?:your|the) (?:form|email)/i.test(result?.message || "")) {
+      setContactFormStatus(form, "error", `El formulario todavía requiere activación. ${fallback}`);
+      return;
     }
 
-    const sentSuccessfully =
-      response.ok && (result?.success === true || result?.success === "true");
-
-    if (!sentSuccessfully) {
-      throw new Error(typeof result?.message === "string" ? result.message : "No pude confirmar el envío.");
+    if (!response.ok || (result?.success !== true && result?.success !== "true")) {
+      throw new Error("FormSubmit did not confirm the submission");
     }
 
-    form.dataset.submitting = "false";
-    window.clearTimeout(contactSubmitTimeout);
-    setContactFormDisabled(form, false);
-    setContactFormStatus(form, "success", "Consulta enviada correctamente.");
+    setContactFormStatus(form, "success", "Consulta recibida por el servicio de envío.");
     form.reset();
   } catch {
-    try {
-      form.submit();
-    } catch {
-      form.dataset.submitting = "false";
-      window.clearTimeout(contactSubmitTimeout);
-      setContactFormDisabled(form, false);
-      setContactFormStatus(
-        form,
-        "error",
-        "No pude confirmar el envío. Probá de nuevo o escribime directo a leonelivankunst19@gmail.com."
-      );
-    }
+    setContactFormStatus(form, "error", `No pude confirmar el envío. ${fallback}`);
+  } finally {
+    window.clearTimeout(timeout);
+    form.dataset.submitting = "false";
+    setContactFormDisabled(form, false);
   }
-}
-
-function handleContactFrameLoad() {
-  const frame = document.querySelector("[data-contact-frame]");
-  const form = document.querySelector("[data-contact-form]");
-  if (!(frame instanceof HTMLIFrameElement) || !(form instanceof HTMLFormElement)) return;
-
-  if (form.dataset.submitting !== "true") return;
-
-  form.dataset.submitting = "false";
-  window.clearTimeout(contactSubmitTimeout);
-  setContactFormDisabled(form, false);
-  setContactFormStatus(form, "success", "Consulta enviada correctamente.");
-  form.reset();
 }
 
 function setContactFormDisabled(form, disabled) {
@@ -844,25 +916,6 @@ function initAnimations() {
     gsap.registerPlugin(ScrollTrigger);
   }
 
-  const header = document.querySelector(".site-header");
-  if (header) {
-    gsap.set(header, { y: -22, autoAlpha: 0 });
-  }
-
-  gsap.set(".hero-label, .hero-role", { y: 16, autoAlpha: 0 });
-  gsap.set(".hero-main h1", { y: 34, autoAlpha: 0 });
-  gsap.set(".hero-support > *", { y: 24, autoAlpha: 0 });
-  gsap.set(".hero-card", { y: 18, autoAlpha: 0, scale: 0.985 });
-
-  const introTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-  introTimeline
-    .to(".site-header", { y: 0, autoAlpha: 1, duration: 0.82 })
-    .to(".hero-label, .hero-role", { y: 0, autoAlpha: 1, duration: 0.54, stagger: 0.07 }, "-=0.44")
-    .to(".hero-main h1", { y: 0, autoAlpha: 1, duration: 0.88 }, "-=0.18")
-    .to(".hero-support > *", { y: 0, autoAlpha: 1, duration: 0.72, stagger: 0.08 }, "-=0.56")
-    .to(".hero-card", { y: 0, autoAlpha: 1, scale: 1, duration: 0.66, stagger: 0.08 }, "-=0.48");
-
   initAmbientMotion();
   initImmersiveMotion();
 }
@@ -875,6 +928,7 @@ function initHeroGlow() {
   heroTitle.setAttribute("data-glow", heroTitle.textContent.trim());
 
   const triggerGlow = () => {
+    if (!heroTitle.closest('.hero-main') || heroTitle.classList.contains('is-designing')) return;
     heroTitle.classList.remove("is-glowing");
     void heroTitle.offsetWidth;
     heroTitle.classList.add("is-glowing");
@@ -885,6 +939,7 @@ function initHeroGlow() {
   });
 
   window.setTimeout(triggerGlow, 1100);
+  document.addEventListener("portfolio:intro-end", triggerGlow);
 
   if (window.ScrollTrigger) {
     ScrollTrigger.create({
@@ -939,7 +994,6 @@ function initImmersiveMotion() {
   setupHeroScrollScenes();
   setupSectionScrollScenes();
   setupPanelRevealScenes();
-  setupProjectScrollScenes();
   setupBackgroundLineMotion();
   setupPointerDepth();
 
@@ -1182,7 +1236,7 @@ function setupSectionScrollScenes() {
 
 function setupPanelRevealScenes() {
   const elements = Array.from(
-    document.querySelectorAll("[data-reveal]:not(.section-intro):not(.project-card)")
+    document.querySelectorAll("[data-reveal]:not(.section-intro):not(.hero [data-reveal])")
   );
 
   elements.forEach((element, index) => {
@@ -1217,96 +1271,6 @@ function setupPanelRevealScenes() {
       }
     });
   });
-}
-
-function setupProjectScrollScenes() {
-  if (!window.ScrollTrigger) return;
-
-  killProjectTriggers();
-
-  const cards = Array.from(document.querySelectorAll(".project-card"));
-  cards.forEach((card, index) => {
-    const projectId =
-      card.querySelector("[data-project-trigger]")?.dataset.projectTrigger || `card-${index}`;
-    const shell = card.querySelector(".project-card-shell");
-    const thumb = card.querySelector(".project-thumb");
-    const body = card.querySelector(".project-body");
-
-    if (shell) {
-      gsap.set(shell, { y: 44, autoAlpha: 0, scale: 0.982, filter: "blur(12px)" });
-      ScrollTrigger.create({
-        id: `project-shell-${projectId}`,
-        trigger: card,
-        start: "top 84%",
-        once: true,
-        onEnter: () => {
-          gsap.to(shell, {
-            y: 0,
-            autoAlpha: 1,
-            scale: 1,
-            filter: "blur(0px)",
-            duration: 0.9,
-            ease: "power3.out",
-            overwrite: true
-          });
-        }
-      });
-    }
-
-    if (body) {
-      gsap.set(body, { y: 22, autoAlpha: 0 });
-      ScrollTrigger.create({
-        id: `project-body-${projectId}`,
-        trigger: card,
-        start: "top 82%",
-        once: true,
-        onEnter: () => {
-          gsap.to(body, {
-            y: 0,
-            autoAlpha: 1,
-            duration: 0.72,
-            ease: "power3.out",
-            delay: 0.12,
-            overwrite: true
-          });
-        }
-      });
-    }
-
-    if (thumb) {
-      gsap.to(thumb, {
-        yPercent: -6,
-        ease: "none",
-        scrollTrigger: {
-          id: `project-thumb-${projectId}`,
-          trigger: card,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1.12
-        }
-      });
-    }
-  });
-}
-
-function killProjectTriggers() {
-  if (!window.ScrollTrigger) return;
-
-  ScrollTrigger.getAll().forEach((trigger) => {
-    const id = trigger.vars && trigger.vars.id;
-    if (typeof id === "string" && id.startsWith("project-")) {
-      trigger.kill();
-    }
-  });
-}
-
-function animateRenderedProjects() {
-  if (isMotionReduced() || !window.gsap || !window.ScrollTrigger || !immersiveMotionBooted) {
-    return;
-  }
-
-  setupProjectScrollScenes();
-  ScrollTrigger.refresh();
 }
 
 function stopBackgroundGlintMotion() {
@@ -1468,7 +1432,7 @@ function setupPointerDepth() {
   pointerDepthBooted = true;
 
   gsap.utils
-    .toArray(".hero-card, .content-panel, .skill-group, .project-card-shell")
+    .toArray(".hero-card, .content-panel, .skill-group")
     .forEach((surface) => {
       surface.addEventListener("pointermove", (event) => {
         const bounds = surface.getBoundingClientRect();
@@ -1503,7 +1467,8 @@ function setupPointerDepth() {
 }
 
 function initFallbackReveal() {
-  const elements = document.querySelectorAll("[data-reveal], .project-card-shell, .project-body, .project-preview");
+  if (isMotionReduced()) return;
+  const elements = document.querySelectorAll("[data-reveal]:not(.hero [data-reveal])");
   if (!elements.length || !("IntersectionObserver" in window)) return;
 
   const observer = new IntersectionObserver(

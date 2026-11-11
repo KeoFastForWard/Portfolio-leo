@@ -110,6 +110,24 @@
         {
       id: "nike-vision",
       title: "Nike Vision",
+      experience: {
+        theme: "vision",
+        eyebrow: "Producto en primer plano",
+        headline: "De la primera mirada al detalle.",
+        introduction: "Una tienda conceptual donde la imagen abre el recorrido y la interfaz organiza el paso hacia la ficha de producto.",
+        tourTitle: "Dos escalas de una misma tienda.",
+        thinkingTitle: "De la imagen a la información.",
+        chapters: [
+          { label: "Inicio", title: "Primera impresión.", description: "La portada establece el tono visual y da protagonismo al producto sin ocultar la navegación.", mediaIndex: 1 },
+          { label: "Ficha de producto", title: "La información toma el relevo.", description: "La ficha completa muestra cómo cambia la jerarquía cuando la atención pasa de la marca al producto.", mediaIndex: 2 }
+        ]
+      },
+      presentation: {
+        role: "Investigación, diseño UI y prototipado",
+        format: "Web · Figma",
+        focus: "Producto, navegación y detalle de compra",
+        evidence: "Interfaz, video de recorrido y prototipo navegable."
+      },
       category: "UX/UI",
       categories:       [
         "UX/UI"
@@ -128,7 +146,7 @@
         "Definición del tono visual del sitio y de la relación entre producto, tipografía e imagen.",
         "Diseño de hero principal, navegación superior y módulos de producto.",
         "Exploración de pantallas de producto y variantes de presentación con foco comercial.",
-        "Refinamiento del prototipo y validación de jerarquías para una experiencia web fluida."
+        "Refinamiento del prototipo y revisión de las jerarquías visuales."
       ],
       tools:       [
         "Figma",
@@ -187,7 +205,24 @@
     },
     {
       id: "protodealership",
-      title: "ProtoDealership",
+      title: "Vértice Motors",
+      experience: {
+        theme: "motors",
+        eyebrow: "Precisión en cada interacción",
+        headline: "Diseño que pone el producto en movimiento.",
+        introduction: "Una experiencia de concesionaria digital que lleva la atención del vehículo al catálogo y sus detalles. Imagen, información y navegación comparten una misma dirección.",
+        chapters: [
+          { label: "Inicio", title: "El vehículo, en primer plano.", description: "La imagen presenta el producto; la navegación queda en una franja independiente para mantener una lectura clara.", mediaIndex: 1 },
+          { label: "Catálogo", title: "Explorar sin perder el foco.", description: "Modelo, color y selección conviven en una vista centrada en el vehículo.", mediaIndex: 2 },
+          { label: "Detalle", title: "De la imagen a la información.", description: "La ficha reúne las características y el precio antes de continuar el recorrido.", mediaIndex: 3 }
+        ]
+      },
+      presentation: {
+        role: "Investigación, diseño UI y prototipado",
+        format: "Web · Figma",
+        focus: "Presentación de vehículos y exploración del catálogo",
+        evidence: "Pantalla principal, catálogo y prototipo navegable."
+      },
       category: "UX/UI",
       categories:       [
         "UX/UI"
@@ -231,10 +266,10 @@
         label: "Concesionaria digital"
       },
       cover: {
-        src: "assets/projects/uxui/protodealership/cover/cover.png",
-        position: "68% center",
-        tint: "rgba(7, 10, 18, 0.12)",
-        shadow: "rgba(7, 10, 18, 0.74)"
+        src: "assets/projects/uxui/protodealership/cover/vertice-motors-cover.webp",
+        position: "center center",
+        tint: "rgba(0, 0, 0, 0)",
+        shadow: "rgba(0, 0, 0, 0)"
       },
       media:             [
         {
@@ -244,12 +279,12 @@
             "https://embed.figma.com/proto/PHevkRtgAuxpbFm0lmxbjK/ProtoDealership?page-id=0%3A1&node-id=7-168&viewport=301%2C700%2C0.27&scaling=contain&content-scaling=fixed&embed-host=leonel-portfolio",
           frameHeight: "46rem",
           description:
-            "Versión navegable del prototipo de ProtoDealership embebida dentro del portfolio para recorrer la experiencia web directamente desde el caso."
+            "Explorá la pantalla principal y el catálogo de Vértice Motors en el prototipo de Figma."
         },
         {
           type: "visual",
           title: "HUD",
-          image: "assets/projects/uxui/protodealership/images/hud-protodealership.png"
+          image: "assets/projects/uxui/protodealership/images/vertice-motors-home.webp"
         },
         {
           type: "visual",
@@ -285,7 +320,24 @@
     },
     {
       id: "protogalaxy",
-      title: "ProtoGalaxy",
+      title: "Órbita",
+      experience: {
+        theme: "cosmos",
+        eyebrow: "Una interfaz para explorar",
+        headline: "Un universo visual. Un recorrido claro.",
+        introduction: "Una exploración de diseño web donde la fotografía espacial construye la atmósfera y una navegación persistente conecta cada parte del recorrido.",
+        chapters: [
+          { label: "Inicio", title: "El comienzo de la exploración.", description: "Un paisaje inmersivo introduce el universo visual, con acciones destacadas sobre la imagen.", mediaIndex: 1 },
+          { label: "Galería", title: "La imagen guía el viaje.", description: "La galería da protagonismo a la fotografía y mantiene a mano las secciones principales.", mediaIndex: 3 },
+          { label: "Contacto", title: "Una salida reconocible.", description: "El contacto conserva el lenguaje visual de la experiencia sin abandonar su estructura de navegación.", mediaIndex: 5 }
+        ]
+      },
+      presentation: {
+        role: "Investigación, diseño UI y prototipado",
+        format: "Web · Figma",
+        focus: "Exploración visual y navegación entre secciones",
+        evidence: "Inicio, galería, contacto y prototipo navegable."
+      },
       category: "UX/UI",
       categories:       [
         "UX/UI"
@@ -329,10 +381,10 @@
         label: "Experiencia inmersiva"
       },
       cover: {
-        src: "assets/projects/uxui/protogalaxy/cover/cover.png",
+        src: "assets/projects/uxui/protogalaxy/cover/orbita-cover.webp",
         position: "center center",
-        tint: "rgba(5, 8, 18, 0.16)",
-        shadow: "rgba(5, 8, 18, 0.8)"
+        tint: "rgba(0, 0, 0, 0)",
+        shadow: "rgba(0, 0, 0, 0)"
       },
       media:             [
         {
@@ -342,7 +394,7 @@
             "https://embed.figma.com/proto/yzWBzgHpJ1EFDtV5vXr0Zp/ProtoGalaxy?page-id=0%3A1&node-id=1-2&viewport=260%2C224%2C0.06&scaling=contain&content-scaling=fixed&embed-host=leonel-portfolio",
           frameHeight: "46rem",
           description:
-            "Versión navegable del prototipo de ProtoGalaxy embebida dentro del portfolio para explorar el recorrido inmersivo desde el propio caso."
+            "Recorré el inicio, la galería y las secciones de Órbita en el prototipo de Figma."
         },
         {
           type: "visual",
@@ -373,7 +425,26 @@
     },
     {
       id: "protored",
-      title: "ProtoRed",
+      title: "Pulso",
+      experience: {
+        theme: "pulso",
+        eyebrow: "Una interfaz para conectar",
+        headline: "De mirar a conversar.",
+        introduction: "Un concepto de red social móvil que conecta el feed, el perfil y el chat sin perder continuidad entre pantallas.",
+        tourTitle: "El recorrido en la palma de la mano.",
+        thinkingTitle: "Una identidad que se sostiene entre vistas.",
+        chapters: [
+          { label: "Feed", title: "Un punto de partida familiar.", description: "El contenido ocupa el centro mientras la navegación mantiene al alcance las acciones principales.", mediaIndex: 1 },
+          { label: "Perfil", title: "Un espacio propio.", description: "El perfil reúne el contenido y la identidad de cada persona dentro del mismo sistema visual.", mediaIndex: 2 },
+          { label: "Chat", title: "Del contenido a la conversación.", description: "La vista de chat cambia el foco hacia el intercambio directo, sin salir del lenguaje de la app.", mediaIndex: 7 }
+        ]
+      },
+      presentation: {
+        role: "Investigación, diseño UI y prototipado",
+        format: "Mobile · Figma",
+        focus: "Feed, perfiles y conversaciones",
+        evidence: "Pantallas de la app y prototipo de interacción social."
+      },
       category: "UX/UI",
       categories:       [
         "UX/UI"
@@ -430,7 +501,7 @@
             "https://embed.figma.com/proto/RkhSqzdlB3IXr1fZ60lqep/ProtoRed?page-id=0%3A1&node-id=37-396&viewport=1087%2C666%2C0.37&scaling=scale-down&content-scaling=fixed&starting-point-node-id=37%3A396&embed-host=leonel-portfolio",
           frameHeight: "46rem",
           description:
-            "Versión navegable del prototipo de ProtoRed embebida dentro del portfolio para revisar flujo, vistas mobile e interacción social desde el caso."
+            "Explorá el feed, los perfiles y las conversaciones de Pulso en el prototipo de Figma."
         },
         {
           type: "visual",
@@ -495,122 +566,30 @@
       ]
     },
     {
-      id: "prototv",
-      title: "ProtoTV",
-      category: "UX/UI",
-      categories:       [
-        "UX/UI"
-      ],
-      context: "Sitio web UI",
-      year: "2024",
-      summary:
-        "Concepto de streaming con biblioteca visual, navegación por categorías y una experiencia pensada para explorar contenido.",
-      overview:
-        "Caso UX/UI para una plataforma de streaming orientado a exhibir organización de contenido, módulos visuales y experiencia de browsing.",
-      objective:
-        "Diseñar una interfaz de streaming clara, actual y entretenida, con foco en contenido destacado y navegación horizontal.",
-      challenge:
-        "La grilla debía verse atractiva y reconocible sin saturar la pantalla ni perder jerarquía entre secciones.",
-      process:       [
-        "Definición de navegación principal y categorías de contenido.",
-        "Diseño de módulos horizontales, estados de portadas y áreas destacadas.",
-        "Ajuste de contraste entre UI oscura, posters y acciones del usuario.",
-        "Prototipado de la experiencia general y refinamiento del layout final."
-      ],
-      tools:       [
-        "Figma",
-        "Diseño web",
-        "UI kit",
-        "Prototipado"
-      ],
-      deliverables:       [
-        "Home de streaming",
-        "Sistema de categorías",
-        "Grillas de contenido",
-        "Pantallas de reproducción",
-        "Prototipo interactivo en Figma"
-      ],
-      outcome:
-        "La propuesta resuelve una interfaz de streaming moderna, reconocible y lista para escalar hacia más vistas y funciones.",
-      learnings:
-        "La organización del contenido es tan importante como la estética cuando la experiencia depende de explorar rápido.",
-      accent: {
-        start: "#0c1016",
-        end: "#8f95a8",
-        label: "Interfaz de streaming"
-      },
-      cover: {
-        src: "assets/projects/uxui/prototv/cover/cover.png",
-        position: "center center",
-        tint: "rgba(7, 10, 18, 0.1)",
-        shadow: "rgba(7, 10, 18, 0.56)"
-      },
-      media:             [
-        {
-          type: "embed",
-          title: "Prototipo interactivo en Figma",
-          embedUrl:
-            "https://embed.figma.com/proto/m9QyksYlUIQ9oRZDibRemz/ProtoTV?page-id=1%3A6&node-id=56-1834&viewport=2092%2C795%2C0.11&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=56%3A1834&embed-host=leonel-portfolio",
-          frameHeight: "48rem",
-          description:
-            "Versión navegable del prototipo de ProtoTV embebida dentro del portfolio para recorrer la experiencia de streaming desde el propio caso."
-        },
-        {
-          type: "visual",
-          title: "Sign In",
-          image: "assets/projects/uxui/prototv/images/sign-in-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "Register",
-          image: "assets/projects/uxui/prototv/images/register-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "Choose Account",
-          image: "assets/projects/uxui/prototv/images/choose-account-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "Agree Perfil",
-          image: "assets/projects/uxui/prototv/images/agree-perfil-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "HUD Start",
-          image: "assets/projects/uxui/prototv/images/hud-start-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "HUD My List",
-          image: "assets/projects/uxui/prototv/images/hud-my-list-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "HUD Serie",
-          image: "assets/projects/uxui/prototv/images/hud-serie-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "HUD Films Presentation",
-          image: "assets/projects/uxui/prototv/images/hud-films-presentation-prototv.png"
-        },
-        {
-          type: "visual",
-          title: "HUD Series Presentation",
-          image: "assets/projects/uxui/prototv/images/hud-series-presentation-prototv.png"
-        }
-      ]
-    },
-    {
       id: "napoly-brand-manual",
       title: "Napoly Barbershop | Manual de marca",
+      experience: {
+        theme: "napoly-print",
+        eyebrow: "Identidad visual / Sistema de marca",
+        headline: "Un isotipo. Dos formas de aplicarlo.",
+        introduction: "La identidad de Napoly Barbershop se presenta en positivo y negativo, con un manual que reúne sus criterios de uso.",
+        role: "Diseño de isotipo y manual de marca",
+        format: "Identidad visual · Manual digital",
+        deliverable: "Isotipo en dos versiones y manual",
+        tourTitle: "El contraste también es identidad.",
+        tourDescription: "Alterná entre las dos aplicaciones del isotipo.",
+        thinkingTitle: "Un símbolo claro sobre cualquier fondo previsto.",
+        chapters: [
+          { label: "Positivo", title: "Sobre fondo claro.", description: "La versión oscura deja ver el contorno y el peso del isotipo con nitidez.", mediaIndex: 0 },
+          { label: "Negativo", title: "Sobre fondo oscuro.", description: "La versión invertida conserva la silueta y la lectura del símbolo.", mediaIndex: 1 }
+        ]
+      },
       category: "Branding",
       categories: ["Branding"],
       context: "Identidad visual / Manual de marca",
       year: "2026",
       summary:
-        "Sistema visual para Napoly Barbershop con isotipo aplicado en positivo y negativo, acompañado por un manual de marca en PDF.",
+        "Sistema visual para Napoly Barbershop con el isotipo en positivo y negativo y un manual de marca que podés hojear en línea.",
       overview:
         "Proyecto de branding orientado a definir una base visual clara para Napoly Barbershop, mostrando el isotipo y una guía de uso resumida en formato editorial.",
       objective:
@@ -661,17 +640,37 @@
             "Aplicación invertida del isotipo para validar contraste y consistencia de marca en superficies oscuras."
         },
         {
-          type: "embed",
-          title: "Manual de marca (PDF)",
-          embedUrl: "assets/projects/branding/napoly-barbershop-manual/docs/manual-de-marca-napoly-barbershop.pdf",
+          type: "book",
+          title: "Manual de marca de Napoly Barbershop",
+          width: 1680,
+          height: 1188,
+          pages: Array.from({ length: 25 }, (_, index) =>
+            `assets/projects/branding/napoly-barbershop-manual/docs/pages/pagina-${String(index + 1).padStart(2, "0")}.jpg`
+          ),
           description:
-            "Documento en PDF con la presentación del sistema visual y los lineamientos principales de identidad para Napoly Barbershop."
+            "Hojeá el sistema visual y sus aplicaciones sin salir del proyecto."
         }
       ]
     },
     {
       id: "motion-launch",
       title: "Napoly Barbershop | Animación de isotipo",
+      experience: {
+        theme: "napoly-motion",
+        eyebrow: "Motion branding / After Effects",
+        headline: "La identidad, en movimiento.",
+        introduction: "Dos animaciones breves del mismo isotipo exploran distintas cadencias de presentación para Napoly Barbershop.",
+        role: "Animación del isotipo y edición de ritmo",
+        format: "Motion graphics · After Effects",
+        deliverable: "Dos animaciones exportadas en video",
+        tourTitle: "Un símbolo, dos cadencias.",
+        tourDescription: "Elegí una versión y reproducila para comparar el ritmo.",
+        thinkingTitle: "El ritmo también comunica carácter.",
+        chapters: [
+          { label: "Principal", title: "Presentación de marca.", description: "La secuencia principal usa el ritmo de entrada para reforzar la presencia del isotipo.", mediaIndex: 0 },
+          { label: "Secundaria", title: "Otra cadencia, el mismo símbolo.", description: "La segunda versión prueba un ritmo distinto sin cambiar la identidad visual.", mediaIndex: 1 }
+        ]
+      },
       category: "Motion",
       categories: ["Motion", "Branding"],
       context: "After Effects / Napoly Barbershop",
@@ -734,6 +733,22 @@
     {
       id: "mastantuono-real-madrid",
       title: "Future of Real Madrid | Mastantuono",
+      experience: {
+        theme: "mastantuono",
+        showCover: false,
+        eyebrow: "Dirección visual / Fútbol",
+        headline: "Una promesa de futuro, en una imagen.",
+        introduction: "Un afiche conceptual para redes que pone a Mastantuono en el centro de una composición deportiva de alto contraste.",
+        role: "Concepto y composición visual",
+        format: "Afiche digital · 1:1",
+        deliverable: "Pieza gráfica para redes sociales",
+        tourTitle: "La pieza completa.",
+        tourDescription: "El formato cuadrado se conserva para ver la composición sin recortes.",
+        thinkingTitle: "Profundidad y jerarquía en una sola pieza.",
+        chapters: [
+          { label: "Afiche final", title: "El jugador como punto de entrada.", description: "El retrato, el nombre y el escudo se organizan en capas para sostener una lectura rápida en redes.", mediaIndex: 0 }
+        ]
+      },
       category: "Social Media",
       categories: ["Social Media"],
       context: "Flyer para redes sociales",
