@@ -1,10 +1,82 @@
-﻿if ("scrollRestoration" in window.history) {
+if ("scrollRestoration" in window.history) {
   window.history.scrollRestoration = "manual";
 }
 
 const THEME_STORAGE_KEY = "leonel-portfolio-theme";
 
+/* ---------------------------------------------------------------------------
+   Content safety
+   Everything in portfolio-data.js reaches the page through HTML templates.
+   getViewData() returns a copy where every string is escaped, every URL is
+   checked and every CSS value is reduced to harmless characters, so a stray
+   "<" or quote in the data shows up as text instead of breaking the markup.
+--------------------------------------------------------------------------- */
+const HTML_ESCAPES = { "&": "&#38;", "<": "&#60;", ">": "&#62;", '"': "&#34;", "'": "&#39;", "`": "&#96;" };
+const HTML_UNESCAPES = { "&#38;": "&", "&#60;": "<", "&#62;": ">", "&#34;": '"', "&#39;": "'", "&#96;": "`" };
+const URL_FIELDS = new Set(["src", "image", "poster", "embedUrl", "href", "pages", "cv"]);
+const CSS_FIELDS = new Set(["start", "end", "position", "size", "tint", "shadow", "frameHeight"]);
+const EMBED_HOSTS = new Set(["embed.figma.com", "www.figma.com"]);
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"'`]/g, (character) => HTML_ESCAPES[character]);
+}
+
+function unescapeHTML(value) {
+  return String(value ?? "").replace(/&#(?:38|60|62|34|39|96);/g, (entity) => HTML_UNESCAPES[entity]);
+}
+
+// Accepts https links and local relative paths. Everything else (javascript:,
+// data:, http:, protocol-relative, path traversal) comes back empty.
+function safeUrl(value, { embed = false } = {}) {
+  if (typeof value !== "string") return "";
+  const url = value.trim();
+  if (!url || /[\u0000-\u001f'"<>`\\(){}]/.test(url)) return "";
+
+  if (/^https:\/\//i.test(url)) {
+    try {
+      const parsed = new URL(url);
+      if (embed && !EMBED_HOSTS.has(parsed.hostname)) return "";
+      return url;
+    } catch {
+      return "";
+    }
+  }
+
+  if (embed || /^[a-z][a-z0-9+.-]*:/i.test(url) || url.startsWith("//")) return "";
+  if (url.split(/[\/?#]/).includes("..")) return "";
+  return url;
+}
+
+function safeCssValue(value) {
+  return String(value ?? "").replace(/[^\w\s#.,%()-]/g, "");
+}
+
+function sanitizeForTemplates(value, key = "") {
+  if (typeof value === "string") {
+    if (URL_FIELDS.has(key)) return escapeHTML(safeUrl(value, { embed: key === "embedUrl" }));
+    if (CSS_FIELDS.has(key)) return escapeHTML(safeCssValue(value));
+    return escapeHTML(value);
+  }
+  if (Array.isArray(value)) return value.map((item) => sanitizeForTemplates(item, key));
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([name, item]) => [name, sanitizeForTemplates(item, name)])
+    );
+  }
+  return value;
+}
+
+let viewDataCache = null;
+
+function getViewData() {
+  if (!viewDataCache) viewDataCache = sanitizeForTemplates(portfolioData);
+  return viewDataCache;
+}
+
 function resetPageScrollPosition() {
+  // A link such as /#contacto must land on its section, not on the top.
+  if (window.location?.hash) return;
+
   window.scrollTo({ top: 0, left: 0, behavior: "auto" });
 
   window.requestAnimationFrame(() => {
@@ -73,28 +145,48 @@ document.addEventListener("DOMContentLoaded", () => {
   hydrateProfile();
   renderFilters();
   renderProjects();
+  setupProjectGridReveal();
   renderExperience();
   renderEducation();
   renderSkills();
   bindEvents();
   updateCurrentYear();
   initAnimations();
+  scrollToInitialHash();
 });
+
+function scrollToInitialHash() {
+  const hash = window.location?.hash;
+  if (!hash || hash.length < 2) return;
+
+  let target = null;
+  try {
+    target = document.getElementById(decodeURIComponent(hash.slice(1)));
+  } catch {}
+  if (!target) return;
+
+  // Sections are filled in by script, so jump again once layout has settled.
+  const jump = () => target.scrollIntoView({ behavior: "auto", block: "start" });
+  jump();
+  window.addEventListener("load", jump, { once: true });
+}
 
 function hydrateProfile() {
   const profile = portfolioData.profile;
+  const setText = (selector, value) => {
+    if (typeof value !== "string" || !value) return;
+    document.querySelectorAll(selector).forEach((node) => {
+      node.textContent = value;
+    });
+  };
 
-  document.querySelectorAll("[data-profile-name]").forEach((node) => {
-    node.textContent = profile.name;
-  });
-
-  document.querySelectorAll("[data-profile-role]").forEach((node) => {
-    node.textContent = profile.role;
-  });
-
-  document.querySelectorAll("[data-profile-tagline]").forEach((node) => {
-    node.textContent = profile.tagline;
-  });
+  setText("[data-profile-name]", profile.name);
+  setText("[data-profile-role]", profile.role);
+  setText("[data-profile-tagline]", profile.tagline);
+  setText("[data-profile-availability]", profile.availability);
+  setText("[data-profile-location]", profile.location);
+  setText("[data-profile-mode]", profile.mode);
+  setText("[data-profile-languages]", profile.languages);
 
   document.querySelectorAll("[data-profile-email]").forEach((node) => {
     node.textContent = profile.email;
@@ -103,23 +195,30 @@ function hydrateProfile() {
 
   const contactForm = document.querySelector("[data-contact-form]");
   if (contactForm instanceof HTMLFormElement) {
-    contactForm.setAttribute("action", `https://formsubmit.co/${profile.email}`);
+    // FormSubmit gives every activated form a random alias. Using it here
+    // keeps the address out of the form markup.
+    const recipient = /^[a-z0-9]{16,64}$/i.test(profile.formAlias || "") ? profile.formAlias : profile.email;
+    contactForm.setAttribute("action", `https://formsubmit.co/${recipient}`);
   }
 
-  document.querySelectorAll("[data-profile-linkedin]").forEach((node) => {
-    node.setAttribute("href", profile.linkedin);
-  });
+  const setLink = (selector, value) => {
+    const href = safeUrl(value);
+    document.querySelectorAll(selector).forEach((node) => {
+      if (href) node.setAttribute("href", href);
+      else node.hidden = true;
+    });
+  };
 
-  document.querySelectorAll("[data-profile-behance]").forEach((node) => {
-    node.setAttribute("href", profile.behance);
-  });
+  setLink("[data-profile-linkedin]", profile.linkedin);
+  setLink("[data-profile-behance]", profile.behance);
+  setLink("[data-profile-cv]", profile.cv);
 }
 
 function renderFilters() {
   const filterGroup = document.querySelector("[data-filter-group]");
   if (!filterGroup) return;
 
-  filterGroup.innerHTML = portfolioData.filters
+  filterGroup.innerHTML = getViewData().filters
     .map(
       (filter) => `
         <button
@@ -139,12 +238,12 @@ function renderProjects() {
   const grid = document.querySelector("[data-project-grid]");
   if (!grid) return;
 
-  const visibleProjects =
-    state.activeFilter === "Todos"
-      ? portfolioData.projects
-      : portfolioData.projects.filter((project) =>
-          project.categories.includes(state.activeFilter)
-        );
+  // Filter on the original categories, render from the sanitized copy.
+  const visibleProjects = getViewData().projects.filter(
+    (_, index) =>
+      state.activeFilter === "Todos" ||
+      portfolioData.projects[index].categories.includes(state.activeFilter)
+  );
 
   if (!visibleProjects.length) {
     grid.innerHTML = `
@@ -158,7 +257,7 @@ function renderProjects() {
   }
 
   grid.innerHTML = visibleProjects
-    .map(createProjectCard)
+    .map((project, index) => createProjectCard(project, index))
     .join("");
   if (immersiveMotionBooted) window.ScrollTrigger?.refresh();
 }
@@ -180,18 +279,22 @@ function getProjectSurfaceStyle(project) {
   return styles.join("; ");
 }
 
-function createProjectCard(project) {
+function createProjectCard(project, index = 0) {
   const thumbClass = project.cover?.src ? `project-thumb has-cover${project.experience ? " has-experience-art" : ""}` : "project-thumb";
+  const role = project.presentation?.role || project.experience?.role;
+  const roleClass = project.presentation ? "project-contribution" : "project-role";
+  // The first row is likely above the fold on desktop: load it right away.
+  const loading = index < 2 ? "eager" : "lazy";
 
   return `
-    <article class="project-card ${project.experience ? `project-card--${project.experience.theme}` : ""}">
-      <button type="button" data-project-trigger="${project.id}" aria-label="Abrir ${project.title}">
+    <article class="project-card ${project.experience ? `project-card--${project.experience.theme}` : ""}" style="--card-index: ${Number(index) || 0}">
+      <button type="button" data-project-trigger="${project.id}" aria-label="Abrir el caso ${project.title}">
         <div class="project-card-shell">
           <div
             class="${thumbClass}"
             style="${getProjectSurfaceStyle(project)}"
           >
-            ${project.experience ? `<img class="experience-card-art" src="${project.cover.src}" alt="" loading="lazy" draggable="false" />` : ""}
+            ${project.experience ? `<img class="experience-card-art" src="${project.cover.src}" alt="" loading="${loading}" decoding="async" draggable="false" />` : ""}
             <div class="project-thumb-inner">
               <div class="project-thumb-top">
                 <span class="project-year">${project.year}</span>
@@ -207,14 +310,14 @@ function createProjectCard(project) {
           <div class="project-body">
             <div class="project-meta-top">
               <p class="project-badge">${project.context}</p>
-              <span class="category-pill">${project.category}</span>
+              <span class="category-pill">${project.category} · ${project.year}</span>
             </div>
             <h3 class="project-title">${project.title}</h3>
             <p class="project-summary">${project.summary}</p>
-            ${project.presentation ? `<p class="project-contribution">${project.presentation.role}</p>` : ""}
+            ${role ? `<p class="${roleClass}"><span class="project-role-label">Mi rol</span> ${role}</p>` : ""}
             <div class="project-footer">
               <span class="project-tools">${project.tools.slice(0, 3).join(" / ")}</span>
-              <span class="project-link">Ver caso</span>
+              <span class="project-link">Ver caso <span class="project-link-arrow" aria-hidden="true">→</span></span>
             </div>
           </div>
         </div>
@@ -227,7 +330,7 @@ function renderExperience() {
   const container = document.querySelector("[data-experience-list]");
   if (!container) return;
 
-  container.innerHTML = portfolioData.experiences
+  container.innerHTML = getViewData().experiences
     .map(
       (item) => `
         <article class="timeline-item">
@@ -248,7 +351,7 @@ function renderEducation() {
   const container = document.querySelector("[data-education-list]");
   if (!container) return;
 
-  container.innerHTML = portfolioData.education
+  container.innerHTML = getViewData().education
     .map(
       (item) => `
         <article class="timeline-item">
@@ -266,7 +369,7 @@ function renderSkills() {
   const board = document.querySelector("[data-skills-board]");
   if (!board) return;
 
-  board.innerHTML = portfolioData.skillGroups
+  board.innerHTML = getViewData().skillGroups
     .map(
       (group) => `
         <article class="skill-group" data-reveal="up">
@@ -294,7 +397,10 @@ function bindEvents() {
     });
   }
 
+  if (form) form.dataset.readyAt = String(Date.now());
+
   setupDockLocation();
+  setupScrollProgress();
 }
 
 function handleDocumentClick(event) {
@@ -322,6 +428,8 @@ function handleDocumentClick(event) {
     state.activeFilter = filterButton.dataset.filter;
     renderFilters();
     renderProjects();
+    // Re-rendering replaces the buttons: hand focus back to the chosen one.
+    document.querySelector("[data-filter-group] .filter-button.is-active")?.focus({ preventScroll: true });
     return;
   }
 
@@ -398,10 +506,10 @@ function handleKeydown(event) {
 }
 
 function openProject(projectId) {
-  const project = portfolioData.projects.find((item) => item.id === projectId);
+  const project = getViewData().projects.find((item) => unescapeHTML(item.id) === projectId);
   if (!project) return;
 
-  state.activeProjectId = project.id;
+  state.activeProjectId = projectId;
   state.lastFocusedElement = document.activeElement;
 
   const modal = document.querySelector("[data-project-modal]");
@@ -409,6 +517,7 @@ function openProject(projectId) {
   const body = document.querySelector("[data-modal-body]");
 
   if (!modal || !hero || !body) return;
+  finishModalClose?.();
   activeProjectExperience?.();
   activeProjectExperience = null;
   if (project.experience && window.ProjectExperiences) {
@@ -467,7 +576,7 @@ function openProject(projectId) {
 
         ${
           project.external
-            ? `<a class="btn btn-secondary" href="${project.external.href}" target="_blank" rel="noreferrer">${project.external.label}</a>`
+            ? `<a class="btn btn-secondary" href="${project.external.href}" target="_blank" rel="noopener noreferrer">${project.external.label}</a>`
             : ""
         }
       </article>
@@ -508,14 +617,19 @@ function openProject(projectId) {
     activeProjectExperience = window.ProjectExperiences.mount(modal);
   }
 
+  // Everything behind the dialog stops receiving focus and clicks.
+  const shell = document.querySelector(".site-shell");
+  if (shell) shell.inert = true;
+
   const closeButton = modal.querySelector(".modal-close");
   if (closeButton) closeButton.focus();
 
   if (window.gsap && !isMotionReduced()) {
+    gsap.fromTo(".modal-backdrop", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" });
     gsap.fromTo(
       ".modal-dialog",
-      { y: 24, autoAlpha: 0, scale: 0.985 },
-      { y: 0, autoAlpha: 1, scale: 1, duration: 0.42, ease: "power3.out" }
+      { y: 24, opacity: 0, scale: 0.985 },
+      { y: 0, opacity: 1, scale: 1, duration: 0.42, ease: "power3.out" }
     );
   }
 }
@@ -530,10 +644,10 @@ function createUXCaseStudy(project) {
   let prototypeLink = "";
 
   if (prototype) {
-    const url = new URL(prototype.embedUrl);
+    const url = new URL(unescapeHTML(prototype.embedUrl));
     url.hostname = "www.figma.com";
     url.searchParams.delete("embed-host");
-    prototypeLink = `<a class="text-link" href="${url.href}" target="_blank" rel="noopener noreferrer">Abrir prototipo en Figma ↗</a>`;
+    prototypeLink = `<a class="text-link" href="${escapeHTML(url.href)}" target="_blank" rel="noopener noreferrer">Abrir prototipo en Figma ↗</a>`;
   }
 
   return `
@@ -703,6 +817,7 @@ function createMediaBlock(item, project) {
             src="${item.embedUrl}"
             title="${item.title}"
             loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
             ${frameStyle}
             allowfullscreen
           ></iframe>
@@ -725,7 +840,7 @@ function createMediaBlock(item, project) {
             <strong>${item.title}</strong>
           </div>
           ${item.description ? `${item.description ? `${item.description ? `<p>${item.description}</p>` : ""}` : ""}` : ""}
-          <a class="btn btn-secondary" href="https://www.figma.com/" target="_blank" rel="noreferrer">Agregar Figma</a>
+          <a class="btn btn-secondary" href="https://www.figma.com/" target="_blank" rel="noopener noreferrer">Agregar Figma</a>
         </div>
       </article>
     `;
@@ -734,7 +849,7 @@ function createMediaBlock(item, project) {
   if (item.image) {
     return `
       <article class="media-card">
-        <img src="${item.image}" alt="${item.title}" loading="lazy" />
+        <img src="${item.image}" alt="${item.title}" loading="lazy" decoding="async" />
         <div class="media-caption">
           <strong>${item.title}</strong>
           ${item.description ? `${item.description ? `${item.description ? `<p>${item.description}</p>` : ""}` : ""}` : ""}
@@ -759,32 +874,66 @@ function createMediaBlock(item, project) {
   `;
 }
 
+let finishModalClose = null;
+
 function closeProject() {
   const modal = document.querySelector("[data-project-modal]");
-  if (!modal) return;
-  activeProjectExperience?.();
-  activeProjectExperience = null;
+  if (!modal || modal.hidden || finishModalClose) return;
 
-  modal.querySelectorAll(".media-video").forEach((video) => {
-    video.pause();
+  const finish = () => {
+    finishModalClose = null;
+    if (window.gsap) {
+      gsap.killTweensOf([".modal-dialog", ".modal-backdrop"]);
+      gsap.set([".modal-dialog", ".modal-backdrop"], { clearProps: "all" });
+    }
+    activeProjectExperience?.();
+    activeProjectExperience = null;
 
-    try {
-      video.currentTime = 0;
-    } catch {}
-  });
+    modal.querySelectorAll(".media-video").forEach((video) => {
+      video.pause();
 
-  resetProjectModalScroll(modal);
-  modal.hidden = true;
-  document.body.classList.remove("modal-open");
-  document.body.classList.remove("video-performance-mode");
-  state.activeProjectId = null;
+      try {
+        video.currentTime = 0;
+      } catch {}
+    });
 
-  setupBackgroundLineMotion();
+    resetProjectModalScroll(modal);
+    modal.hidden = true;
+    document.body.classList.remove("modal-open");
+    document.body.classList.remove("video-performance-mode");
+    state.activeProjectId = null;
 
-  if (state.lastFocusedElement instanceof HTMLElement) {
-    state.lastFocusedElement.focus();
+    const shell = document.querySelector(".site-shell");
+    if (shell) shell.inert = false;
+
+    setupBackgroundLineMotion();
+
+    if (state.lastFocusedElement instanceof HTMLElement) {
+      state.lastFocusedElement.focus();
+    }
+  };
+
+  if (!window.gsap || isMotionReduced()) {
+    finish();
+    return;
   }
+
+  // Leave the way it came in, a little faster.
+  finishModalClose = finish;
+  gsap.to(".modal-backdrop", { autoAlpha: 0, duration: 0.24, ease: "power2.in" });
+  gsap.to(".modal-dialog", {
+    y: 16,
+    opacity: 0,
+    scale: 0.985,
+    duration: 0.24,
+    ease: "power2.in",
+    onComplete: finish
+  });
 }
+
+const CONTACT_LIMITS = { nombre: 80, email: 120, mensaje: 2000 };
+const CONTACT_MIN_FILL_MS = 2500;
+const CONTACT_COOLDOWN_MS = 20000;
 
 async function handleContactSubmit(event) {
   event.preventDefault();
@@ -793,13 +942,37 @@ async function handleContactSubmit(event) {
   if (!(form instanceof HTMLFormElement) || form.dataset.submitting === "true") return;
   const data = new FormData(form);
 
+  // Bots fill every field, including the hidden one. Drop those quietly.
+  if (String(data.get("_honey") || "").trim()) {
+    setContactFormStatus(form, "success", "Consulta recibida por el servicio de envío.");
+    form.reset();
+    return;
+  }
+
+  const now = Date.now();
+  const readyAt = Number(form.dataset.readyAt) || 0;
+  const cooldownUntil = Number(form.dataset.cooldownUntil) || 0;
+  if ((readyAt && now - readyAt < CONTACT_MIN_FILL_MS) || now < cooldownUntil) {
+    setContactFormStatus(form, "error", "Esperá unos segundos y volvé a enviar.");
+    return;
+  }
+
   for (const field of ["nombre", "email", "mensaje"]) {
     const value = String(data.get(field) || "").trim();
     if (!value) {
       setContactFormStatus(form, "error", "Completá nombre, email y mensaje antes de enviar.");
       return;
     }
+    if (value.length > CONTACT_LIMITS[field]) {
+      setContactFormStatus(form, "error", "El texto es demasiado largo. Acortalo y volvé a enviar.");
+      return;
+    }
     data.set(field, value);
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(data.get("email"))) {
+    setContactFormStatus(form, "error", "Revisá el email: no parece una dirección válida.");
+    return;
   }
 
   form.dataset.submitting = "true";
@@ -833,6 +1006,7 @@ async function handleContactSubmit(event) {
     setContactFormStatus(form, "success", "Consulta recibida por el servicio de envío.");
     const emailLink = form.querySelector("[data-contact-email-fallback]");
     if (emailLink) emailLink.hidden = true;
+    form.dataset.cooldownUntil = String(Date.now() + CONTACT_COOLDOWN_MS);
     form.reset();
   } catch {
     setContactFormStatus(form, "error", `No pude confirmar el envío. ${fallback}`);
@@ -912,6 +1086,48 @@ function setupDockLocation() {
   window.addEventListener("scroll", schedule, { passive: true });
   window.addEventListener("resize", schedule, { passive: true });
   update();
+}
+
+function setupScrollProgress() {
+  const bar = document.querySelector("[data-scroll-progress]");
+  if (!bar) return;
+
+  let frame = null;
+  const update = () => {
+    frame = null;
+    const range = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = range > 0 ? Math.min(1, Math.max(0, window.scrollY / range)) : 0;
+    bar.style.transform = `scaleX(${progress.toFixed(4)})`;
+  };
+  const schedule = () => {
+    if (frame === null) frame = window.requestAnimationFrame(update);
+  };
+  window.addEventListener("scroll", schedule, { passive: true });
+  window.addEventListener("resize", schedule, { passive: true });
+  update();
+}
+
+// Cards are rendered by script and re-rendered by the filters, so their
+// entrance is a CSS animation that starts once the grid is on screen.
+function setupProjectGridReveal() {
+  const grid = document.querySelector("[data-project-grid]");
+  if (!grid) return;
+
+  if (isMotionReduced() || !("IntersectionObserver" in window)) {
+    grid.classList.add("is-inview");
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        grid.classList.add("is-inview");
+        observer.disconnect();
+      }
+    },
+    { rootMargin: "0px 0px -12% 0px" }
+  );
+  observer.observe(grid);
 }
 
 function initAnimations() {
@@ -1052,47 +1268,35 @@ function setupSectionScrollScenes() {
 
   intros.forEach((intro, index) => {
     const meta = intro.querySelector(".section-meta");
-    const copy = intro.querySelector(".section-copy");
+    const heading = intro.querySelector(".section-copy h2");
+    let line = null;
 
-    if (meta) {
-      gsap.set(meta, { x: -20, autoAlpha: 0, filter: "blur(10px)" });
-      ScrollTrigger.create({
-        id: `section-meta-${index}`,
-        trigger: intro,
-        start: "top 84%",
-        once: true,
-        onEnter: () => {
-          gsap.to(meta, {
-            x: 0,
-            autoAlpha: 1,
-            filter: "blur(0px)",
-            duration: 0.86,
-            ease: "power3.out",
-            overwrite: true
-          });
-        }
-      });
+    // The heading rises from behind a mask: one clear move per section.
+    if (heading && !heading.querySelector(".heading-mask-line")) {
+      line = document.createElement("span");
+      line.className = "heading-mask-line";
+      line.append(...heading.childNodes);
+      heading.append(line);
+      heading.classList.add("heading-mask");
     }
 
-    if (copy) {
-      gsap.set(copy, { y: 34, autoAlpha: 0, filter: "blur(12px)" });
-      ScrollTrigger.create({
-        id: `section-copy-${index}`,
-        trigger: intro,
-        start: "top 84%",
-        once: true,
-        onEnter: () => {
-          gsap.to(copy, {
-            y: 0,
-            autoAlpha: 1,
-            filter: "blur(0px)",
-            duration: 1,
-            ease: "power3.out",
-            overwrite: true
-          });
+    if (meta) gsap.set(meta, { x: -14, autoAlpha: 0 });
+    if (line) gsap.set(line, { yPercent: 112 });
+
+    ScrollTrigger.create({
+      id: `section-intro-${index}`,
+      trigger: intro,
+      start: "top 86%",
+      once: true,
+      onEnter: () => {
+        if (meta) {
+          gsap.to(meta, { x: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out", overwrite: true });
         }
-      });
-    }
+        if (line) {
+          gsap.to(line, { yPercent: 0, duration: 0.85, ease: "power4.out", delay: 0.06, overwrite: true });
+        }
+      }
+    });
   });
 }
 
@@ -1100,38 +1304,26 @@ function setupPanelRevealScenes() {
   const elements = Array.from(
     document.querySelectorAll("[data-reveal]:not(.section-intro):not(.hero [data-reveal])")
   );
+  if (!elements.length) return;
 
-  elements.forEach((element, index) => {
-    gsap.set(element, { y: 28, autoAlpha: 0, filter: "blur(10px)" });
+  // Opacity and position only: no blur filters and no per-panel parallax,
+  // so text never moves while someone is reading it.
+  gsap.set(elements, { y: 22, autoAlpha: 0 });
 
-    ScrollTrigger.create({
-      id: `panel-reveal-${index}`,
-      trigger: element,
-      start: "top 88%",
-      once: true,
-      onEnter: () => {
-        gsap.to(element, {
-          y: 0,
-          autoAlpha: 1,
-          filter: "blur(0px)",
-          duration: 0.82,
-          ease: "power3.out",
-          overwrite: true
-        });
-      }
-    });
-
-    gsap.to(element, {
-      yPercent: index % 2 === 0 ? -2.2 : 2.2,
-      ease: "none",
-      scrollTrigger: {
-        id: `panel-depth-${index}`,
-        trigger: element,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: 1.35
-      }
-    });
+  ScrollTrigger.batch(elements, {
+    start: "top 90%",
+    once: true,
+    onEnter: (batch) => {
+      gsap.to(batch, {
+        y: 0,
+        autoAlpha: 1,
+        duration: 0.65,
+        ease: "power3.out",
+        stagger: 0.08,
+        overwrite: true,
+        clearProps: "transform"
+      });
+    }
   });
 }
 
@@ -1215,8 +1407,9 @@ function setupBackgroundLineMotion() {
   }
 
   document.querySelectorAll(".bg-line-glint").forEach((line) => line.remove());
+  document.querySelectorAll(".background-lines--glints").forEach((layer) => layer.remove());
 
-  const svg = document.querySelector(".background-lines");
+  const svg = document.querySelector(".background-lines:not(.background-lines--glints)");
   const allLines = Array.from(document.querySelectorAll(".bg-line-base, .bg-line"));
   const primaryLines = Array.from(document.querySelectorAll(".bg-line"));
   if (!svg || !allLines.length) return;
@@ -1258,6 +1451,13 @@ function setupBackgroundLineMotion() {
     return;
   }
 
+  // The moving glints repaint every frame. Keeping them in their own SVG means
+  // the static lines (and their blurred glow) are rasterized once instead of on
+  // every frame, so other animations no longer make the background stutter.
+  const glintSvg = svg.cloneNode(false);
+  glintSvg.classList.add("background-lines--glints");
+  svg.insertAdjacentElement("afterend", glintSvg);
+
   primaryLines.forEach((line) => {
     const variantClass = Array.from(line.classList).find((className) =>
       Object.prototype.hasOwnProperty.call(linePresets, className)
@@ -1280,7 +1480,7 @@ function setupBackgroundLineMotion() {
     clone.style.setProperty("--glint-duration", `${preset.glint}s`);
     clone.style.setProperty("--glint-delay", `${preset.delay * 0.36}s`);
     clone.style.setProperty("--glint-segment", `${segment.toFixed(2)}`);
-    line.insertAdjacentElement("afterend", clone);
+    glintSvg.append(clone);
   });
 
   startBackgroundGlintMotion(Array.from(document.querySelectorAll(".bg-line-glint")));
@@ -1294,7 +1494,7 @@ function setupPointerDepth() {
   pointerDepthBooted = true;
 
   gsap.utils
-    .toArray(".hero-card, .content-panel, .skill-group")
+    .toArray(".hero-card")
     .forEach((surface) => {
       surface.addEventListener("pointermove", (event) => {
         const bounds = surface.getBoundingClientRect();
@@ -1339,8 +1539,8 @@ function initFallbackReveal() {
         if (entry.isIntersecting) {
           entry.target.animate(
             [
-              { opacity: 0, transform: "translateY(24px)", filter: "blur(10px)" },
-              { opacity: 1, transform: "translateY(0)", filter: "blur(0px)" }
+              { opacity: 0, transform: "translateY(22px)" },
+              { opacity: 1, transform: "translateY(0)" }
             ],
             {
               duration: 620,

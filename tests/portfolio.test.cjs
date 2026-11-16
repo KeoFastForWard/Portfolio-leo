@@ -5,6 +5,7 @@ const test = require('node:test');
 const vm = require('node:vm');
 
 const root = path.resolve(__dirname, '..');
+const resolveAsset = file => path.join(root, file);
 const query = { matches: false, addEventListener() {} };
 const context = vm.createContext({
   URL,
@@ -34,7 +35,7 @@ test('Every active local media reference exists', () => {
     for (const item of [project.cover, ...project.media]) {
       for (const key of ['src', 'image', 'poster', 'embedUrl']) {
         if (!item?.[key] || /^https?:\/\//.test(item[key])) continue;
-        assert.ok(fs.existsSync(path.join(root, item[key])), `${project.title}: ${item[key]}`);
+        assert.ok(fs.existsSync(resolveAsset(item[key])), `${project.title}: ${item[key]}`);
       }
     }
   }
@@ -118,7 +119,7 @@ test('Napoly book lists 25 distinct, ordered local pages and only loads the firs
   assert.equal(book.pages.length, 25);
   book.pages.forEach((file, index) => {
     assert.ok(file.endsWith(`pagina-${String(index + 1).padStart(2, '0')}.jpg`));
-    assert.ok(fs.statSync(path.join(root, file)).size > 0);
+    assert.ok(fs.statSync(resolveAsset(file)).size > 0);
     assert.ok(html.includes(`<option value="${file}">${index + 1}</option>`));
     assert.equal(html.includes(`src="${file}"`), index === 0);
   });

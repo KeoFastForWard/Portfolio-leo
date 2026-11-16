@@ -6,6 +6,10 @@ const { spawn } = require('node:child_process');
 const host = '127.0.0.1';
 const port = 4173;
 const url = `http://${host}:${port}/`;
+const security = require('./vercel.json').headers[0].headers.filter(
+  // HSTS and https upgrades only make sense on the published site.
+  ({ key }) => key !== 'Strict-Transport-Security'
+).map(({ key, value }) => [key, key === 'Content-Security-Policy' ? value.replace('; upgrade-insecure-requests', '') : value]);
 const mime = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -34,18 +38,19 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  let file;
+  let pathname;
   try {
-    const pathname = decodeURIComponent(new URL(req.url, url).pathname);
-    file = path.resolve(__dirname, pathname === '/' ? 'index.html' : `.${pathname}`);
+    pathname = decodeURIComponent(new URL(req.url, url).pathname);
   } catch {
     res.writeHead(400).end();
     return;
   }
 
-  const contentType = mime[path.extname(file).toLowerCase()];
-  if (!file.startsWith(__dirname + path.sep) || !contentType) {
-    res.writeHead(404).end();
+  const relative = pathname === '/' ? 'index.html' : `.${pathname}`;
+  const contentType = mime[path.extname(relative).toLowerCase()];
+  const file = path.resolve(__dirname, relative);
+  if (!contentType || !file.startsWith(__dirname + path.sep)) {
+    res.writeHead(404, Object.fromEntries(security)).end();
     return;
   }
 
@@ -58,8 +63,9 @@ const server = http.createServer((req, res) => {
     const headers = {
       'Content-Type': contentType,
       'Cache-Control': 'no-store',
-      'X-Portfolio-Preview': 'leonel-kunst',
-      'Accept-Ranges': 'bytes'
+      'X-Portfolio-Preview': 'leonel-kunst-v2',
+      'Accept-Ranges': 'bytes',
+      ...Object.fromEntries(security)
     };
     let start = 0;
     let end = stat.size - 1;
@@ -100,7 +106,7 @@ server.on('error', (error) => {
   }
   const check = http.request(url, { method: 'HEAD', timeout: 2000 }, (res) => {
     res.resume();
-    if (res.headers['x-portfolio-preview'] === 'leonel-kunst') {
+    if (res.headers['x-portfolio-preview'] === 'leonel-kunst-v2') {
       console.log(`El portfolio ya esta abierto en ${url}`);
       openBrowser();
     } else {

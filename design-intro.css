@@ -80,3 +80,10 @@ body.modal-open .project-card-shell::after { opacity: 0; }
   #design-intro button { padding: .6rem .7rem; font-size: .65rem; }
 }
 html.design-intro-pending::after { content: ''; position: fixed; inset: 0; z-index: 10000; pointer-events: none; background: radial-gradient(#ffffff14 .7px, transparent .7px) 0 0 / 24px 24px, #191a1c; }
+
+/* El recorrido del modo diseño vive en su propia capa: mover el cursor, hacer
+   el "click" y redimensionar el marco no obliga a repintar el hero (con sus
+   backdrop-filter) ni las líneas de neón del fondo. */
+.design-tour-layer { contain: layout style; transform: translateZ(0); overflow: visible; }
+.design-tour-frame, .design-tour-cursor { will-change: transform, opacity; backface-visibility: hidden; }
+.design-tour-cursor svg { will-change: transform; filter: none; }

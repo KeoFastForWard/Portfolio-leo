@@ -1,11 +1,65 @@
-﻿# Portfolio de Leonel Kunst
+# Portfolio de Leonel Kunst — v2
+
+Esta carpeta es una copia de trabajo del portfolio. Los archivos de la raíz no
+se tocaron. `v2` contiene solo lo que cambia: el código, las imágenes de
+proyecto en WebP, el CV y la imagen para compartir. Todo lo demás (videos,
+páginas del manual de marca) se sigue leyendo de `../assets`.
+
+## Qué cambia en v2
+
+**Para quien recluta**
+
+- El hero dice qué hacés, tu disponibilidad, ubicación, modalidad e idiomas, y
+  ofrece el CV sin hacer scroll. Esos textos se editan en `profile`, dentro de
+  `portfolio-data.js` (`availability`, `location`, `mode`, `languages`, `cv`).
+- Las tres tarjetas del hero resumen experiencia, formación y herramientas.
+- Cada tarjeta de proyecto muestra el año y tu rol.
+- "Sobre mí" y "Contacto" suman lo que aportás, el CV y el estado de disponibilidad.
+- Metadatos para compartir: `og:image` (`assets/og-cover.png`), URL canónica y JSON-LD.
+
+**Seguridad**
+
+- Política de contenido (CSP) por cabecera en `vercel.json` y por `<meta>` en
+  `index.html`. Si cambiás una, cambiá la otra: `tests/security.test.cjs` lo verifica.
+- Sin scripts de terceros ni scripts en línea: GSAP 3.12.7 está en `vendor/` y
+  el arranque del tema en `theme-init.js`.
+- Todo el contenido de `portfolio-data.js` se escapa antes de llegar a la
+  página y las URL se validan (`getViewData`, `safeUrl` en `script.js`). Los
+  iframes solo aceptan Figma.
+- El formulario limita longitudes, descarta envíos de bots (campo oculto y
+  tiempo mínimo) y ya no desactiva el captcha de FormSubmit en el envío sin JS.
+- `.vercelignore` evita publicar respaldos, notas internas, tests y carpetas de origen.
+- Se quitó la foto de fondo que se cargaba desde pexels.com (ver `styles.css`,
+  `.site-shell::after`).
+
+**Animaciones**
+
+- La entrada dura unos 3 segundos, se ve una vez por sesión, se salta con un
+  clic, scroll o Esc, y no aparece con enlaces directos (`/#contacto`) ni con
+  "reducir movimiento" activado.
+- Las secciones aparecen con opacidad y desplazamiento, sin desenfoque ni
+  parallax por panel. Los títulos suben detrás de una máscara y las tarjetas de
+  proyecto entran escalonadas, también al filtrar.
+- El detalle de proyecto se cierra con animación y bloquea el foco del fondo.
+- El modo oscuro vuelve a tener fondo oscuro.
+
+## Cómo pasar v2 a producción
+
+1. Revisá la vista previa (`Abrir-vista-previa.cmd`, puerto 4174).
+2. Copiá el contenido de `v2/` sobre la raíz del repositorio, incluida la
+   carpeta `v2/assets`, que se combina con `assets`. Las rutas no cambian.
+3. Borrá la carpeta `v2/` de la raíz o dejala: `.vercelignore` no la publica.
+4. Corré `node --test tests/*.cjs` y publicá.
+
+El plan con las decisiones está en `docs/PLAN-V2.md`.
 
 Base estática para un portfolio profesional en español, con foco en UX/UI, diseño gráfico, branding, motion y piezas visuales.
 
 ## Archivos principales
 
 Para abrir la vista previa en Windows, hacé doble clic en `Abrir-vista-previa.cmd`.
-También podés iniciarla con `node preview.cjs` y abrir `http://127.0.0.1:4173/`.
+También podés iniciarla con `node preview.cjs` y abrir `http://127.0.0.1:4174/`.
+La vista previa envía las mismas cabeceras de seguridad que producción.
 La vista es local y funciona mientras el servidor esté activo; no publica nada.
 
 - `index.html`: estructura general del sitio.
@@ -31,13 +85,13 @@ Campos importantes:
   y prioriza el video y el prototipo antes de las pantallas.
 
 La dirección de presentación y la evidencia pendiente de cada caso están en
-`PRESENTACION.md`. Verificá la colección con `node --test tests/portfolio.test.cjs`.
+`PRESENTACION.md`. Verificá todo con `node --test tests/*.cjs`.
 
 ## Cómo agregar imágenes, videos o embeds
 
 Para imágenes:
 
-- guardá los archivos dentro de una carpeta como `assets/projects/`
+- guardá los archivos dentro de una carpeta como `assets/projects/`, de preferencia en WebP
 - agregá `image: "assets/projects/nombre-archivo.jpg"` dentro del bloque correspondiente
 
 Para videos:
@@ -75,7 +129,9 @@ Ejemplo:
 ## Formulario de contacto
 
 El formulario usa FormSubmit. El primer envío puede requerir que el titular del
-correo confirme la activación desde su bandeja de entrada. Si el servicio no
+correo confirme la activación desde su bandeja de entrada. Ese correo de
+activación trae un alias aleatorio: pegalo en `profile.formAlias` y la
+dirección deja de figurar como destino del formulario. Si el servicio no
 confirma el envío, se conserva el mensaje y se ofrece el correo directo.
 
 ## Animaciones
@@ -103,4 +159,4 @@ dimensiones exactas del componente; no interpola cajas de tamaños diferentes.
 Todos los proyectos usan columnas iguales y portadas con la misma proporción,
 sin textos decorativos superpuestos a las imágenes.
 
-Las animaciones complejas están preparadas con GSAP por CDN para mantener el proyecto liviano y sin paso de build. Si querés una versión completamente offline, podés descargar GSAP y servirlo localmente.
+GSAP se sirve desde `vendor/`, sin CDN ni paso de build, así el sitio no depende de terceros para ejecutar scripts.

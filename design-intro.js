@@ -272,6 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function playIntro() {
     currentIntro?.();
+    try { window.sessionStorage.setItem('leonel-intro-seen', '1'); } catch {}
     tour.suspend(true);
     document.dispatchEvent(new Event('portfolio:intro-start'));
     // Keep the actual hero heading, reserving its space while it lives in the canvas.
@@ -312,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         <div class="design-intro-properties"><span>APARIENCIA</span><button type="button" data-intro-color aria-label="Cambiar color del lienzo"><i></i> Cambiar acento</button><div aria-hidden="true"><span>Diseño</span><b>Con intención.</b><hr><span>Modo</span><b>Crear conexiones</b></div></div>
       </div>
-      <div class="design-intro-bottom"><span>De una idea a una experiencia.</span><span>Escribiendo una identidad, no cargando una página.</span></div>`;
+      <div class="design-intro-bottom"><span>De una idea a una experiencia.</span><span>Clic, scroll o Esc para saltar.</span></div>`;
     document.body.append(overlay);
     overlay.querySelector('[data-intro-name]').append(title);
     document.documentElement.classList.remove('design-intro-pending');
@@ -379,21 +380,25 @@ document.addEventListener('DOMContentLoaded', () => {
       const start = { x: from.left, y: from.top, scale: sourceSize / size, color: sourceColor };
       const end = { x: destination.left, y: destination.top, scale: 1, color };
       overlay.style.pointerEvents = 'none';
-      exit = overlay.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 800, easing: 'ease-in-out', fill: 'forwards' });
+      exit = overlay.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 600, easing: 'ease-in-out', fill: 'forwards' });
       if (window.gsap) {
-        flight = gsap.fromTo(title, start, { ...end, duration: 1.1, ease: 'power3.inOut', onComplete: settle });
+        flight = gsap.fromTo(title, start, { ...end, duration: .8, ease: 'power3.inOut', onComplete: settle });
       } else {
         flight = title.animate([
           { transform: `translate(${start.x}px, ${start.y}px) scale(${start.scale})`, color: sourceColor },
           { transform: `translate(${end.x}px, ${end.y}px) scale(1)`, color }
-        ], { duration: 1100, easing: 'cubic-bezier(.65,0,.35,1)', fill: 'forwards' });
+        ], { duration: 800, easing: 'cubic-bezier(.65,0,.35,1)', fill: 'forwards' });
         flight.onfinish = settle;
       }
-      safetyTimer = setTimeout(settle, 1300);
+      safetyTimer = setTimeout(settle, 1000);
     }
     currentIntro = () => finish({ immediate: true });
-    schedule(() => finish({ immediate: true }), 12000);
+    schedule(() => finish({ immediate: true }), 7000);
     overlay.querySelector('[data-intro-skip]').addEventListener('click', () => finish(), { signal });
+    // Any click on the canvas itself skips; the buttons keep their own behavior.
+    overlay.addEventListener('pointerdown', event => {
+      if (!event.target.closest('button')) finish();
+    }, { signal });
     document.addEventListener('keydown', event => {
       if (event.key === 'Escape' || event.key === 'Tab') finish({ immediate: true });
     }, { signal });
@@ -438,30 +443,30 @@ document.addEventListener('DOMContentLoaded', () => {
       lines[line].textContent = words[line].slice(0, ++character);
       lines[line].append(caret);
       keySound();
-      if (character < words[line].length) schedule(typeLetter, character % 3 === 0 ? 175 : 105);
-      else if (line < words.length - 1) { line++; character = 0; schedule(typeLetter, 240); }
+      if (character < words[line].length) schedule(typeLetter, character % 3 === 0 ? 85 : 55);
+      else if (line < words.length - 1) { line++; character = 0; schedule(typeLetter, 120); }
       else {
         caret.remove();
         status.textContent = 'Identidad lista. Vamos al portfolio.';
         schedule(() => {
           const enter = overlay.querySelector('[data-intro-skip]');
-          travelTo(enter, .7);
+          travelTo(enter, .45);
           schedule(() => {
             enter.classList.add('is-cursor-clicked');
             cursor.classList.add('is-clicking');
             keySound();
-            schedule(finish, 260);
-          }, 780);
-        }, 450);
+            schedule(finish, 160);
+          }, 480);
+        }, 250);
       }
     }
     schedule(() => { travelTo(overlay.querySelector('.design-intro-frame'), .5); }, 120);
-    schedule(typeLetter, 720);
+    schedule(typeLetter, 380);
     if (window.gsap) {
       timeline = gsap.timeline();
-      timeline.fromTo(overlay.querySelector('.design-intro-frame'), { opacity: 0, scale: .93 }, { opacity: 1, scale: 1, duration: .8, ease: 'power3.out' }, .12)
-        .fromTo(title, { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: .7, ease: 'power3.out' }, .3)
-        .fromTo(overlay.querySelector('.design-intro-properties'), { opacity: 0, x: 12 }, { opacity: 1, x: 0, duration: .5 }, .65);
+      timeline.fromTo(overlay.querySelector('.design-intro-frame'), { opacity: 0, scale: .93 }, { opacity: 1, scale: 1, duration: .5, ease: 'power3.out' }, .05)
+        .fromTo(title, { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: .45, ease: 'power3.out' }, .15)
+        .fromTo(overlay.querySelector('.design-intro-properties'), { opacity: 0, x: 12 }, { opacity: 1, x: 0, duration: .4 }, .4);
     } else {
       animations.push(overlay.querySelector('.design-intro-frame').animate([{ opacity: 0, transform: 'scale(.95)' }, { opacity: 1, transform: 'scale(1)' }], { duration: 700 }));
     }

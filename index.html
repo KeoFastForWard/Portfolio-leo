@@ -1,46 +1,36 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Leonel Kunst | Portfolio UX/UI y Diseño Gráfico</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://api.fontshare.com; font-src 'self' https://cdn.fontshare.com; img-src 'self' data:; media-src 'self'; frame-src https://embed.figma.com https://www.figma.com; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; manifest-src 'self'" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Leonel Kunst | Diseñador UX/UI y Diseñador Gráfico</title>
     <meta
       name="description"
-      content="Portfolio profesional de Leonel Kunst, diseñador UX/UI y diseñador gráfico enfocado en experiencias digitales claras, branding, motion y piezas visuales de alto impacto."
-    />
-    <meta
-      name="keywords"
-      content="Leonel Kunst, portfolio, diseñador UX/UI, diseñador gráfico, branding, motion graphics, diseño editorial, packaging, Figma"
+      content="Leonel Kunst, diseñador UX/UI con formación en diseño gráfico. Interfaces, prototipos en Figma, identidad visual y motion. Disponible para roles UX/UI en remoto."
     />
     <meta name="author" content="Leonel Kunst" />
     <meta name="theme-color" content="#f7f6f2" id="theme-color-meta" />
-    <meta property="og:title" content="Leonel Kunst | Portfolio UX/UI y Diseño Gráfico" />
+    <link rel="canonical" href="https://leonelkunst.vercel.app/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="Leonel Kunst" />
+    <meta property="og:url" content="https://leonelkunst.vercel.app/" />
+    <meta property="og:title" content="Leonel Kunst | Diseñador UX/UI y Diseñador Gráfico" />
     <meta
       property="og:description"
-      content="Portfolio en español con proyectos de UX/UI, branding, motion, editorial, packaging y diseño visual."
+      content="Casos de UX/UI con prototipos navegables, identidad visual y motion."
     />
-    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://leonelkunst.vercel.app/assets/og-cover.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Leonel Kunst, diseñador UX/UI y diseñador gráfico" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <link rel="preconnect" href="https://api.fontshare.com" />
-    <script>
-      (function () {
-        const storageKey = "leonel-portfolio-theme";
-        let theme = "light";
-
-        try {
-          const storedTheme = window.localStorage.getItem(storageKey);
-          if (storedTheme === "light" || storedTheme === "dark") {
-            theme = storedTheme;
-          } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-            theme = "dark";
-          }
-        } catch {}
-
-        document.documentElement.dataset.theme = theme;
-        document.documentElement.classList.add("design-intro-pending");
-        window.setTimeout(() => document.documentElement.classList.remove("design-intro-pending"), 5000);
-      })();
-    </script>
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+    <script src="theme-init.js"></script>
     <link
       href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=satoshi@400,500,700,900&display=swap"
       rel="stylesheet"
@@ -48,19 +38,21 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="project-experiences.css" />
     <link rel="stylesheet" href="design-intro.css" />
+    <link rel="stylesheet" href="enhancements.css" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Leonel Kunst",
         "jobTitle": "Diseñador UX/UI y Diseñador Gráfico",
-        "email": "mailto:leonelivankunst19@gmail.com",
-        "url": "",
+        "url": "https://leonelkunst.vercel.app/",
+        "image": "https://leonelkunst.vercel.app/assets/og-cover.png",
         "sameAs": [
           "https://www.linkedin.com/in/leonel-kunst-96972522a/",
           "https://www.behance.net/leonelkunst"
         ],
         "knowsLanguage": ["es", "en"],
+        "knowsAbout": ["Diseño UX/UI", "Prototipado", "Figma", "Identidad visual", "Motion graphics"],
         "alumniOf": [
           {
             "@type": "CollegeOrUniversity",
@@ -75,12 +67,14 @@
     </script>
   </head>
   <body>
+    <a class="skip-link" href="#proyectos">Saltar a los proyectos</a>
+    <div class="scroll-progress" data-scroll-progress aria-hidden="true"></div>
     <div class="site-shell">
       <div class="ambient ambient-one"></div>
       <div class="ambient ambient-two"></div>
       <div class="ambient ambient-three"></div>
 
-      <svg class="background-lines" viewBox="0 0 1440 2400" aria-hidden="true" preserveAspectRatio="none">
+      <svg class="background-lines" viewBox="0 0 1440 2400" aria-hidden="true" focusable="false" preserveAspectRatio="none">
         <path class="bg-line-base bg-line-one" fill="none" stroke="#b79eff" stroke-opacity="0.4" stroke-width="3.2" d="M-120 230C124 124 276 344 482 304C694 262 782 72 980 108C1168 144 1260 364 1544 248" />
         <path class="bg-line bg-line-one" fill="none" stroke="#ddd3ff" stroke-opacity="0.96" stroke-width="2.65" d="M-120 230C124 124 276 344 482 304C694 262 782 72 980 108C1168 144 1260 364 1544 248" />
         <path class="bg-line-base bg-line-two" fill="none" stroke="#9fcbff" stroke-opacity="0.34" stroke-width="2.9" d="M1494 498C1252 452 1086 664 902 706C692 754 560 584 370 650C152 726 56 930 -118 954" />
@@ -135,7 +129,10 @@
         <section class="hero section" id="inicio">
           <div class="hero-grid">
             <div class="hero-main" data-reveal="up">
-              <p class="hero-label">Portfolio seleccionado / 2026</p>
+              <p class="hero-label hero-status">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span data-profile-availability>Disponible para roles UX/UI</span>
+              </p>
               <p class="hero-role" data-profile-role>Diseñador UX/UI | Diseño Gráfico</p>
               <h1 data-profile-name>Leonel Kunst</h1>
               <div class="design-hero-tools">
@@ -145,16 +142,31 @@
             </div>
 
             <div class="hero-support" data-reveal="up">
-              <p class="hero-lead">
-                Diseño interfaces, marcas y sistemas visuales con una estética precisa, actual y funcional.
+              <p class="hero-lead" data-profile-tagline>
+                Diseño interfaces claras, prototipos navegables y marcas con criterio visual.
               </p>
-              <p class="hero-description" data-profile-tagline>
-                Diseño experiencias digitales claras, identidades visuales memorables y piezas que combinan estética, estrategia y usabilidad.
-              </p>
+
+              <dl class="hero-facts">
+                <div>
+                  <dt>Ubicación</dt>
+                  <dd data-profile-location>Argentina (GMT-3)</dd>
+                </div>
+                <div>
+                  <dt>Modalidad</dt>
+                  <dd data-profile-mode>Remoto</dd>
+                </div>
+                <div>
+                  <dt>Idiomas</dt>
+                  <dd data-profile-languages>Español nativo · Inglés intermedio</dd>
+                </div>
+              </dl>
 
               <div class="hero-actions">
                 <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
-                <a class="btn btn-secondary" href="#contacto">Contactarme</a>
+                <a class="btn btn-secondary btn-cv" data-profile-cv href="assets/cv/CV-Leonel-Kunst.pdf" download>
+                  Descargar CV <span aria-hidden="true">↓</span>
+                </a>
+                <a class="text-link hero-contact-link" href="#contacto">Contactarme <span aria-hidden="true">→</span></a>
               </div>
 
               <div class="hero-tags">
@@ -168,16 +180,16 @@
 
             <div class="hero-cards" data-reveal="up">
               <article class="hero-card hero-card-dark">
-                <span>Enfoque</span>
-                <strong>Sistemas visuales claros, sobrios y con dirección de arte.</strong>
+                <span>Experiencia</span>
+                <strong>2022 – 2024 en diseño digital: Artisse Interactive y Metadev.</strong>
               </article>
               <article class="hero-card hero-card-mint">
-                <span>Herramientas</span>
-                <strong>Figma, Photoshop, Illustrator, After Effects y Premiere.</strong>
+                <span>Formación</span>
+                <strong>Lic. en Diseño Gráfico, UAI (en curso).</strong>
               </article>
               <article class="hero-card hero-card-blue">
-                <span>Perfil</span>
-                <strong>UX/UI, branding, editorial y contenido digital.</strong>
+                <span>Herramientas</span>
+                <strong>Figma, Photoshop, Illustrator, After Effects y Premiere.</strong>
               </article>
             </div>
           </div>
@@ -200,7 +212,7 @@
               data-profile-behance
               href="https://www.behance.net/leonelkunst"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               Ver Behance
             </a>
@@ -228,14 +240,25 @@
               <p>
                 También trabajo en identidad visual, diseño editorial, motion graphics y piezas para medios digitales e impresos.
               </p>
+              <a class="text-link panel-link" data-profile-cv href="assets/cv/CV-Leonel-Kunst.pdf" download>
+                Descargar CV en PDF <span aria-hidden="true">↓</span>
+              </a>
             </article>
 
             <div class="panel-stack">
-
+              <article class="content-panel" data-reveal="up">
+                <h3>Qué aporto a un equipo</h3>
+                <ul class="value-list">
+                  <li>Wireframes, user flows y prototipos navegables en Figma.</li>
+                  <li>Identidad visual y sistemas gráficos para medios digitales e impresos.</li>
+                  <li>Motion graphics para presentar interfaces y marcas en movimiento.</li>
+                </ul>
+              </article>
 
               <article class="content-panel" data-reveal="up">
-                <h3>Idiomas</h3>
+                <h3>Idiomas y modalidad</h3>
                 <p>Castellano nativo e inglés intermedio.</p>
+                <p><span data-profile-mode>Remoto</span> · <span data-profile-location>Argentina (GMT-3)</span></p>
               </article>
             </div>
           </div>
@@ -296,6 +319,11 @@
           <div class="contact-grid">
             <article class="content-panel content-panel-dark" data-reveal="up">
               <h3>Canales directos</h3>
+              <p class="contact-lead">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span data-profile-availability>Disponible para roles UX/UI</span>
+              </p>
+              <p>Escribime por el canal que te resulte más cómodo.</p>
 
               <div class="tag-group contact-links">
                 <a class="contact-chip" data-profile-email href="mailto:leonelivankunst19@gmail.com">
@@ -306,18 +334,21 @@
                   data-profile-linkedin
                   href="https://www.linkedin.com/in/leonel-kunst-96972522a/"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
-                  LinkedIn
+                  LinkedIn <span aria-hidden="true">↗</span>
                 </a>
                 <a
                   class="contact-chip"
                   data-profile-behance
                   href="https://www.behance.net/leonelkunst"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
-                  Behance
+                  Behance <span aria-hidden="true">↗</span>
+                </a>
+                <a class="contact-chip" data-profile-cv href="assets/cv/CV-Leonel-Kunst.pdf" download>
+                  Descargar CV <span aria-hidden="true">↓</span>
                 </a>
               </div>
             </article>
@@ -331,18 +362,17 @@
                 accept-charset="UTF-8"
               >
                 <input type="hidden" name="_subject" value="Consulta desde portfolio | Leonel Kunst" />
-                <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_template" value="table" />
-                <input class="contact-honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" />
+                <input class="contact-honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
                 <label>
                   <span>Nombre</span>
-                  <input type="text" name="nombre" placeholder="Tu nombre" required />
+                  <input type="text" name="nombre" placeholder="Tu nombre" autocomplete="name" maxlength="80" required />
                 </label>
 
                 <label>
                   <span>Email</span>
-                  <input type="email" name="email" placeholder="tu@email.com" required />
+                  <input type="email" name="email" placeholder="tu@email.com" autocomplete="email" maxlength="120" required />
                 </label>
 
                 <label>
@@ -351,12 +381,13 @@
                     name="mensaje"
                     rows="5"
                     placeholder="Contame brevemente en qué puedo ayudarte."
+                    maxlength="2000"
                     required
                   ></textarea>
                 </label>
 
                 <button class="btn btn-primary" type="submit" data-contact-submit>Enviar consulta</button>
-                <p class="form-note" data-form-status role="status">El formulario envía la consulta directamente desde la web.</p>
+                <p class="form-note" data-form-status role="status">Tu consulta llega directo a mi correo. No comparto tus datos.</p>
                 <a class="contact-email-fallback" data-contact-email-fallback hidden>Enviar desde mi correo</a>
               </form>
             </article>
@@ -400,8 +431,8 @@
       </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
+    <script src="vendor/gsap.min.js" defer></script>
+    <script src="vendor/ScrollTrigger.min.js" defer></script>
     <script src="portfolio-data.js" defer></script>
     <script src="project-experiences.js" defer></script>
     <script src="script.js" defer></script>

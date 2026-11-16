@@ -1,10 +1,19 @@
-﻿const portfolioData = {
+const portfolioData = {
   profile: {
     name: "Leonel Kunst",
     role: "Diseñador UX/UI | Diseño Gráfico",
     tagline:
-      "Diseño experiencias digitales claras, identidades visuales memorables y piezas que combinan estética, estrategia y usabilidad.",
+      "Diseño interfaces claras, prototipos navegables y marcas con criterio visual.",
+    // Datos que un reclutador busca primero. Editá estos textos cuando cambien.
+    availability: "Disponible para roles UX/UI",
+    location: "Argentina (GMT-3)",
+    mode: "Remoto",
+    languages: "Español nativo · Inglés intermedio",
+    cv: "assets/cv/CV-Leonel-Kunst.pdf",
     email: "leonelivankunst19@gmail.com",
+    // Alias aleatorio que FormSubmit envía al activar el formulario. Si lo
+    // pegás acá, tu correo deja de aparecer en el destino del formulario.
+    formAlias: "",
     linkedin: "https://www.linkedin.com/in/leonel-kunst-96972522a/",
     behance: "https://www.behance.net/leonelkunst"
   },
@@ -58,7 +67,7 @@
       degree: "Licenciatura en Informática",
       period: "2023 - 2024",
       description:
-        "Trayecto académico abandonado en 2° año que fortaleció una base analítica y estructurada antes de volcarme por completo al diseño."
+        "Cursada hasta 2° año. Me dejó una base analítica y estructurada que hoy aplico al diseño de interfaces."
     }
   ],
   skillGroups: [
@@ -188,27 +197,27 @@
         {
           type: "visual",
           title: "The Galaxy Is In Your Hands",
-          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands.png"
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands.webp"
         },
         {
           type: "visual",
           title: "About Us Part 3",
-          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-about-us-part-3.png"
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-about-us-part-3.webp"
         },
         {
           type: "visual",
           title: "Photos Part 3",
-          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-photos-part-3.png"
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-photos-part-3.webp"
         },
         {
           type: "visual",
           title: "Principal Button Part 2",
-          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-principal-button-part-2.png"
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-principal-button-part-2.webp"
         },
         {
           type: "visual",
           title: "Contact Part 3",
-          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-contact-part-3.png"
+          image: "assets/projects/uxui/protogalaxy/images/the-galaxy-is-in-your-hands-contact-part-3.webp"
         }
       ]
     },
@@ -298,32 +307,32 @@
         {
           type: "visual",
           title: "Catalogue Part 1",
-          image: "assets/projects/uxui/protodealership/images/property-1-catalogue-part-1.png"
+          image: "assets/projects/uxui/protodealership/images/property-1-catalogue-part-1.webp"
         },
         {
           type: "visual",
           title: "Variant 16",
-          image: "assets/projects/uxui/protodealership/images/property-1-variant16.png"
+          image: "assets/projects/uxui/protodealership/images/property-1-variant16.webp"
         },
         {
           type: "visual",
           title: "Variant 20",
-          image: "assets/projects/uxui/protodealership/images/property-1-variant20.png"
+          image: "assets/projects/uxui/protodealership/images/property-1-variant20.webp"
         },
         {
           type: "visual",
           title: "Variant 4",
-          image: "assets/projects/uxui/protodealership/images/property-1-variant4.png"
+          image: "assets/projects/uxui/protodealership/images/property-1-variant4.webp"
         },
         {
           type: "visual",
           title: "Variant 6",
-          image: "assets/projects/uxui/protodealership/images/property-1-variant6.png"
+          image: "assets/projects/uxui/protodealership/images/property-1-variant6.webp"
         },
         {
           type: "visual",
           title: "Variant 8",
-          image: "assets/projects/uxui/protodealership/images/property-1-variant8.png"
+          image: "assets/projects/uxui/protodealership/images/property-1-variant8.webp"
         }
       ]
     },
@@ -391,7 +400,7 @@
         label: "Producto + interfaz"
       },
       cover: {
-        src: "assets/projects/uxui/nike-vision/cover/cover.png",
+        src: "assets/projects/uxui/nike-vision/cover/cover.webp",
         position: "center center",
         tint: "rgba(8, 8, 8, 0.06)",
         shadow: "rgba(8, 8, 8, 0.34)"
@@ -409,12 +418,12 @@
         {
           type: "visual",
           title: "HUD",
-          image: "assets/projects/uxui/nike-vision/images/nike-vision-hud.png"
+          image: "assets/projects/uxui/nike-vision/images/nike-vision-hud.webp"
         },
         {
           type: "visual",
           title: "Product Page Complete",
-          image: "assets/projects/uxui/nike-vision/images/nike-vision-product-page-complete.png"
+          image: "assets/projects/uxui/nike-vision/images/nike-vision-product-page-complete.webp"
         },
         {
           type: "video",
@@ -488,7 +497,7 @@
         label: "App social"
       },
       cover: {
-        src: "assets/projects/uxui/protored/cover/cover.png",
+        src: "assets/projects/uxui/protored/cover/cover.webp",
         position: "center center",
         tint: "rgba(20, 20, 20, 0.08)",
         shadow: "rgba(26, 26, 30, 0.46)"
@@ -506,62 +515,62 @@
         {
           type: "visual",
           title: "HUD",
-          image: "assets/projects/uxui/protored/images/hud-protored.png"
+          image: "assets/projects/uxui/protored/images/hud-protored.webp"
         },
         {
           type: "visual",
           title: "Perfil",
-          image: "assets/projects/uxui/protored/images/perfil-protored.png"
+          image: "assets/projects/uxui/protored/images/perfil-protored.webp"
         },
         {
           type: "visual",
           title: "Search",
-          image: "assets/projects/uxui/protored/images/search-protored.png"
+          image: "assets/projects/uxui/protored/images/search-protored.webp"
         },
         {
           type: "visual",
           title: "Create Post",
-          image: "assets/projects/uxui/protored/images/create-post-protored.png"
+          image: "assets/projects/uxui/protored/images/create-post-protored.webp"
         },
         {
           type: "visual",
           title: "History",
-          image: "assets/projects/uxui/protored/images/history-protored.png"
+          image: "assets/projects/uxui/protored/images/history-protored.webp"
         },
         {
           type: "visual",
           title: "Messages",
-          image: "assets/projects/uxui/protored/images/messages-protored.png"
+          image: "assets/projects/uxui/protored/images/messages-protored.webp"
         },
         {
           type: "visual",
           title: "Chat",
-          image: "assets/projects/uxui/protored/images/chat-protored.png"
+          image: "assets/projects/uxui/protored/images/chat-protored.webp"
         },
         {
           type: "visual",
           title: "Notification Scene",
-          image: "assets/projects/uxui/protored/images/notification-scene-protored.png"
+          image: "assets/projects/uxui/protored/images/notification-scene-protored.webp"
         },
         {
           type: "visual",
           title: "Call",
-          image: "assets/projects/uxui/protored/images/call-protored.png"
+          image: "assets/projects/uxui/protored/images/call-protored.webp"
         },
         {
           type: "visual",
           title: "Videocall",
-          image: "assets/projects/uxui/protored/images/videocall-protored.png"
+          image: "assets/projects/uxui/protored/images/videocall-protored.webp"
         },
         {
           type: "visual",
           title: "Login",
-          image: "assets/projects/uxui/protored/images/login-protored.png"
+          image: "assets/projects/uxui/protored/images/login-protored.webp"
         },
         {
           type: "visual",
           title: "Register",
-          image: "assets/projects/uxui/protored/images/register-protored.png"
+          image: "assets/projects/uxui/protored/images/register-protored.webp"
         }
       ]
     },
@@ -622,7 +631,7 @@
         label: "Motion de marca"
       },
       cover: {
-        src: "assets/projects/motion/isotipo-animado/cover/cover.png",
+        src: "assets/projects/motion/isotipo-animado/cover/cover.webp",
         position: "center center",
         tint: "rgba(10, 12, 16, 0.08)",
         shadow: "rgba(10, 12, 16, 0.3)"
@@ -632,7 +641,7 @@
           type: "video",
           title: "Principal",
           src: "assets/projects/motion/isotipo-animado/videos/principal.mp4",
-          poster: "assets/projects/motion/isotipo-animado/cover/cover.png",
+          poster: "assets/projects/motion/isotipo-animado/cover/cover.webp",
           description:
             "Versión principal de la animación del isotipo de Napoly Barbershop, pensada como pieza base de presentación visual."
         },
@@ -640,21 +649,21 @@
           type: "video",
           title: "Secundario",
           src: "assets/projects/motion/isotipo-animado/videos/secundario.mp4",
-          poster: "assets/projects/motion/isotipo-animado/cover/cover.png",
+          poster: "assets/projects/motion/isotipo-animado/cover/cover.webp",
           description:
             "Segunda variante del movimiento para complementar el caso y mostrar otra resolución visual de la identidad de Napoly Barbershop."
         },
         {
           type: "visual",
           title: "Isotipo sobre fondo claro",
-          image: "assets/projects/branding/napoly-barbershop-manual/images/isotipo-negro-fondo-blanco.png",
+          image: "assets/projects/branding/napoly-barbershop-manual/images/isotipo-negro-fondo-blanco.webp",
           description:
             "Versión principal del isotipo presentada sobre fondo claro para mostrar lectura, peso visual y definición de la marca."
         },
         {
           type: "visual",
           title: "Isotipo sobre fondo oscuro",
-          image: "assets/projects/branding/napoly-barbershop-manual/images/isotipo-blanco-fondo-negro.png",
+          image: "assets/projects/branding/napoly-barbershop-manual/images/isotipo-blanco-fondo-negro.webp",
           description:
             "Aplicación invertida del isotipo para validar contraste y consistencia de marca en superficies oscuras."
         },
@@ -725,7 +734,7 @@
         label: "Flyer deportivo"
       },
       cover: {
-        src: "assets/projects/social-media/mastantuono-real-madrid/cover/cover.png",
+        src: "assets/projects/social-media/mastantuono-real-madrid/cover/cover.webp",
         position: "center center",
         tint: "rgba(12, 14, 18, 0.04)",
         shadow: "rgba(12, 14, 18, 0.22)"
@@ -734,7 +743,7 @@
         {
           type: "visual",
           title: "Flyer principal",
-          image: "assets/projects/social-media/mastantuono-real-madrid/images/mastantuono-real-madrid-flyer.png",
+          image: "assets/projects/social-media/mastantuono-real-madrid/images/mastantuono-real-madrid-flyer.webp",
           description:
             "Flyer cuadrado orientado a redes sociales con una construcción aspiracional, composición en capas y foco total en el impacto visual."
         }

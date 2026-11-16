@@ -1,0 +1,25 @@
+# Lo que no debe publicarse: respaldos, notas internas, tests y archivos de trabajo.
+/backups
+/tests
+/docs
+/v2
+*.md
+/README.txt
+/preview.cjs
+*.cmd
+/manifest.json
+/metadata.json
+
+# Copias sueltas y carpetas de origen que el sitio no usa.
+/2024-07-21-17-36-34.mp4
+/cover.png
+/slide.png
+/nike-vision-*.png
+assets/Proyectos para portfolio UX UI
+assets/Project Napoly barbershop identidad de marca
+assets/projects Ae
+assets/projects/uxui/manifest.json
+assets/projects/uxui/README.txt
+assets/projects/**/metadata.json
+assets/projects/**/README.txt
+assets/projects/**/*.pdf

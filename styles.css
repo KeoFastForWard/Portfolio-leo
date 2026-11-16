@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --bg: #f7f6f2;
   --bg-soft: #fcfbf8;
   --surface: rgba(255, 255, 255, 0.86);
@@ -2455,9 +2455,11 @@ body {
   background:
     linear-gradient(180deg, rgba(251, 251, 253, 0.8) 0%, rgba(244, 240, 246, 0.72) 52%, rgba(236, 232, 240, 0.82) 100%),
     radial-gradient(circle at 18% 20%, rgba(173, 209, 255, 0.22), transparent 28%),
-    radial-gradient(circle at 78% 72%, rgba(241, 208, 160, 0.18), transparent 24%),
-    url("https://images.pexels.com/photos/20985696/pexels-photo-20985696.jpeg?cs=srgb&dl=pexels-davincidelasfotos-20985696.jpg&fm=jpg") center 46% / cover no-repeat;
-  filter: blur(18px) saturate(0.82);
+    radial-gradient(circle at 78% 72%, rgba(241, 208, 160, 0.18), transparent 24%);
+  /* v2: the blurred photo that sat under these gradients was hot-linked from
+     pexels.com at full size. To bring a texture back, save an image inside
+     assets/ and add it here as the last background layer. */
+  filter: saturate(0.82);
   transform: scale(1.06);
   opacity: 0.62;
 }
@@ -4204,4 +4206,35 @@ html[data-theme="dark"] .bg-line-glint.bg-line-six {
     position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden;
     clip-path: inset(50%); white-space: nowrap;
   }
+}
+
+/* background-lines-flicker-fix
+   El brillo que recorre las líneas se repinta en cada frame. Con el filtro
+   del contenedor y el drop-shadow del glint, el navegador recalculaba el
+   desenfoque en cada frame y el brillo titilaba levemente. El SVG va en su
+   propia capa sin filtro, y el glint usa un halo de trazo fijo en vez de
+   drop-shadow. */
+.background-lines,
+html[data-theme="dark"] .background-lines {
+  filter: none !important;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.bg-line-glint,
+.bg-line-glint.bg-line-one,
+.bg-line-glint.bg-line-two,
+.bg-line-glint.bg-line-three,
+.bg-line-glint.bg-line-four,
+.bg-line-glint.bg-line-five,
+.bg-line-glint.bg-line-six,
+html[data-theme="dark"] .bg-line-glint.bg-line-one,
+html[data-theme="dark"] .bg-line-glint.bg-line-two,
+html[data-theme="dark"] .bg-line-glint.bg-line-three,
+html[data-theme="dark"] .bg-line-glint.bg-line-four,
+html[data-theme="dark"] .bg-line-glint.bg-line-five,
+html[data-theme="dark"] .bg-line-glint.bg-line-six {
+  filter: none !important;
+  stroke-linecap: round;
 }
