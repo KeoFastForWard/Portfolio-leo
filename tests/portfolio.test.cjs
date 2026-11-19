@@ -107,9 +107,9 @@ test('Brand, motion and poster cases use media-specific sections', () => {
   const napoly = projects.filter(project => project.title.includes('Napoly'));
   assert.equal(napoly.length, 1);
   assert.deepEqual([...napoly[0].categories], ['Motion', 'Branding']);
-  const poster = render('mastantuono-real-madrid');
-  assert.doesNotMatch(poster, /role="tablist"|id="case-demo"/);
-  assert.equal(projects.find(p => p.id === 'mastantuono-real-madrid').experience.showCover, false);
+  const poster = render('artisse-social');
+  assert.doesNotMatch(poster, /id="case-demo"|<video /);
+  assert.equal(projects.find(p => p.id === 'artisse-social').experience.showCover, false);
 });
 
 test('Napoly book lists 25 distinct, ordered local pages and only loads the first initially', () => {
@@ -137,7 +137,7 @@ test('Proto Red places its original screen assets inside the iPhone frame', () =
 });
 
 test('The gallery and home sections follow the requested order without numbered badges', () => {
-  assert.equal(projects.map(project => project.id).join(','), 'protogalaxy,protodealership,nike-vision,protored,napoly-brand-manual,mastantuono-real-madrid');
+  assert.equal(projects.map(project => project.id).join(','), 'artisse-social,protogalaxy,protodealership,protored,napoly-brand-manual,nike-vision');
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   assert.ok(html.indexOf('id="proyectos"') < html.indexOf('id="sobre-mi"'));
   assert.doesNotMatch(html, /section-number|<h2>undefined<\/h2>/);
@@ -151,4 +151,29 @@ test('The bottom dock links to real sections in page order', () => {
   const offsets = links.map(id => html.indexOf(`id="${id}"`));
   assert.ok(offsets.every((offset, index) => offset >= 0 && (index === 0 || offset > offsets[index - 1])));
   assert.equal((dock.match(/aria-current="location"/g) || []).length, 1);
+});
+
+test('The English copy matches every case and never adds chapters or media', () => {
+  const en = vm.createContext({});
+  vm.runInContext(fs.readFileSync(path.join(root, 'portfolio-data.en.js'), 'utf8') + ';this.result = portfolioDataEn;', en);
+  const copy = en.result.projects;
+  assert.equal(Object.keys(copy).sort().join(), projects.map(p => p.id).sort().join());
+  for (const project of projects) {
+    const english = copy[project.id];
+    assert.equal(english.experience.chapters.length, project.experience.chapters.length, project.id);
+    assert.ok((english.media || []).length <= project.media.length, project.id);
+    assert.ok(!('id' in english) && !('cover' in english), project.id);
+  }
+  const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  assert.ok(html.indexOf('portfolio-data.en.js') < html.indexOf('i18n.js'));
+  assert.ok(html.indexOf('i18n.js') < html.indexOf('project-experiences.js'));
+  assert.match(html, /data-lang-toggle/);
+});
+
+test('The validation block appears only when a case has real findings', () => {
+  const render = project => context.window.ProjectExperiences.render(project, context.createMediaBlock);
+  const base = projects.find(p => p.id === 'protogalaxy');
+  assert.doesNotMatch(render(base), /experience-validation/);
+  const tested = { ...base, validation: { method: 'Test con 5 personas.', findings: ['Hallazgo'], changes: ['Cambio'] } };
+  assert.match(render(tested), /experience-validation[\s\S]*Hallazgo[\s\S]*Cambio/);
 });

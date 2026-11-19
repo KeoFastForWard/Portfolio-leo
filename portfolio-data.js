@@ -117,6 +117,82 @@ const portfolioData = {
   ],
   projects: [
     {
+      id: "artisse-social",
+      title: "Artisse",
+      experience: {
+        theme: "artisse",
+        showCover: false,
+        eyebrow: "Contenido para redes con IA",
+        headline: "Un millón de vistas. Diecinueve lecciones.",
+        introduction: "Videos cortos para TikTok que promocionaban Artisse, una app de fotos con IA, en el mercado hispanohablante. Hice la idea, la generación con IA, la edición y la publicación de todos los videos de la cuenta.",
+        role: "Idea, generación con IA, edición y publicación",
+        format: "TikTok · video vertical 9:16",
+        deliverable: "20 videos cortos en ~2 semanas",
+        tourLink: "Ver los resultados",
+        tourTitle: "Probar rápido, medir y repetir.",
+        tourDescription: "La cuenta original, @artisse.espanol, con sus números reales.",
+        thinkingTitle: "El gancho manda. Lo demás se mide.",
+        chapters: [
+          { label: "Perfil", title: "La cuenta original, video por video.", description: "Los 20 videos de @artisse.espanol con sus vistas reales: dos fijados, uno de 976,6 mil y la mayoría por debajo de las 600.", mediaIndex: 0 },
+          { label: "Resultados", title: "Un video explica más del 90% del alcance.", description: "~1,08 millones de vistas sumadas y 51,1 mil likes. Un video llegó a 976,6 mil y otros tres pasaron las 12 mil; la mayoría no superó las 600.", mediaIndex: 1 },
+          { label: "Formato", title: "Gancho → transformación con IA → llamado a la acción.", description: "Una cara que la audiencia ya sigue, una pregunta que invita a comentar, la foto pasando por estilos generados con la app y un cierre con la marca.", mediaIndex: 2 }
+        ]
+      },
+      category: "Social Media",
+      categories: ["Social Media", "Motion"],
+      context: "Social Media / Motion",
+      year: "2023",
+      external: {
+        href: "https://www.tiktok.com/@artisse.espanol",
+        label: "Ver el perfil en TikTok"
+      },
+      summary:
+        "Videos cortos con IA para TikTok: ~1 millón de vistas en dos semanas, con un video de 976 mil.",
+      overview:
+        "Contenido para redes de Artisse Interactive, pensado para dar a conocer la app de fotos con IA entre el público hispanohablante.",
+      objective:
+        "Conseguir alcance orgánico rápido y llevar a la audiencia a probar la app, con piezas que se pudieran producir y ajustar en el día.",
+      challenge:
+        "Captar la atención en el primer segundo, mostrar qué hace la app sin explicarla y producir suficientes variantes para aprender qué funcionaba.",
+      process: [
+        "Gancho con una pregunta para el público: “¿Qué otro estilo te gustaría ver en ella?” convirtió los comentarios en ideas para el próximo video.",
+        "Transformación con IA en pocos segundos: la misma foto pasa por varios estilos, con cortes al ritmo del audio.",
+        "Responder comentarios con videos nuevos: la respuesta a una seguidora llegó a 14,1 mil vistas.",
+        "Llamado a la acción claro al cierre (“Probalo en Artisse”), que por sí solo sumó dos videos de más de 9 mil vistas.",
+        "Varias versiones por día, medición de vistas y likes, y repetición del formato que funcionaba."
+      ],
+      tools: ["Herramientas de IA generativa", "Premiere Pro", "After Effects", "TikTok"],
+      deliverables: [
+        "20 videos verticales",
+        "Formato de gancho reutilizable",
+        "Respuestas en video a comentarios",
+        "Publicación y seguimiento de métricas"
+      ],
+      outcome:
+        "~1,08 millones de vistas y 51,1 mil likes en dos semanas; un video llegó a 976,6 mil vistas y otros tres pasaron las 12 mil.",
+      learnings:
+        "Los ganchos con preguntas a la audiencia y las respuestas a comentarios multiplicaban el alcance. Hoy aplico lo mismo al diseño UX/UI: iterar con datos, no con suposiciones.",
+      accent: {
+        start: "#2a1730",
+        end: "#120d17",
+        label: "Contenido para redes"
+      },
+      cover: {
+        src: "assets/projects/social-media/artisse/cover.jpg",
+        position: "center center",
+        tint: "rgba(12, 8, 16, 0.04)",
+        shadow: "rgba(12, 8, 16, 0.3)"
+      },
+      media: [
+        { type: "visual", title: "Perfil de TikTok", image: "assets/projects/social-media/artisse/perfil.jpg", description: "La cuenta @artisse.espanol con sus 20 videos y las vistas de cada uno." },
+        { type: "visual", title: "Resultados", image: "assets/projects/social-media/artisse/numeros.svg", description: "Vistas por video y totales de la cuenta (agosto 2023)." },
+        { type: "visual", title: "Formato", image: "assets/projects/social-media/artisse/formato.svg", description: "Esquema del formato: gancho, transformación con IA y llamado a la acción." },
+        { type: "visual", title: "976,6 mil vistas", image: "assets/projects/social-media/artisse/tiktok/02.jpg", description: "El video más visto: estilo con IA y la pregunta “¿Qué otro estilo te gustaría ver en ella?”." },
+        { type: "visual", title: "Respuesta a un comentario · 14,1 mil", image: "assets/projects/social-media/artisse/tiktok/04.jpg", description: "Un pedido de una seguidora, respondido con un video nuevo." },
+        { type: "visual", title: "“Probalo en Artisse” · 12,8 mil", image: "assets/projects/social-media/artisse/tiktok/06.jpg", description: "Llamado a la acción directo al cierre del video." }
+      ]
+    },
+    {
       id: "protogalaxy",
       title: "Órbita",
       experience: {
@@ -333,102 +409,6 @@ const portfolioData = {
           type: "visual",
           title: "Variant 8",
           image: "assets/projects/uxui/protodealership/images/property-1-variant8.webp"
-        }
-      ]
-    },
-    {
-      id: "nike-vision",
-      title: "Just Vision",
-      experience: {
-        theme: "vision",
-        eyebrow: "Producto en primer plano",
-        headline: "De la primera mirada al detalle.",
-        introduction: "Una tienda conceptual donde la imagen abre el recorrido y la interfaz organiza el paso hacia la ficha de producto.",
-        tourTitle: "Dos escalas de una misma tienda.",
-        thinkingTitle: "De la imagen a la información.",
-        chapters: [
-          { label: "Inicio", title: "Primera impresión.", description: "La portada establece el tono visual y da protagonismo al producto sin ocultar la navegación.", mediaIndex: 1 },
-          { label: "Ficha de producto", title: "La información toma el relevo.", description: "La ficha completa muestra cómo cambia la jerarquía cuando la atención pasa de la marca al producto.", mediaIndex: 2 }
-        ]
-      },
-      presentation: {
-        role: "Investigación, diseño UI y prototipado",
-        format: "Web · Figma",
-        focus: "Producto, navegación y detalle de compra",
-        evidence: "Interfaz, video de recorrido y prototipo navegable."
-      },
-      category: "UX/UI",
-      categories:       [
-        "UX/UI"
-      ],
-      context: "Sitio web UI",
-      year: "2024",
-      summary:
-        "Landing conceptual para una línea Nike con foco en producto, narrativa visual y una experiencia de browsing limpia.",
-      overview:
-        "Proyecto UX/UI web pensado para presentar una línea de producto con una interfaz clara, minimalista y visualmente comercial.",
-      objective:
-        "Construir una página interactiva que destaque producto, identidad de marca y navegación con una lectura simple y actual.",
-      challenge:
-        "La composición debía equilibrar protagonismo visual, presencia de producto y una interfaz sobria sin perder claridad.",
-      process:       [
-        "Definición del tono visual del sitio y de la relación entre producto, tipografía e imagen.",
-        "Diseño de hero principal, navegación superior y módulos de producto.",
-        "Exploración de pantallas de producto y variantes de presentación con foco comercial.",
-        "Refinamiento del prototipo y revisión de las jerarquías visuales."
-      ],
-      tools:       [
-        "Figma",
-        "Diseño web",
-        "Diseño UI",
-        "Prototipado"
-      ],
-      deliverables:       [
-        "Portada principal",
-        "Pantallas de producto",
-        "Sistema UI web",
-        "Video de presentación",
-        "Prototipo interactivo en Figma"
-      ],
-      outcome:
-        "El proyecto deja una propuesta visual limpia y aspiracional, con foco en producto y una interfaz fácil de recorrer.",
-      learnings:
-        "En un sitio orientado a producto, la dirección de arte y la jerarquía visual tienen que trabajar al servicio de la claridad.",
-      accent: {
-        start: "#e8e5e1",
-        end: "#cfcfcf",
-        label: "Producto + interfaz"
-      },
-      cover: {
-        src: "assets/projects/uxui/nike-vision/cover/cover.webp",
-        position: "center center",
-        tint: "rgba(8, 8, 8, 0.06)",
-        shadow: "rgba(8, 8, 8, 0.34)"
-      },
-      media:             [
-        {
-          type: "embed",
-          title: "Prototipo interactivo en Figma",
-          embedUrl:
-            "https://embed.figma.com/proto/pjCniFuPBce7iySlz3jsKS/Nike-Vision?page-id=0%3A1&node-id=1-2&viewport=343%2C467%2C0.33&scaling=contain&content-scaling=fixed&embed-host=leonel-portfolio",
-          frameHeight: "46rem",
-          description:
-            "Versión navegable del prototipo de Just Vision embebida dentro del portfolio para recorrer la propuesta UX/UI directamente desde el caso."
-        },
-        {
-          type: "visual",
-          title: "HUD",
-          image: "assets/projects/uxui/nike-vision/images/nike-vision-hud.webp"
-        },
-        {
-          type: "visual",
-          title: "Product Page Complete",
-          image: "assets/projects/uxui/nike-vision/images/nike-vision-product-page-complete.webp"
-        },
-        {
-          type: "video",
-          title: "Demo en video",
-          src: "assets/projects/uxui/nike-vision/videos/2024-07-21-17-36-34.mp4"
         }
       ]
     },
@@ -681,71 +661,98 @@ const portfolioData = {
       ]
     },
     {
-      id: "mastantuono-real-madrid",
-      title: "Future of Real Madrid | Mastantuono",
+      id: "nike-vision",
+      title: "Just Vision",
       experience: {
-        theme: "mastantuono",
-        showCover: false,
-        eyebrow: "Dirección visual / Fútbol",
-        headline: "Una promesa de futuro, en una imagen.",
-        introduction: "Un afiche conceptual para redes que pone a Mastantuono en el centro de una composición deportiva de alto contraste.",
-        role: "Concepto y composición visual",
-        format: "Afiche digital · 1:1",
-        deliverable: "Pieza gráfica para redes sociales",
-        tourTitle: "La pieza completa.",
-        tourDescription: "El formato cuadrado se conserva para ver la composición sin recortes.",
-        thinkingTitle: "Profundidad y jerarquía en una sola pieza.",
+        theme: "vision",
+        eyebrow: "Producto en primer plano",
+        headline: "De la primera mirada al detalle.",
+        introduction: "Una tienda conceptual donde la imagen abre el recorrido y la interfaz organiza el paso hacia la ficha de producto.",
+        tourTitle: "Dos escalas de una misma tienda.",
+        thinkingTitle: "De la imagen a la información.",
         chapters: [
-          { label: "Afiche final", title: "El jugador como punto de entrada.", description: "El retrato, el nombre y el escudo se organizan en capas para sostener una lectura rápida en redes.", mediaIndex: 0 }
+          { label: "Inicio", title: "Primera impresión.", description: "La portada establece el tono visual y da protagonismo al producto sin ocultar la navegación.", mediaIndex: 1 },
+          { label: "Ficha de producto", title: "La información toma el relevo.", description: "La ficha completa muestra cómo cambia la jerarquía cuando la atención pasa de la marca al producto.", mediaIndex: 2 }
         ]
       },
-      category: "Social Media",
-      categories: ["Social Media"],
-      context: "Flyer para redes sociales",
-      year: "2025",
-      summary:
-        "Flyer conceptual para redes sobre Mastantuono en clave Real Madrid, con composición editorial, alto contraste y foco aspiracional.",
-      overview:
-        "Pieza pensada para mostrar criterio de composición en social media, manejo de imagen deportiva y una narrativa visual de impacto en formato cuadrado.",
-      objective:
-        "Diseñar un flyer estático con lectura inmediata, presencia visual fuerte y una estética futbolera premium orientada a redes.",
-      challenge:
-        "La composición debía equilibrar múltiples recortes del jugador, branding implícito del club y una jerarquía tipográfica dominante sin perder limpieza.",
-      process: [
-        "Definición del concepto visual con tono aspiracional y eje en la promesa de futuro deportivo.",
-        "Composición del flyer con layering de recortes, escudo, humo, tipografía condensada y fondo claro texturado.",
-        "Ajuste de jerarquías entre claim, nombre del jugador y elementos secundarios para lectura rápida en redes.",
-        "Refinamiento final de contraste, profundidad y balance general para publicación digital."
+      presentation: {
+        role: "Investigación, diseño UI y prototipado",
+        format: "Web · Figma",
+        focus: "Producto, navegación y detalle de compra",
+        evidence: "Interfaz, video de recorrido y prototipo navegable."
+      },
+      category: "UX/UI",
+      categories:       [
+        "UX/UI"
       ],
-      tools: ["Photoshop", "Diseño para redes sociales", "Composición visual"],
-      deliverables: [
-        "Flyer principal 1:1",
-        "Versión lista para publicación digital",
-        "Dirección visual deportiva",
-        "Composición de alto impacto"
+      context: "Sitio web UI",
+      year: "2024",
+      summary:
+        "Landing conceptual para una línea Nike con foco en producto, narrativa visual y una experiencia de browsing limpia.",
+      overview:
+        "Proyecto UX/UI web pensado para presentar una línea de producto con una interfaz clara, minimalista y visualmente comercial.",
+      objective:
+        "Construir una página interactiva que destaque producto, identidad de marca y navegación con una lectura simple y actual.",
+      challenge:
+        "La composición debía equilibrar protagonismo visual, presencia de producto y una interfaz sobria sin perder claridad.",
+      process:       [
+        "Definición del tono visual del sitio y de la relación entre producto, tipografía e imagen.",
+        "Diseño de hero principal, navegación superior y módulos de producto.",
+        "Exploración de pantallas de producto y variantes de presentación con foco comercial.",
+        "Refinamiento del prototipo y revisión de las jerarquías visuales."
+      ],
+      tools:       [
+        "Figma",
+        "Diseño web",
+        "Diseño UI",
+        "Prototipado"
+      ],
+      deliverables:       [
+        "Portada principal",
+        "Pantallas de producto",
+        "Sistema UI web",
+        "Video de presentación",
+        "Prototipo interactivo en Figma"
       ],
       outcome:
-        "La pieza logra una presencia visual fuerte y contemporánea, con foco en impacto inmediato, narrativa deportiva y carácter editorial para social media.",
+        "El proyecto deja una propuesta visual limpia y aspiracional, con foco en producto y una interfaz fácil de recorrer.",
       learnings:
-        "En piezas deportivas para redes, la jerarquía tipográfica y la profundidad entre planos son clave para construir dramatismo sin saturar la lectura.",
+        "En un sitio orientado a producto, la dirección de arte y la jerarquía visual tienen que trabajar al servicio de la claridad.",
       accent: {
-        start: "#e6e6e4",
-        end: "#bababa",
-        label: "Flyer deportivo"
+        start: "#e8e5e1",
+        end: "#cfcfcf",
+        label: "Producto + interfaz"
       },
       cover: {
-        src: "assets/projects/social-media/mastantuono-real-madrid/cover/cover.webp",
+        src: "assets/projects/uxui/nike-vision/cover/cover.webp",
         position: "center center",
-        tint: "rgba(12, 14, 18, 0.04)",
-        shadow: "rgba(12, 14, 18, 0.22)"
+        tint: "rgba(8, 8, 8, 0.06)",
+        shadow: "rgba(8, 8, 8, 0.34)"
       },
-      media: [
+      media:             [
+        {
+          type: "embed",
+          title: "Prototipo interactivo en Figma",
+          embedUrl:
+            "https://embed.figma.com/proto/pjCniFuPBce7iySlz3jsKS/Nike-Vision?page-id=0%3A1&node-id=1-2&viewport=343%2C467%2C0.33&scaling=contain&content-scaling=fixed&embed-host=leonel-portfolio",
+          frameHeight: "46rem",
+          description:
+            "Versión navegable del prototipo de Just Vision embebida dentro del portfolio para recorrer la propuesta UX/UI directamente desde el caso."
+        },
         {
           type: "visual",
-          title: "Flyer principal",
-          image: "assets/projects/social-media/mastantuono-real-madrid/images/mastantuono-real-madrid-flyer.webp",
-          description:
-            "Flyer cuadrado orientado a redes sociales con una construcción aspiracional, composición en capas y foco total en el impacto visual."
+          title: "HUD",
+          image: "assets/projects/uxui/nike-vision/images/nike-vision-hud.webp"
+        },
+        {
+          type: "visual",
+          title: "Product Page Complete",
+          image: "assets/projects/uxui/nike-vision/images/nike-vision-product-page-complete.webp"
+        },
+        {
+          type: "video",
+          title: "Demo en video",
+          src: "assets/projects/uxui/nike-vision/videos/2024-07-21-17-36-34.mp4"
         }
       ]
     }

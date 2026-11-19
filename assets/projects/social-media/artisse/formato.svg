@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" font-family="Satoshi, Inter, Helvetica Neue, Arial, sans-serif">
+<rect width="1200" height="1200" fill="#140e1a"/>
+<text x="80" y="120" fill="#ff8fb0" font-size="26" font-weight="700" letter-spacing="5">EL FORMATO QUE FUNCIONÓ</text>
+<text x="80" y="190" fill="#f6eef2" font-size="50" font-weight="700">Tres tiempos en menos de 15 segundos</text>
+<g font-size="30">
+<g transform="translate(80 270)"><rect width="1040" height="230" rx="24" fill="#21172b" stroke="#ff5c8a" stroke-width="2"/>
+<text x="40" y="70" fill="#ff5c8a" font-size="64" font-weight="800">1</text><text x="130" y="72" fill="#fff" font-size="42" font-weight="700">Gancho</text>
+<text x="130" y="125" fill="#cbbcc6">Una cara que la audiencia ya sigue y una pregunta en pantalla:</text>
+<text x="130" y="170" fill="#ffb3c8" font-style="italic">"¿Qué otro estilo te gustaría ver en ella?"</text></g>
+<g transform="translate(80 540)"><rect width="1040" height="230" rx="24" fill="#21172b" stroke="#a986c9" stroke-width="2"/>
+<text x="40" y="70" fill="#a986c9" font-size="64" font-weight="800">2</text><text x="130" y="72" fill="#fff" font-size="42" font-weight="700">Transformación con IA</text>
+<text x="130" y="125" fill="#cbbcc6">La misma foto pasa por varios estilos generados con la app,</text>
+<text x="130" y="170" fill="#cbbcc6">con cortes al ritmo del audio para sostener la atención.</text></g>
+<g transform="translate(80 810)"><rect width="1040" height="230" rx="24" fill="#21172b" stroke="#ffb36b" stroke-width="2"/>
+<text x="40" y="70" fill="#ffb36b" font-size="64" font-weight="800">3</text><text x="130" y="72" fill="#fff" font-size="42" font-weight="700">Llamado a la acción</text>
+<text x="130" y="125" fill="#cbbcc6">Cierre con la marca y una invitación concreta:</text>
+<text x="130" y="170" fill="#ffd2a6" font-style="italic">"Probalo en Artisse 💓" — y los comentarios piden el próximo video.</text></g>
+</g>
+<text x="80" y="1120" fill="#8f7f8a" font-size="24">Esquema ilustrativo. Se omiten las caras de los videos originales.</text>
+</svg>

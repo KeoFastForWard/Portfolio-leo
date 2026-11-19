@@ -19,7 +19,7 @@ window.ProjectExperiences = (() => {
           <p class="experience-eyebrow">${experience.eyebrow} <span>${project.category} · ${project.year}</span></p>
           <div class="experience-intro-grid">
             <div><p class="experience-name">${project.title}</p><h2 id="project-modal-title">${experience.headline}</h2></div>
-            <div class="experience-intro-aside"><p>${experience.introduction}</p><a href="#experience-tour" data-experience-jump>${experience.tourLink || 'Explorar el diseño'} <span aria-hidden="true">↓</span></a>${manual ? '<a href="#brand-book" data-experience-jump>Hojear el manual <span aria-hidden="true">↓</span></a>' : ''}<button class="experience-motion-toggle" type="button" data-case-motion aria-pressed="true">Pausar movimiento</button></div>
+            <div class="experience-intro-aside"><p>${experience.introduction}</p><a href="#experience-tour" data-experience-jump>${experience.tourLink || 'Explorar el diseño'} <span aria-hidden="true">↓</span></a>${manual ? '<a href="#brand-book" data-experience-jump>Hojear el manual <span aria-hidden="true">↓</span></a>' : ''}${project.external && project.external.href ? `<a href="${project.external.href}" target="_blank" rel="noopener noreferrer">${project.external.label} <span aria-hidden="true">↗</span></a>` : ''}<button class="experience-motion-toggle" type="button" data-case-motion aria-pressed="true">Pausar movimiento</button></div>
           </div>
           <dl class="experience-facts">
             <div><dt>Mi aporte</dt><dd>${experience.role || project.presentation.role}</dd></div>
@@ -65,8 +65,23 @@ window.ProjectExperiences = (() => {
         </section>` : ''}
 
         ${rest.length ? `<section class="experience-gallery" data-case-reveal><div class="experience-section-label"><span>${manual ? 'Aplicaciones del isotipo' : 'Más del proyecto'}</span><span aria-hidden="true">+</span></div><div class="experience-gallery-grid">${rest.map(item => mediaBlock(item, project)).join('')}</div></section>` : ''}
+        ${renderValidation(project.validation)}
         <footer class="experience-outcome" data-case-reveal><p class="experience-eyebrow">Resultado de diseño</p><h3>${project.outcome}</h3><div><span>Lo que me llevo</span><p>${project.learnings}</p></div><p class="experience-tools">${project.tools.join(' / ')}</p><a href="#experience-tour" data-experience-jump>Volver al recorrido ↑</a></footer>
       </div>`;
+  }
+
+  // Shown only once real test results are added to the project in portfolio-data.js.
+  function renderValidation(validation) {
+    if (!validation || !Array.isArray(validation.findings) || !validation.findings.length) return '';
+    const changes = Array.isArray(validation.changes) ? validation.changes : [];
+    return `<section class="experience-validation" data-case-reveal>
+      <div class="experience-section-label"><span>Validación</span><span aria-hidden="true">✓</span></div>
+      <div class="experience-thinking-grid"><h3>${validation.title || 'Lo probé con personas reales.'}</h3><div><h4>Cómo lo probé</h4><p>${validation.method}</p>${validation.metric ? `<p class="experience-validation-metric">${validation.metric}</p>` : ''}</div></div>
+      <div class="experience-validation-grid">
+        <div><h4>Lo que encontré</h4><ul>${validation.findings.map(item => `<li>${item}</li>`).join('')}</ul></div>
+        ${changes.length ? `<div><h4>Lo que cambié</h4><ul>${changes.map(item => `<li>${item}</li>`).join('')}</ul></div>` : ''}
+      </div>
+    </section>`;
   }
 
   function renderBook(book) {
