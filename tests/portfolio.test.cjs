@@ -177,3 +177,10 @@ test('The validation block appears only when a case has real findings', () => {
   const tested = { ...base, validation: { method: 'Test con 5 personas.', findings: ['Hallazgo'], changes: ['Cambio'] } };
   assert.match(render(tested), /experience-validation[\s\S]*Hallazgo[\s\S]*Cambio/);
 });
+
+test('The dock only treats #section links as page locations', () => {
+  const script = fs.readFileSync(path.join(root, 'script.js'), 'utf8');
+  assert.match(script, /\[data-portfolio-dock\] a\[href\^="#"\]/);
+  const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  assert.match(html, /data-lang-toggle href="\?lang=en"/);
+});

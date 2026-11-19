@@ -1385,7 +1385,8 @@ body.video-performance-mode .modal-dialog {
     scroll-behavior: auto;
   }
 
-  *,
+  /* The intro and the background lines keep moving on purpose. */
+  *:not(.bg-line):not(.bg-line-base):not(.bg-line-glint):not(body),
   *::before,
   *::after {
     animation-duration: 1ms !important;
@@ -3402,12 +3403,6 @@ html[data-theme="dark"] .theme-toggle-knob {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .bg-line-base,
-  .bg-line {
-    animation: none !important;
-  }
-}
 
 /* background-refinement */
 @keyframes portfolioBackgroundGradientShift {
@@ -3633,25 +3628,6 @@ html[data-theme="dark"] .bg-line.bg-line-six {
   filter: drop-shadow(0 0 10px rgba(151, 178, 208, 0.1));
 }
 
-@media (prefers-reduced-motion: reduce) {
-  body,
-  html[data-theme="dark"] body,
-  .bg-line-base,
-  .bg-line {
-    animation: none !important;
-  }
-
-  .bg-line {
-    stroke-dasharray: none;
-    stroke-dashoffset: 0;
-    opacity: 0.28;
-    transform: none;
-  }
-
-  .bg-line-base {
-    transform: none;
-  }
-}
 
 /* background-lines-visibility-override */
 @keyframes portfolioLineGlintMotion {
@@ -3809,40 +3785,7 @@ html[data-theme="dark"] .bg-line-glint.bg-line-six {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .bg-line-glint {
-    display: none !important;
-    animation: none !important;
-  }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  html[data-desktop-light-motion="true"] .bg-line-base {
-    animation: none !important;
-    stroke-dasharray: none !important;
-    stroke-dashoffset: 0 !important;
-    transform: none !important;
-  }
-
-  html[data-desktop-light-motion="true"] .bg-line {
-    animation: none !important;
-    stroke-dasharray: none !important;
-    stroke-dashoffset: 0 !important;
-    transform: none !important;
-    opacity: 0.36 !important;
-  }
-
-  html[data-desktop-light-motion="true"] .bg-line-glint {
-    display: block !important;
-    opacity: 0;
-    animation: none !important;
-    transform: none !important;
-  }
-
-  html[data-desktop-light-motion="true"][data-theme="dark"] .bg-line {
-    opacity: 0.42 !important;
-  }
-}
 
 /* Case-study structure is isolated from the existing motion and background. */
 .modal-hero.case-hero {

@@ -104,11 +104,12 @@ function isMotionReduced() {
 }
 
 function shouldUseDesktopLightMotion() {
-  return desktopViewportQuery.matches && reducedMotionQuery.matches;
+  return false;
 }
 
+// The background lines always animate, even when the system asks for less motion.
 function shouldAllowBackgroundEnhancement() {
-  return !isMotionReduced() || shouldUseDesktopLightMotion();
+  return true;
 }
 
 function syncMotionMode() {
@@ -1063,7 +1064,8 @@ function updateCurrentYear() {
 }
 
 function setupDockLocation() {
-  const entries = [...document.querySelectorAll("[data-portfolio-dock] a")].map(link => ({
+  // Only in-page links (#section); the language switch is a normal link.
+  const entries = [...document.querySelectorAll('[data-portfolio-dock] a[href^="#"]')].map(link => ({
     link, section: document.querySelector(link.getAttribute("href"))
   })).filter(entry => entry.section);
   let frame = null;

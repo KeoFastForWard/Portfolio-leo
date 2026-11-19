@@ -16,15 +16,15 @@
   root.dataset.theme = theme;
   root.classList.add("js");
 
-  // The intro plays once per browser session, never over a deep link and
-  // never when the visitor asked the system for less motion.
+  // The intro plays once per browser session and never over a deep link.
+  // It ignores the system "reduce motion" setting on purpose; it can be skipped
+  // with a click, scroll or Esc.
   var seen = false;
   try {
     seen = window.sessionStorage.getItem("leonel-intro-seen") === "1";
   } catch (error) {}
-  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  if (!seen && !reduced && !window.location.hash) {
+  if (!seen && !window.location.hash) {
     root.classList.add("design-intro-pending");
     window.setTimeout(function () {
       root.classList.remove("design-intro-pending");
