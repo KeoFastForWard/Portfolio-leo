@@ -104,12 +104,11 @@ function isMotionReduced() {
 }
 
 function shouldUseDesktopLightMotion() {
-  return false;
+  return desktopViewportQuery.matches && reducedMotionQuery.matches;
 }
 
-// The background lines always animate, even when the system asks for less motion.
 function shouldAllowBackgroundEnhancement() {
-  return true;
+  return !isMotionReduced() || shouldUseDesktopLightMotion();
 }
 
 function syncMotionMode() {
